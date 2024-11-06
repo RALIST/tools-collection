@@ -1,0 +1,241 @@
+.json-formatter {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.options {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 1rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+.indent-options {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.indent-options label {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.indent-options select {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    background: white;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indent-options select:hover {
+    border-color: var(--primary-color);
+}
+
+.indent-options select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.sort-options {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sort-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    cursor: pointer;
+}
+
+.sort-options input[type="checkbox"] {
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.text-areas {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.text-area-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: white;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+.text-area-container label {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.text-area-container textarea {
+    width: 100%;
+    min-height: 300px;
+    padding: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    resize: vertical;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.text-area-container textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.text-area-container textarea::placeholder {
+    color: var(--text-light);
+}
+
+.button-group {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.button-group button {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-group button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow);
+}
+
+.format-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    align-self: center;
+}
+
+.format-buttons button {
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border: none;
+    border-radius: var(--border-radius);
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.format-buttons button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.format-buttons button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+}
+
+.format-buttons button:hover::before {
+    transform: translateX(100%);
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.action-buttons button {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-buttons button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow);
+}
+
+@media (max-width: 768px) {
+    .options {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .text-areas {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .format-buttons {
+        flex-direction: row;
+        justify-content: center;
+        padding: 0.5rem;
+    }
+
+    .text-area-container textarea {
+        min-height: 200px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-buttons button {
+        width: 100%;
+    }
+}
