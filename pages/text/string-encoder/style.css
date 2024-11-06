@@ -1,0 +1,148 @@
+/* Tool-specific styles for String Encoder/Decoder */
+
+.tool-description {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+}
+
+.tool-description p {
+    margin: 0;
+    line-height: 1.6;
+    color: #666;
+}
+
+textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    resize: vertical;
+    min-height: 150px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    transition: border-color 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+/* Encoding Options */
+.encoding-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.option-group {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+}
+
+.option-group h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+/* Result Area */
+.result {
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 50px;
+    margin-bottom: 1rem;
+    word-break: break-all;
+}
+
+.result.success {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: var(--success-color);
+}
+
+.result.error {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: var(--error-color);
+}
+
+.copy-btn {
+    width: 100%;
+}
+
+/* Tool Information Section */
+.tool-info {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tool-info h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.tool-info h3 {
+    color: var(--text-color);
+    margin: 1.5rem 0 1rem;
+    font-size: 1.25rem;
+}
+
+.tool-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.tool-info ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.tool-info li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.tool-info strong {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .encoding-options {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .option-group {
+        padding: 1rem;
+    }
+
+    .button-group {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-info {
+        padding: 1.5rem;
+    }
+}

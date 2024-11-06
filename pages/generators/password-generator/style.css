@@ -1,0 +1,184 @@
+/* Password Generator specific styles */
+
+.tool-description {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+}
+
+.tool-description p {
+    margin: 0;
+    line-height: 1.6;
+    color: #666;
+}
+
+.password-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.length-control {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.length-control label {
+    font-weight: 500;
+    min-width: 80px;
+}
+
+.length-control input[type="range"] {
+    flex: 1;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    appearance: none;
+    cursor: pointer;
+}
+
+.length-control input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.length-control input[type="range"]::-webkit-slider-thumb:hover {
+    background: var(--nav-hover-color);
+}
+
+.length-control span {
+    min-width: 30px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.generate-btn {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.password-result {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.password-result input[type="text"] {
+    flex: 1;
+    padding: 0.75rem;
+    font-family: monospace;
+    font-size: 1.1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    background-color: #f8f9fa;
+    color: var(--text-color);
+    cursor: text;
+    user-select: all;
+}
+
+.copy-btn {
+    padding: 0.75rem 1.5rem;
+    white-space: nowrap;
+}
+
+/* Tool Information Section */
+.tool-info {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tool-info h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.tool-info h3 {
+    color: var(--text-color);
+    margin: 1.5rem 0 1rem;
+    font-size: 1.25rem;
+}
+
+.tool-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.tool-info ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.tool-info li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.tool-info strong {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .checkbox-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .length-control {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .length-control label {
+        min-width: auto;
+    }
+
+    .password-result {
+        flex-direction: column;
+    }
+
+    .password-result button {
+        width: 100%;
+    }
+
+    .tool-info {
+        padding: 1.5rem;
+    }
+}

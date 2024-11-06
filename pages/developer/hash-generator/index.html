@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online hash generator tool. Generate MD5, SHA-1, SHA-256, and other hash values for your text or files.">
+    <meta name="keywords"
+        content="hash generator, md5 generator, sha1 generator, sha256 generator, hash calculator, crypto hash">
+    <meta name="author" content="Useful Online Tools">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Hash Generator - Generate MD5, SHA-1, SHA-256 Hashes">
+    <meta property="og:description"
+        content="Free online tool to generate various hash values for your text or files. Supports MD5, SHA-1, SHA-256, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usefulonlinetools.com/developer/hash-generator">
+    <meta property="og:image" content="https://usefulonlinetools.com/images/hash-generator-preview.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hash Generator - Generate MD5, SHA-1, SHA-256 Hashes">
+    <meta name="twitter:description"
+        content="Free online tool to generate various hash values for your text or files. Supports MD5, SHA-1, SHA-256, and more.">
+    <meta name="twitter:image" content="https://usefulonlinetools.com/images/hash-generator-preview.png">
+
+    <title>Hash Generator - Generate MD5, SHA-1, SHA-256 Hashes</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>#</text></svg>">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="canonical" href="https://usefulonlinetools.com/developer/hash-generator">
+</head>
+
+<body>
+    <header>
+        <h1>Hash Generator</h1>
+        <div class="premium-banner" role="banner">
+            Try Premium for access to all tools without ads! 🌟
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/text-tools.html">Text Tools</a></li>
+                <li><a href="/developer-tools.html" class="active">Developer Tools</a></li>
+                <li><a href="/converters.html">Converters</a></li>
+                <li><a href="/generators.html">Generators</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="tool-card">
+            <div class="tool-content">
+                <div class="tool-description">
+                    <p>Generate various hash values for your text or files. Perfect for data integrity verification and
+                        security applications.</p>
+                </div>
+
+                <div class="input-section">
+                    <div class="input-tabs">
+                        <button class="tab-btn active" data-tab="text">Text Input</button>
+                        <button class="tab-btn" data-tab="file">File Input</button>
+                    </div>
+
+                    <div class="tab-content active" id="text-input">
+                        <textarea id="textInput" placeholder="Enter text to hash..." spellcheck="false"></textarea>
+                    </div>
+
+                    <div class="tab-content" id="file-input">
+                        <div class="file-drop-zone">
+                            <input type="file" id="fileInput" hidden>
+                            <div class="drop-zone-content">
+                                <div class="icon">📁</div>
+                                <p>Drag and drop a file here or click to select</p>
+                                <button class="select-file-btn">Select File</button>
+                            </div>
+                        </div>
+                        <div class="file-info" hidden>
+                            <span class="file-name"></span>
+                            <button class="remove-file-btn">×</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hash-options">
+                    <h3>Hash Algorithms</h3>
+                    <div class="algorithm-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" data-algorithm="md5" checked>
+                            MD5
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" data-algorithm="sha1" checked>
+                            SHA-1
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" data-algorithm="sha256" checked>
+                            SHA-256
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" data-algorithm="sha512">
+                            SHA-512
+                        </label>
+                    </div>
+                </div>
+
+                <div class="hash-results">
+                    <div class="result-item" data-algorithm="md5">
+                        <div class="result-header">
+                            <h4>MD5</h4>
+                            <button class="copy-btn" title="Copy hash">Copy</button>
+                        </div>
+                        <input type="text" class="hash-output" readonly>
+                    </div>
+
+                    <div class="result-item" data-algorithm="sha1">
+                        <div class="result-header">
+                            <h4>SHA-1</h4>
+                            <button class="copy-btn" title="Copy hash">Copy</button>
+                        </div>
+                        <input type="text" class="hash-output" readonly>
+                    </div>
+
+                    <div class="result-item" data-algorithm="sha256">
+                        <div class="result-header">
+                            <h4>SHA-256</h4>
+                            <button class="copy-btn" title="Copy hash">Copy</button>
+                        </div>
+                        <input type="text" class="hash-output" readonly>
+                    </div>
+
+                    <div class="result-item" data-algorithm="sha512">
+                        <div class="result-header">
+                            <h4>SHA-512</h4>
+                            <button class="copy-btn" title="Copy hash">Copy</button>
+                        </div>
+                        <input type="text" class="hash-output" readonly>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <section class="tool-info">
+            <h2>About Hash Generator</h2>
+            <p>Our Hash Generator tool supports multiple hash algorithms:</p>
+            <ul>
+                <li><strong>MD5:</strong> Fast but not cryptographically secure</li>
+                <li><strong>SHA-1:</strong> Legacy algorithm, better than MD5</li>
+                <li><strong>SHA-256:</strong> Secure and widely used</li>
+                <li><strong>SHA-512:</strong> Most secure, longest output</li>
+            </ul>
+
+            <section class="faq">
+                <h3>Frequently Asked Questions</h3>
+                <details>
+                    <summary>What is a hash value?</summary>
+                    <p>A hash value is a fixed-size string of characters generated from input data using a mathematical
+                        function. It's unique to the input and any change in the input produces a completely different
+                        hash.</p>
+                </details>
+                <details>
+                    <summary>Which hash algorithm should I use?</summary>
+                    <p>For security purposes, SHA-256 or SHA-512 are recommended. MD5 and SHA-1 are faster but
+                        considered cryptographically broken and should only be used for checksums or non-security
+                        purposes.</p>
+                </details>
+                <details>
+                    <summary>Is the file content uploaded to your server?</summary>
+                    <p>No, all hash calculations are performed locally in your browser. Your files and text are never
+                        sent to our servers, ensuring complete privacy.</p>
+                </details>
+            </section>
+        </section>
+    </main>
+
+    <!-- Ad Space -->
+    <aside class="ad-space">
+        <div class="ad-placeholder" role="complementary">
+            Advertisement Space
+        </div>
+    </aside>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="/text-tools.html">Text Tools</a></li>
+                    <li><a href="/developer-tools.html">Developer Tools</a></li>
+                    <li><a href="/converters.html">Converters</a></li>
+                    <li><a href="/generators.html">Generators</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+                    <li><a href="#" aria-label="Terms of Service">Terms of Service</a></li>
+                    <li><a href="#" aria-label="Contact Us">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Premium</h3>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Enterprise</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">© 2024 Useful Online Tools. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

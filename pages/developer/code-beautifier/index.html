@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online code beautifier tool. Format and beautify HTML, CSS, and JavaScript code with proper indentation.">
+    <meta name="keywords"
+        content="code beautifier, code formatter, html formatter, css formatter, javascript formatter, code prettifier">
+    <meta name="author" content="Useful Online Tools">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Code Beautifier - Format HTML, CSS, JavaScript Code">
+    <meta property="og:description"
+        content="Free online tool to format and beautify HTML, CSS, and JavaScript code with proper indentation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usefulonlinetools.com/developer/code-beautifier">
+    <meta property="og:image" content="https://usefulonlinetools.com/images/code-beautifier-preview.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Code Beautifier - Format HTML, CSS, JavaScript Code">
+    <meta name="twitter:description"
+        content="Free online tool to format and beautify HTML, CSS, and JavaScript code with proper indentation.">
+    <meta name="twitter:image" content="https://usefulonlinetools.com/images/code-beautifier-preview.png">
+
+    <title>Code Beautifier - Format HTML, CSS, JavaScript Code</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="canonical" href="https://usefulonlinetools.com/developer/code-beautifier">
+</head>
+
+<body>
+    <header>
+        <h1>Code Beautifier</h1>
+        <div class="premium-banner" role="banner">
+            Try Premium for access to all tools without ads! 🌟
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/text-tools.html">Text Tools</a></li>
+                <li><a href="/developer-tools.html" class="active">Developer Tools</a></li>
+                <li><a href="/converters.html">Converters</a></li>
+                <li><a href="/generators.html">Generators</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="tool-card">
+            <div class="tool-content">
+                <div class="tool-description">
+                    <p>Format and beautify HTML, CSS, and JavaScript code with proper indentation and spacing. Perfect
+                        for
+                        improving code readability.</p>
+                </div>
+
+                <div class="code-type-selector">
+                    <button class="type-btn active" data-type="html">HTML</button>
+                    <button class="type-btn" data-type="css">CSS</button>
+                    <button class="type-btn" data-type="js">JavaScript</button>
+                </div>
+
+                <div class="editor-container">
+                    <div class="input-section">
+                        <label for="codeInput">Input Code:</label>
+                        <textarea id="codeInput" placeholder="Paste your code here..." spellcheck="false"></textarea>
+                    </div>
+
+                    <div class="output-section">
+                        <label for="beautifiedOutput">Beautified Output:</label>
+                        <textarea id="beautifiedOutput" readonly spellcheck="false"></textarea>
+                    </div>
+                </div>
+
+                <div class="options-panel">
+                    <h3>Formatting Options</h3>
+                    <div class="options-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="indentWithTabs">
+                            Indent with Tabs
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="preserveNewlines" checked>
+                            Preserve Newlines
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="wrapLineLength">
+                            Wrap Long Lines
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="endWithNewline" checked>
+                            End with Newline
+                        </label>
+                    </div>
+                    <div class="indent-size">
+                        <label for="indentSize">Indent Size:</label>
+                        <input type="number" id="indentSize" min="1" max="8" value="2">
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="beautifyBtn" class="primary-btn">Beautify Code</button>
+                    <button id="copyBtn" class="secondary-btn">Copy Beautified Code</button>
+                    <button id="downloadBtn" class="secondary-btn">Download</button>
+                    <button id="clearBtn" class="secondary-btn">Clear</button>
+                </div>
+            </div>
+        </article>
+
+        <section class="tool-info">
+            <h2>About Code Beautifier</h2>
+            <p>Our Code Beautifier tool helps improve code readability by:</p>
+            <ul>
+                <li>Adding proper indentation and spacing</li>
+                <li>Formatting code according to best practices</li>
+                <li>Organizing code structure</li>
+                <li>Preserving code functionality</li>
+            </ul>
+
+            <section class="faq">
+                <h3>Frequently Asked Questions</h3>
+                <details>
+                    <summary>Why should I beautify my code?</summary>
+                    <p>Beautifying code makes it more readable and maintainable. Well-formatted code is easier to
+                        understand, debug, and collaborate on with other developers.</p>
+                </details>
+                <details>
+                    <summary>Does beautifying affect code functionality?</summary>
+                    <p>No, code beautification only changes the formatting and appearance of your code. The
+                        functionality
+                        remains exactly the same.</p>
+                </details>
+                <details>
+                    <summary>What are the recommended indent settings?</summary>
+                    <p>Most style guides recommend using either 2 or 4 spaces for indentation. Using spaces instead of
+                        tabs helps maintain consistent formatting across different editors.</p>
+                </details>
+            </section>
+        </section>
+    </main>
+
+    <!-- Ad Space -->
+    <aside class="ad-space">
+        <div class="ad-placeholder" role="complementary">
+            Advertisement Space
+        </div>
+    </aside>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="/text-tools.html">Text Tools</a></li>
+                    <li><a href="/developer-tools.html">Developer Tools</a></li>
+                    <li><a href="/converters.html">Converters</a></li>
+                    <li><a href="/generators.html">Generators</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+                    <li><a href="#" aria-label="Terms of Service">Terms of Service</a></li>
+                    <li><a href="#" aria-label="Contact Us">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Premium</h3>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Enterprise</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">© 2024 Useful Online Tools. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-html.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

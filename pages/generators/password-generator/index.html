@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online password generator tool. Create strong, secure, and random passwords with customizable length and character types. Perfect for creating unbreakable passwords for your accounts.">
+    <meta name="keywords"
+        content="password generator, random password, secure password, password creator, strong password generator, password security, password maker">
+    <meta name="author" content="Useful Online Tools">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Password Generator - Create Strong, Secure Passwords">
+    <meta property="og:description"
+        content="Free online tool to generate secure, random passwords with customizable length and character types. Create unbreakable passwords instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usefulonlinetools.com/generators/password-generator">
+    <meta property="og:image" content="https://usefulonlinetools.com/images/password-generator-preview.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Password Generator - Create Strong, Secure Passwords">
+    <meta name="twitter:description"
+        content="Free online tool to generate secure, random passwords with customizable length and character types. Create unbreakable passwords instantly.">
+    <meta name="twitter:image" content="https://usefulonlinetools.com/images/password-generator-preview.png">
+
+    <!-- Alternate Languages -->
+    <link rel="alternate" hreflang="x-default" href="https://usefulonlinetools.com/generators/password-generator">
+    <link rel="alternate" hreflang="en" href="https://usefulonlinetools.com/generators/password-generator">
+
+    <title>Password Generator - Create Strong, Secure Passwords | Useful Online Tools</title>
+    <link rel="stylesheet" href="/css/base.css" type="text/css">
+    <link rel="stylesheet" href="/css/components.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="canonical" href="https://usefulonlinetools.com/generators/password-generator">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Password Generator",
+        "url": "https://usefulonlinetools.com/generators/password-generator",
+        "description": "Free online tool to generate secure, random passwords with customizable length and character types.",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": [
+            "Customizable password length",
+            "Uppercase and lowercase letters",
+            "Numbers and special characters",
+            "One-click copy to clipboard"
+        ],
+        "creator": {
+            "@type": "Organization",
+            "name": "Useful Online Tools"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Password Generator</h1>
+        <div class="premium-banner" role="banner">
+            Try Premium for access to all tools without ads! 🌟
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/text-tools.html">Text Tools</a></li>
+                <li><a href="/developer-tools.html">Developer Tools</a></li>
+                <li><a href="/converters.html">Converters</a></li>
+                <li><a href="/generators.html">Generators</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="tool-card">
+            <div class="tool-content">
+                <div class="tool-description">
+                    <p>Generate secure, random passwords with customizable options. Perfect for creating strong
+                        passwords for your accounts.</p>
+                </div>
+                <div class="password-controls">
+                    <div class="checkbox-group">
+                        <label>
+                            <input type="checkbox" id="uppercase" checked>
+                            Uppercase Letters
+                        </label>
+                        <label>
+                            <input type="checkbox" id="numbers" checked>
+                            Numbers
+                        </label>
+                        <label>
+                            <input type="checkbox" id="symbols">
+                            Special Characters
+                        </label>
+                    </div>
+                    <div class="length-control">
+                        <label>Password Length:</label>
+                        <input type="range" id="length" min="8" max="32" value="12" aria-label="Password length">
+                        <span id="lengthValue">12</span>
+                    </div>
+                </div>
+                <button class="generate-btn" aria-label="Generate new password">Generate Password</button>
+                <div class="password-result">
+                    <input type="text" id="passwordResult" readonly aria-label="Generated password">
+                    <button class="copy-btn" aria-label="Copy password to clipboard">Copy</button>
+                </div>
+            </div>
+        </article>
+
+        <section class="tool-info">
+            <h2>About Password Generator</h2>
+            <p>Our Password Generator creates strong, random passwords with these customizable options:</p>
+            <ul>
+                <li><strong>Uppercase Letters:</strong> Include capital letters (A-Z)</li>
+                <li><strong>Numbers:</strong> Include digits (0-9)</li>
+                <li><strong>Special Characters:</strong> Include symbols (!@#$%^&*)</li>
+                <li><strong>Password Length:</strong> Choose between 8-32 characters</li>
+            </ul>
+
+            <!-- FAQ Section for SEO -->
+            <section class="faq">
+                <h3>Frequently Asked Questions</h3>
+                <details>
+                    <summary>What makes a strong password?</summary>
+                    <p>A strong password should be at least 12 characters long and include a mix of uppercase letters,
+                        lowercase letters, numbers, and special characters. It should also be unique and not used across
+                        multiple accounts.</p>
+                </details>
+                <details>
+                    <summary>Are the generated passwords secure?</summary>
+                    <p>Yes, our password generator uses a cryptographically secure random number generator to create
+                        unpredictable passwords that are extremely difficult to guess or crack.</p>
+                </details>
+                <details>
+                    <summary>How often should I change my passwords?</summary>
+                    <p>Security experts recommend changing passwords every 3-6 months, or immediately if there's any
+                        suspicion of a security breach.</p>
+                </details>
+            </section>
+
+            <section class="password-tips">
+                <h3>Password Security Tips</h3>
+                <ul>
+                    <li>Use a different password for each account</li>
+                    <li>Include a mix of different character types</li>
+                    <li>Make passwords at least 12 characters long</li>
+                    <li>Never share your passwords with others</li>
+                    <li>Consider using a password manager</li>
+                    <li>Enable two-factor authentication when available</li>
+                </ul>
+            </section>
+        </section>
+    </main>
+
+    <!-- Ad Space -->
+    <aside class="ad-space">
+        <div class="ad-placeholder" role="complementary">
+            Advertisement Space
+        </div>
+    </aside>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="/text-tools.html">Text Tools</a></li>
+                    <li><a href="/developer-tools.html">Developer Tools</a></li>
+                    <li><a href="/converters.html">Converters</a></li>
+                    <li><a href="/generators.html">Generators</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+                    <li><a href="#" aria-label="Terms of Service">Terms of Service</a></li>
+                    <li><a href="#" aria-label="Contact Us">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Premium</h3>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Enterprise</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">© 2024 Useful Online Tools. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

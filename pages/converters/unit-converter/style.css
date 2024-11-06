@@ -1,0 +1,127 @@
+/* Unit Converter specific styles */
+
+.tool-description {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+}
+
+.tool-description p {
+    margin: 0;
+    line-height: 1.6;
+    color: #666;
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.converter-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.converter-controls input[type="number"] {
+    width: 150px;
+}
+
+.converter-controls select {
+    min-width: 120px;
+}
+
+.converter-controls span {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.convert-btn {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.result {
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result.success {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: var(--success-color);
+}
+
+.result.error {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: var(--error-color);
+}
+
+/* Tool Information Section */
+.tool-info {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tool-info h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.tool-info h3 {
+    color: var(--text-color);
+    margin: 1.5rem 0 1rem;
+    font-size: 1.25rem;
+}
+
+.tool-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.tool-info ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.tool-info li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.tool-info strong {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .converter-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+
+    .converter-controls input[type="number"],
+    .converter-controls select {
+        width: 100%;
+    }
+
+    .tool-info {
+        padding: 1.5rem;
+    }
+}

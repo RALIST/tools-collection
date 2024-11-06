@@ -1,0 +1,267 @@
+/* Tool Categories Grid */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+/* Category Row */
+.category-row {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 2.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.category-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--primary-light));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.category-row:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hover-shadow);
+}
+
+.category-row:hover::before {
+    opacity: 1;
+}
+
+/* Category Headers */
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(33, 150, 243, 0.1);
+}
+
+.category-header h2 {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.category-header .icon {
+    font-size: 2rem;
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.2));
+    border-radius: 16px;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.category-row:hover .icon {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* Tools List */
+.tools-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Tool Item */
+.tool-item {
+    background: linear-gradient(to right, rgba(33, 150, 243, 0.05), rgba(33, 150, 243, 0.02));
+    padding: 1.25rem;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    border: 1px solid rgba(33, 150, 243, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.tool-item:hover {
+    background: linear-gradient(to right, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05));
+    transform: translateX(5px);
+    border-color: rgba(33, 150, 243, 0.2);
+}
+
+/* Tool Icons */
+.tool-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.tool-item:hover .tool-icon {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* Tool Info */
+.tool-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.tool-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tool-info p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+/* Status Badge */
+.status-badge {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 1rem;
+    margin-left: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.2);
+    flex-shrink: 0;
+}
+
+.status-badge.premium {
+    background: linear-gradient(135deg, var(--secondary-color), var(--secondary-dark));
+    color: var(--text-dark);
+}
+
+/* Category Specific Colors */
+.text-tools .icon,
+.text-tools .tool-icon {
+    color: #2196F3;
+    background-color: rgba(33, 150, 243, 0.1);
+}
+
+.developer-tools .icon,
+.developer-tools .tool-icon {
+    color: #9C27B0;
+    background-color: rgba(156, 39, 176, 0.1);
+}
+
+.converters .icon,
+.converters .tool-icon {
+    color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.generators .icon,
+.generators .tool-icon {
+    color: #FF9800;
+    background-color: rgba(255, 152, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .category-row {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .category-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .category-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .category-header .icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+    }
+
+    .tools-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .tool-item {
+        padding: 1rem;
+    }
+
+    .tool-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .tool-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .tool-info p {
+        font-size: 0.9rem;
+    }
+
+    .status-badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-row {
+        padding: 1.25rem;
+    }
+
+    .category-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .tool-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    .tool-info h3 {
+        font-size: 1rem;
+    }
+
+    .tool-info p {
+        font-size: 0.85rem;
+    }
+}

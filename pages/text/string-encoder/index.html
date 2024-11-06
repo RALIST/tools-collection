@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online string encoder and decoder tool. Convert text to Base64, URL encoding, and HTML entities instantly.">
+    <meta name="keywords"
+        content="string encoder, string decoder, base64 encoder, url encoder, html encoder, text encoder">
+    <meta name="author" content="Useful Online Tools">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="String Encoder/Decoder - Useful Online Tools">
+    <meta property="og:description"
+        content="Free online tool to encode and decode text using Base64, URL encoding, and HTML entities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usefulonlinetools.com/text/string-encoder">
+    <title>String Encoder/Decoder - Useful Online Tools</title>
+    <link rel="stylesheet" href="/css/base.css" type="text/css">
+    <link rel="stylesheet" href="/css/components.css" type="text/css">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="canonical" href="https://usefulonlinetools.com/text/string-encoder">
+</head>
+
+<body>
+    <header>
+        <h1>String Encoder/Decoder</h1>
+        <div class="premium-banner" role="banner">
+            Try Premium for access to all tools without ads! 🌟
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/text-tools.html">Text Tools</a></li>
+                <li><a href="/developer-tools.html">Developer Tools</a></li>
+                <li><a href="/converters.html">Converters</a></li>
+                <li><a href="/generators.html">Generators</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="tool-card">
+            <div class="tool-content">
+                <div class="tool-description">
+                    <p>Encode or decode text using various encoding methods including Base64, URL encoding, and HTML
+                        entities. Perfect for web development and data handling.</p>
+                </div>
+                <textarea id="encodeInput" placeholder="Enter text to encode/decode..." rows="8"
+                    aria-label="Text to encode or decode"></textarea>
+                <div class="encoding-options">
+                    <div class="option-group">
+                        <h3>Base64</h3>
+                        <div class="button-group">
+                            <button onclick="encode('base64')" aria-label="Encode as Base64">Base64 Encode</button>
+                            <button onclick="decode('base64')" aria-label="Decode from Base64">Base64 Decode</button>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <h3>URL Encoding</h3>
+                        <div class="button-group">
+                            <button onclick="encode('url')" aria-label="Encode as URL">URL Encode</button>
+                            <button onclick="decode('url')" aria-label="Decode from URL">URL Decode</button>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <h3>HTML Entities</h3>
+                        <div class="button-group">
+                            <button onclick="encode('html')" aria-label="Encode as HTML">HTML Encode</button>
+                            <button onclick="decode('html')" aria-label="Decode from HTML">HTML Decode</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="encodeResult" class="result" aria-live="polite"></div>
+                <button onclick="copyEncodedText()" class="copy-btn" aria-label="Copy result">Copy Result</button>
+            </div>
+        </article>
+
+        <section class="tool-info">
+            <h2>About String Encoder/Decoder</h2>
+            <p>Our String Encoder/Decoder tool supports multiple encoding methods commonly used in web development and
+                data handling:</p>
+            <ul>
+                <li><strong>Base64 Encoding:</strong> Convert binary data to ASCII text format</li>
+                <li><strong>URL Encoding:</strong> Encode special characters for use in URLs</li>
+                <li><strong>HTML Entities:</strong> Convert special characters to HTML entities</li>
+            </ul>
+            <h3>Use Cases</h3>
+            <ul>
+                <li>Encoding data for web APIs and HTTP requests</li>
+                <li>Creating safe URLs with special characters</li>
+                <li>Converting special characters for HTML display</li>
+                <li>Debugging encoded data in web applications</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Ad Space -->
+    <aside class="ad-space">
+        <div class="ad-placeholder" role="complementary">
+            Advertisement Space
+        </div>
+    </aside>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="/text-tools.html">Text Tools</a></li>
+                    <li><a href="/developer-tools.html">Developer Tools</a></li>
+                    <li><a href="/converters.html">Converters</a></li>
+                    <li><a href="/generators.html">Generators</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+                    <li><a href="#" aria-label="Terms of Service">Terms of Service</a></li>
+                    <li><a href="#" aria-label="Contact Us">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Premium</h3>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Enterprise</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">© 2024 Useful Online Tools. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

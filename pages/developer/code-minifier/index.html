@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Free online code minifier tool. Minify HTML, CSS, and JavaScript code to reduce file size and improve load times.">
+    <meta name="keywords"
+        content="code minifier, html minifier, css minifier, javascript minifier, js minifier, code compression, web optimization">
+    <meta name="author" content="Useful Online Tools">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Code Minifier - HTML, CSS, JavaScript Compression Tool">
+    <meta property="og:description"
+        content="Free online tool to minify and compress HTML, CSS, and JavaScript code. Optimize your web assets instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usefulonlinetools.com/developer/code-minifier">
+    <meta property="og:image" content="https://usefulonlinetools.com/images/code-minifier-preview.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Code Minifier - HTML, CSS, JavaScript Compression Tool">
+    <meta name="twitter:description"
+        content="Free online tool to minify and compress HTML, CSS, and JavaScript code. Optimize your web assets instantly.">
+    <meta name="twitter:image" content="https://usefulonlinetools.com/images/code-minifier-preview.png">
+
+    <title>Code Minifier - HTML, CSS, JavaScript Compression Tool</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="canonical" href="https://usefulonlinetools.com/developer/code-minifier">
+</head>
+
+<body>
+    <header>
+        <h1>Code Minifier</h1>
+        <div class="premium-banner" role="banner">
+            Try Premium for access to all tools without ads! 🌟
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/text-tools.html">Text Tools</a></li>
+                <li><a href="/developer-tools.html" class="active">Developer Tools</a></li>
+                <li><a href="/converters.html">Converters</a></li>
+                <li><a href="/generators.html">Generators</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="tool-card">
+            <div class="tool-content">
+                <div class="tool-description">
+                    <p>Minify and compress HTML, CSS, and JavaScript code to reduce file size and improve load times.
+                        Perfect for optimizing web assets before deployment.</p>
+                </div>
+
+                <div class="code-type-selector">
+                    <button class="type-btn active" data-type="html">HTML</button>
+                    <button class="type-btn" data-type="css">CSS</button>
+                    <button class="type-btn" data-type="js">JavaScript</button>
+                </div>
+
+                <div class="editor-container">
+                    <div class="input-section">
+                        <label for="codeInput">Input Code:</label>
+                        <textarea id="codeInput" placeholder="Paste your code here..." spellcheck="false"></textarea>
+                    </div>
+
+                    <div class="output-section">
+                        <label for="minifiedOutput">Minified Output:</label>
+                        <textarea id="minifiedOutput" readonly spellcheck="false"></textarea>
+                        <div class="stats">
+                            <span>Original Size: <span id="originalSize">0</span> bytes</span>
+                            <span>Minified Size: <span id="minifiedSize">0</span> bytes</span>
+                            <span>Saved: <span id="savedSize">0</span>%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="options-panel">
+                    <h3>Minification Options</h3>
+                    <div class="options-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="removeComments" checked>
+                            Remove Comments
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="removeWhitespace" checked>
+                            Remove Whitespace
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="shortenVariables">
+                            Shorten Variables (JS only)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="combineFiles">
+                            Combine Files
+                        </label>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="minifyBtn" class="primary-btn">Minify Code</button>
+                    <button id="copyBtn" class="secondary-btn">Copy Minified Code</button>
+                    <button id="downloadBtn" class="secondary-btn">Download</button>
+                    <button id="clearBtn" class="secondary-btn">Clear</button>
+                </div>
+            </div>
+        </article>
+
+        <section class="tool-info">
+            <h2>About Code Minifier</h2>
+            <p>Our Code Minifier tool helps optimize your web assets by:</p>
+            <ul>
+                <li>Removing unnecessary whitespace and comments</li>
+                <li>Shortening variable names (in JavaScript)</li>
+                <li>Combining multiple files</li>
+                <li>Optimizing code structure</li>
+            </ul>
+
+            <section class="faq">
+                <h3>Frequently Asked Questions</h3>
+                <details>
+                    <summary>Why should I minify my code?</summary>
+                    <p>Minifying your code reduces file size, which leads to faster loading times and better performance
+                        for your website. It's especially important for production environments where every byte counts.
+                    </p>
+                </details>
+                <details>
+                    <summary>Is the minified code still readable?</summary>
+                    <p>Minified code is optimized for machines, not humans. It removes all unnecessary characters while
+                        maintaining functionality. For development, you should keep your original, readable code and use
+                        minified versions only for production.</p>
+                </details>
+                <details>
+                    <summary>Will minification break my code?</summary>
+                    <p>Our minifier is designed to preserve functionality while reducing file size. However, it's always
+                        recommended to test your minified code thoroughly before deploying to production.</p>
+                </details>
+            </section>
+        </section>
+    </main>
+
+    <!-- Ad Space -->
+    <aside class="ad-space">
+        <div class="ad-placeholder" role="complementary">
+            Advertisement Space
+        </div>
+    </aside>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="/text-tools.html">Text Tools</a></li>
+                    <li><a href="/developer-tools.html">Developer Tools</a></li>
+                    <li><a href="/converters.html">Converters</a></li>
+                    <li><a href="/generators.html">Generators</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Information</h3>
+                <ul>
+                    <li><a href="#" aria-label="Privacy Policy">Privacy Policy</a></li>
+                    <li><a href="#" aria-label="Terms of Service">Terms of Service</a></li>
+                    <li><a href="#" aria-label="Contact Us">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Premium</h3>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Enterprise</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="copyright">© 2024 Useful Online Tools. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-minifier/4.0.0/htmlminifier.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clean-css/4.2.3/clean-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/terser/5.7.1/bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+/* This file is kept for backward compatibility */
+/* All styles have been moved to modular CSS files in the /css directory */
+/* Please use the individual CSS files directly: */
+/*
+- base.css: Root variables, reset, typography, layout
+- components.css: Reusable components like buttons, forms, cards
+- tools.css: Tool-specific styles
+- responsive.css: Media queries and responsive design
+*/
