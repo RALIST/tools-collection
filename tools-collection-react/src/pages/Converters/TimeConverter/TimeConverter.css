@@ -1,0 +1,128 @@
+.time-converter {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.time-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+.time-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.format-selector,
+.timezone-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.format-selector label,
+.timezone-selector label {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.format-selector select,
+.timezone-selector select {
+    padding: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    background: white;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.format-selector select:hover,
+.timezone-selector select:hover {
+    border-color: var(--primary-color);
+}
+
+.format-selector select:focus,
+.timezone-selector select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.time-input {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.time-input input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.time-input input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.time-input input[readonly] {
+    background-color: #f8f9fa;
+    cursor: default;
+}
+
+.input-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.input-buttons button {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-buttons button:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+}
+
+@media (max-width: 768px) {
+    .time-controls {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .format-selector select,
+    .timezone-selector select {
+        width: 100%;
+    }
+
+    .input-buttons {
+        flex-direction: column;
+    }
+
+    .input-buttons button {
+        width: 100%;
+    }
+}

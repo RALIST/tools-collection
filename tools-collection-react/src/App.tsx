@@ -15,6 +15,8 @@ import CodeBeautifier from './pages/DeveloperTools/CodeBeautifier/CodeBeautifier
 import HashGenerator from './pages/DeveloperTools/HashGenerator/HashGenerator';
 import Converters from './pages/Converters/Converters';
 import UnitConverter from './pages/Converters/UnitConverter/UnitConverter';
+import ColorConverter from './pages/Converters/ColorConverter/ColorConverter';
+import TimeConverter from './pages/Converters/TimeConverter/TimeConverter';
 import './App.css';
 
 // Temporary placeholder components
@@ -48,6 +50,8 @@ const AppContent = () => {
           {/* Converters Routes */}
           <Route path="/converters" element={<Converters />} />
           <Route path="/converters/unit-converter" element={<UnitConverter />} />
+          <Route path="/converters/color-converter" element={<ColorConverter />} />
+          <Route path="/converters/time-converter" element={<TimeConverter />} />
 
           {/* Other Tool Categories */}
           <Route path="/generators" element={<Generators />} />
