@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './JsonFormatter.css';
+import MetaTags from '../../../components/common/MetaTags/MetaTags';
 
 const JsonFormatter: React.FC = () => {
     const [input, setInput] = useState<string>('');
@@ -112,6 +113,27 @@ const JsonFormatter: React.FC = () => {
 
     return (
         <div className="json-formatter">
+            <MetaTags
+                title="JSON Formatter and Validator"
+                description="Free online JSON formatter, validator and beautifier with advanced features. Format JSON with custom indentation, sort keys, minify JSON data, and validate JSON syntax instantly."
+                keywords="json formatter, json validator, json beautifier, format json, pretty print json, json tools, json parser, minify json, json lint, json editor"
+                structuredData={{
+                    "@context": "https://schema.org",
+                    "@type": "SoftwareApplication",
+                    "name": "JSON Formatter and Validator",
+                    "description": "Online tool to format, validate, and beautify JSON data with customizable indentation and key sorting options.",
+                    "url": window.location.href,
+                    "applicationCategory": "DeveloperApplication",
+                    "operatingSystem": "Any",
+                    "permissions": "browser",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    }
+                }}
+            />
+
             <h1>JSON Formatter</h1>
             <p>Format, validate, and beautify JSON data with customizable indentation.</p>
 

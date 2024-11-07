@@ -6,8 +6,24 @@ const Converters: React.FC = () => {
     return (
         <div className="tools">
             <MetaTags
-                title="Converters"
-                description="A collection of tools for converting between different formats and units."
+                title="Online Conversion Tools - Unit, Color, and Time Converters"
+                description="Free online conversion tools for units, colors, and time. Convert between different measurement units, color formats (HEX, RGB, HSL), time zones, and more with our easy-to-use converters."
+                keywords="unit converter, color converter, time converter, measurement converter, color picker, hex to rgb, rgb to hex, unit conversion calculator, metric converter, imperial converter, timezone converter, online converter tools"
+                structuredData={{
+                    "@context": "https://schema.org",
+                    "@type": "SoftwareApplication",
+                    "name": "Online Conversion Tools",
+                    "description": "Comprehensive collection of free online conversion tools including unit converter, color picker, and time zone converter.",
+                    "url": window.location.href,
+                    "applicationCategory": "UtilitiesApplication",
+                    "operatingSystem": "Any",
+                    "permissions": "browser",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    }
+                }}
             />
 
             <div className="category-header">

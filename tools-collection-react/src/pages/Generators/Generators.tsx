@@ -6,8 +6,24 @@ const Generators: React.FC = () => {
     return (
         <div className="tools">
             <MetaTags
-                title="Generators"
-                description="Collection of tools to generate various types of content and data."
+                title="Online Generator Tools - Password, Lorem Ipsum, and More"
+                description="Free online generator tools including secure password generator, lorem ipsum text generator, color palette generator, and sample data generators. Create random passwords, placeholder text, and test data easily."
+                keywords="password generator, lorem ipsum generator, color palette generator, random generator, test data generator, secure password creator, dummy text generator, sample data generator, random number generator, mock data generator"
+                structuredData={{
+                    "@context": "https://schema.org",
+                    "@type": "SoftwareApplication",
+                    "name": "Online Generator Tools",
+                    "description": "Collection of free online generator tools for creating passwords, lorem ipsum text, color palettes, and sample data for testing and development.",
+                    "url": window.location.href,
+                    "applicationCategory": "UtilitiesApplication",
+                    "operatingSystem": "Any",
+                    "permissions": "browser",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    }
+                }}
             />
 
             <div className="category-header">

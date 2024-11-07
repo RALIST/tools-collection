@@ -6,8 +6,24 @@ const TextTools: React.FC = () => {
     return (
         <div className="tools">
             <MetaTags
-                title="Text Tools"
-                description="A collection of text manipulation and analysis tools."
+                title="Text Tools - Free Online Text Manipulation Tools"
+                description="Free online text tools for case conversion, word counting, string encoding, and text analysis. Transform, analyze, and manipulate text with our easy-to-use text utilities."
+                keywords="text tools, case converter, word counter, string encoder, text manipulation, text transformer, text analysis, text formatter, text cleaner, online text tools, text case converter, character counter"
+                structuredData={{
+                    "@context": "https://schema.org",
+                    "@type": "SoftwareApplication",
+                    "name": "Text Tools Collection",
+                    "description": "A comprehensive collection of free online text manipulation and analysis tools including case converter, word counter, and string encoder.",
+                    "url": window.location.href,
+                    "applicationCategory": "UtilitiesApplication",
+                    "operatingSystem": "Any",
+                    "permissions": "browser",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    }
+                }}
             />
 
             <div className="category-header">

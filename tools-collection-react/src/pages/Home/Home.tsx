@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import { Tool, ToolCategory } from '../../types/tools';
+import MetaTags from '../../components/common/MetaTags/MetaTags';
 
 const toolsByCategory: Record<ToolCategory, Tool[]> = {
     text: [
@@ -150,10 +151,26 @@ const categoryInfo = {
 const Home: React.FC = () => {
     return (
         <div className="home">
-            {/* Accessibility: Skip link for keyboard users */}
-            <a href="#main-content" className="skip-link">
-                Skip to main content
-            </a>
+            <MetaTags
+                title="Free Online Tools Collection - Text, Developer, Conversion & Generator Tools"
+                description="Comprehensive collection of free online tools for developers and users. Features text manipulation, JSON formatting, code beautification, unit conversion, password generation, and more. All tools are free, easy to use, and work directly in your browser."
+                keywords="online tools, developer tools, text tools, unit converter, json formatter, password generator, code beautifier, word counter, color picker, lorem ipsum generator, free tools, web tools"
+                structuredData={{
+                    "@context": "https://schema.org",
+                    "@type": "WebApplication",
+                    "name": "Free Online Tools Collection",
+                    "description": "Comprehensive suite of free online tools including text manipulation, developer utilities, converters, and generators.",
+                    "url": window.location.href,
+                    "applicationCategory": "DeveloperApplication",
+                    "operatingSystem": "Any",
+                    "permissions": "browser",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "USD"
+                    }
+                }}
+            />
 
             <main id="main-content">
                 {(Object.keys(toolsByCategory) as ToolCategory[]).map((category) => (
