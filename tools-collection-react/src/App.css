@@ -1,4 +1,5 @@
 :root {
+  /* Light theme variables */
   --primary-color: #2196F3;
   --primary-light: #64B5F6;
   --primary-dark: #1976D2;
@@ -9,6 +10,35 @@
   --border-radius: 8px;
   --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   --hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --input-background: #ffffff;
+  --input-border: rgba(0, 0, 0, 0.1);
+  --button-text: #ffffff;
+  --code-background: #f8f9fa;
+  --success-color: #4caf50;
+  --error-color: #f44336;
+  --warning-color: #ff9800;
+}
+
+[data-theme='dark'] {
+  /* Dark theme variables */
+  --primary-color: #90caf9;
+  --primary-light: #64B5F6;
+  --primary-dark: #42a5f5;
+  --text-color: #e0e0e0;
+  --text-light: #bdbdbd;
+  --background: #121212;
+  --card-background: #1e1e1e;
+  --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --hover-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --input-background: #2d2d2d;
+  --input-border: rgba(255, 255, 255, 0.1);
+  --button-text: #121212;
+  --code-background: #2d2d2d;
+  --success-color: #81c784;
+  --error-color: #e57373;
+  --warning-color: #ffb74d;
 }
 
 * {
@@ -26,6 +56,7 @@ body {
   background-color: var(--background);
   color: var(--text-color);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app {
@@ -66,7 +97,49 @@ a {
 }
 
 a:hover {
-  color: var(--primary-dark);
+  color: var(--primary-light);
+}
+
+/* Form Elements */
+input,
+textarea,
+select {
+  background-color: var(--input-background);
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--button-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-light);
+}
+
+/* Code Elements */
+pre,
+code {
+  background-color: var(--code-background);
+  color: var(--text-color);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: 'Fira Code', monospace;
 }
 
 /* Utility Classes */

@@ -1,253 +1,196 @@
-/* CodeMinifier.css */
-
-/* Root Container */
 .code-minifier {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    animation: fadeIn 0.3s ease-out;
-    margin: 2rem 0;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Code Type Selector */
-.code-type-selector {
+.code-minifier h1 {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.code-minifier p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin: 0.5rem 0 2rem 0;
+}
+
+.code-tabs {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: linear-gradient(to right, rgba(33, 150, 243, 0.05), rgba(33, 150, 243, 0.02));
-    border-radius: var(--border-radius);
-    border: 1px solid rgba(33, 150, 243, 0.1);
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-.code-type-selector button {
-    flex: 1;
+.code-tab {
     padding: 0.75rem 1.5rem;
-    background: white;
-    border: none;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     color: var(--text-color);
-    font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: var(--card-shadow);
+    font-weight: 500;
 }
 
-.code-type-selector button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--hover-shadow);
+.code-tab:hover {
+    background-color: var(--hover-background);
+    border-color: var(--primary-color);
 }
 
-.code-type-selector button.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    color: white;
+.code-tab.active {
+    background-color: var(--primary-color);
+    color: var(--button-text);
+    border-color: var(--primary-color);
 }
 
-/* Text Areas */
-.text-areas {
+.editor-container {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    align-items: start;
 }
 
-.text-area-container {
+.editor-section {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.text-area-container label {
-    font-weight: 500;
-    color: var(--text-dark);
+.editor-section h3 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
-.text-area-container textarea {
-    width: 100%;
+.editor {
+    flex: 1;
     min-height: 400px;
-    padding: 1rem;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--input-background);
+    color: var(--text-color);
     font-family: 'Fira Code', monospace;
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.5;
     resize: vertical;
-    background-color: #fafafa;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    transition: all 0.3s ease;
-}
-
-.text-area-container textarea:hover {
-    border-color: var(--primary-color);
-}
-
-.text-area-container textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
-    background-color: white;
-}
-
-.text-area-container textarea::placeholder {
-    color: var(--text-light);
-}
-
-.text-area-container textarea[readOnly] {
-    background-color: #f5f5f5;
-    cursor: not-allowed;
-}
-
-/* Button Groups */
-.button-group {
-    display: flex;
-    gap: 1rem;
-    margin-top: 0.5rem;
-}
-
-.button-group button {
-    padding: 0.5rem 1rem;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    color: var(--text-color);
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: var(--card-shadow);
 }
 
-.button-group button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--hover-shadow);
+.editor:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
 }
 
-/* Minify Buttons */
-.minify-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding-top: 4rem;
-    align-self: center;
+.editor.readonly {
+    background-color: var(--code-background);
+    cursor: default;
 }
 
-.minify-buttons button {
-    padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+.minify-button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: var(--button-text);
     border: none;
     border-radius: var(--border-radius);
-    color: white;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
+    align-self: center;
 }
 
-.minify-buttons button:hover {
+.minify-button:hover {
+    background-color: var(--primary-light);
     transform: translateY(-2px);
-    box-shadow: var(--hover-shadow);
 }
 
-/* Action Buttons */
-.action-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    margin-top: 2rem;
+.minify-button:active {
+    transform: translateY(0);
 }
 
-.action-buttons button {
-    padding: 0.75rem 1.5rem;
-    background: white;
-    border: 1px solid #ddd;
+.error-message {
+    color: var(--error-color);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    padding: 1rem;
+    background-color: var(--card-background);
     border-radius: var(--border-radius);
+    border: 1px solid var(--error-color);
+}
+
+[data-theme='dark'] .code-tab {
+    background-color: var(--card-background);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .code-tab:hover {
+    background-color: var(--hover-background);
+    border-color: var(--primary-color);
+}
+
+[data-theme='dark'] .code-tab.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+[data-theme='dark'] .editor {
+    background-color: var(--input-background);
     color: var(--text-color);
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
 }
 
-.action-buttons button:hover {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    color: white;
-    border-color: transparent;
-    transform: translateY(-2px);
-    box-shadow: var(--card-shadow);
+[data-theme='dark'] .editor.readonly {
+    background-color: var(--code-background);
 }
 
-/* Toast Notifications */
-.Toastify__toast {
-    border-radius: var(--border-radius);
-    box-shadow: var(--hover-shadow);
-    font-size: 0.95rem;
+[data-theme='dark'] .minify-button:hover {
+    background-color: var(--primary-dark);
 }
 
-.Toastify__toast--success {
-    background: linear-gradient(135deg, var(--success-color), var(--success-dark));
-}
-
-.Toastify__toast--error {
-    background: linear-gradient(135deg, var(--error-color), var(--error-dark));
-}
-
-.Toastify__close-button {
-    color: white;
-}
-
-/* Loading State */
-.loading {
-    opacity: 0.7;
-    pointer-events: none;
-    position: relative;
-}
-
-.loading::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 24px;
-    height: 24px;
-    margin: -12px 0 0 -12px;
-    border: 2px solid var(--primary-color);
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-    .code-type-selector {
-        flex-direction: column;
+    .code-minifier {
+        padding: 1rem;
     }
 
-    .text-areas {
+    .code-minifier h1 {
+        font-size: 1.75rem;
+    }
+
+    .code-minifier p {
+        font-size: 1rem;
+    }
+
+    .code-tabs {
+        overflow-x: auto;
+        padding-bottom: 0.75rem;
+    }
+
+    .code-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
+
+    .editor-container {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
-    .text-area-container textarea {
-        min-height: 200px;
+    .editor {
+        min-height: 300px;
+        font-size: 0.9rem;
+        padding: 1rem;
     }
 
-    .minify-buttons {
-        flex-direction: row;
-        justify-content: center;
-        padding-top: 1rem;
-    }
-
-    .action-buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .action-buttons button {
+    .minify-button {
         width: 100%;
     }
 }

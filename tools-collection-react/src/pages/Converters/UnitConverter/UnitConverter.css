@@ -1,161 +1,173 @@
 .unit-converter {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    animation: fadeIn 0.3s ease-out;
+    gap: 2rem;
 }
 
-.category-selector {
+.unit-tabs {
     display: flex;
-    gap: 1rem;
-    background: white;
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
+    gap: 0.5rem;
     overflow-x: auto;
+    padding: 0.5rem 0;
 }
 
-.category-selector button {
-    padding: 0.75rem 1.25rem;
-    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05));
-    border: 1px solid rgba(33, 150, 243, 0.1);
+.unit-tab {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     color: var(--text-color);
-    font-size: 0.95rem;
-    font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
     white-space: nowrap;
 }
 
-.category-selector button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--hover-shadow);
-    background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(33, 150, 243, 0.1));
+.unit-tab:hover {
+    background-color: var(--primary-color);
+    color: var(--button-text);
 }
 
-.category-selector button.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    color: white;
-    border-color: transparent;
-    box-shadow: var(--card-shadow);
+.unit-tab.active {
+    background-color: var(--primary-color);
+    color: var(--button-text);
+    border-color: var(--primary-color);
 }
 
-.conversion-section {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 1.5rem;
-    align-items: center;
-    background: white;
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-}
-
-.unit-input {
+.converter-content {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
 }
 
-.unit-input select {
+.converter-inputs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1rem;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-group select {
+    width: 100%;
     padding: 0.75rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    background: white;
-    font-size: 0.95rem;
-    color: var(--text-dark);
-    cursor: pointer;
+    background-color: var(--input-background);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+}
+
+.input-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--input-background);
+    color: var(--text-color);
+    font-size: 1rem;
     transition: all 0.3s ease;
 }
 
-.unit-input select:hover {
-    border-color: var(--primary-color);
-}
-
-.unit-input select:focus {
+.input-group input:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
 }
 
-.unit-input input {
-    padding: 0.75rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: var(--border-radius);
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-}
-
-.unit-input input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
-}
-
-.unit-input input[readonly] {
-    background-color: #f8f9fa;
+.input-group input[readonly] {
+    background-color: var(--code-background);
     cursor: default;
 }
 
 .swap-button {
     width: 40px;
     height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: var(--button-text);
+    border: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    border: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 1.25rem;
-    cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 1.5rem;
 }
 
 .swap-button:hover {
+    background-color: var(--primary-light);
     transform: scale(1.1);
-    box-shadow: var(--hover-shadow);
 }
 
-.formula-display {
-    background: white;
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    text-align: center;
+.swap-button:active {
+    transform: scale(0.9);
 }
 
-.formula-display p {
-    margin: 0;
-    color: var(--text-dark);
-    font-size: 1rem;
-    font-family: 'Fira Code', monospace;
+[data-theme='dark'] .unit-tab {
+    background-color: var(--card-background);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .unit-tab:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+[data-theme='dark'] .unit-tab.active {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+[data-theme='dark'] .swap-button {
+    background-color: var(--primary-dark);
+}
+
+[data-theme='dark'] .swap-button:hover {
+    background-color: var(--primary-color);
 }
 
 @media (max-width: 768px) {
-    .category-selector {
-        padding: 1rem;
+    .converter-content {
+        padding: 1.5rem;
     }
 
-    .category-selector button {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-    }
-
-    .conversion-section {
+    .converter-inputs {
         grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 1rem;
+        gap: 1.5rem;
     }
 
     .swap-button {
-        margin: 0 auto;
         transform: rotate(90deg);
+        margin: 0 auto;
     }
 
     .swap-button:hover {
         transform: rotate(90deg) scale(1.1);
+    }
+
+    .swap-button:active {
+        transform: rotate(90deg) scale(0.9);
     }
 }

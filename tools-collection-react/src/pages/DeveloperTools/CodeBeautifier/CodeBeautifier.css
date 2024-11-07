@@ -1,278 +1,176 @@
 .code-beautifier {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    animation: fadeIn 0.3s ease-out;
+    gap: 2rem;
 }
 
-.controls {
+.options {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
-    background: white;
-    padding: 1.5rem;
+    gap: 2rem;
+    padding: 1rem;
+    background-color: var(--card-background);
     border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
 }
 
-.code-type-selector {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.code-type-selector button {
-    padding: 0.75rem 1.25rem;
-    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05));
-    border: 1px solid rgba(33, 150, 243, 0.1);
-    border-radius: var(--border-radius);
-    color: var(--text-color);
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.code-type-selector button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.5s ease;
-}
-
-.code-type-selector button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--hover-shadow);
-    background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(33, 150, 243, 0.1));
-}
-
-.code-type-selector button:hover::before {
-    transform: translateX(100%);
-}
-
-.code-type-selector button.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    color: white;
-    border-color: transparent;
-    box-shadow: var(--card-shadow);
-}
-
-.indent-selector {
+.language-select {
     display: flex;
     align-items: center;
     gap: 1rem;
 }
 
-.indent-selector label {
+.language-select label {
+    color: var(--text-color);
     font-weight: 500;
-    color: var(--text-dark);
 }
 
-.indent-selector select {
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+.language-select select {
+    padding: 0.5rem;
     border-radius: var(--border-radius);
-    background: white;
+    border: 1px solid var(--border-color);
+    background-color: var(--input-background);
+    color: var(--text-color);
     font-size: 0.95rem;
-    color: var(--text-dark);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.indent-selector select:hover {
-    border-color: var(--primary-color);
-}
-
-.indent-selector select:focus {
+.language-select select:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
 }
 
-.text-areas {
+.indent-size {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.indent-size label {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.indent-size select {
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--input-background);
+    color: var(--text-color);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indent-size select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.editor-container {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 1.5rem;
-    align-items: start;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
-.text-area-container {
+.editor-section {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    background: white;
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
+    gap: 1rem;
 }
 
-.text-area-container label {
-    font-weight: 500;
-    color: var(--text-dark);
+.editor-section h3 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
-.text-area-container textarea {
-    width: 100%;
-    min-height: 300px;
+.editor {
+    flex: 1;
+    min-height: 400px;
     padding: 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    background-color: var(--input-background);
+    color: var(--text-color);
     font-family: 'Fira Code', monospace;
     font-size: 0.95rem;
     line-height: 1.5;
     resize: vertical;
-    background-color: white;
     transition: all 0.3s ease;
 }
 
-.text-area-container textarea:focus {
+.editor:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
 }
 
-.text-area-container textarea::placeholder {
-    color: var(--text-light);
+.editor.readonly {
+    background-color: var(--code-background);
+    cursor: default;
 }
 
-.button-group {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: flex-end;
-}
-
-.button-group button {
-    padding: 0.5rem 1rem;
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    border-radius: var(--border-radius);
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.button-group button:hover {
+.beautify-button {
+    padding: 0.75rem 1.5rem;
     background-color: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: var(--card-shadow);
-}
-
-.beautify-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-    align-self: center;
-}
-
-.beautify-buttons button {
-    padding: 1rem 1.5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--button-text);
     border: none;
     border-radius: var(--border-radius);
-    color: white;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    align-self: center;
 }
 
-.beautify-buttons button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.5s ease;
-}
-
-.beautify-buttons button:hover {
+.beautify-button:hover {
+    background-color: var(--primary-light);
     transform: translateY(-2px);
-    box-shadow: var(--hover-shadow);
 }
 
-.beautify-buttons button:hover::before {
-    transform: translateX(100%);
+.beautify-button:active {
+    transform: translateY(0);
 }
 
-.action-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-}
-
-.action-buttons button {
-    padding: 0.75rem 1.5rem;
-    background: transparent;
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-    border-radius: var(--border-radius);
+.error-message {
+    color: var(--error-color);
     font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    margin-top: 0.5rem;
 }
 
-.action-buttons button:hover {
-    background-color: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: var(--card-shadow);
+[data-theme='dark'] .editor {
+    background-color: var(--input-background);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .editor.readonly {
+    background-color: var(--code-background);
+}
+
+[data-theme='dark'] .beautify-button:hover {
+    background-color: var(--primary-dark);
 }
 
 @media (max-width: 768px) {
-    .controls {
+    .options {
         flex-direction: column;
-        align-items: stretch;
-    }
-
-    .code-type-selector {
-        flex-wrap: wrap;
-    }
-
-    .code-type-selector button {
-        flex: 1;
-        min-width: 120px;
-    }
-
-    .indent-selector {
-        justify-content: space-between;
-    }
-
-    .text-areas {
-        grid-template-columns: 1fr;
+        align-items: flex-start;
         gap: 1rem;
+        padding: 1rem;
     }
 
-    .beautify-buttons {
-        flex-direction: row;
-        justify-content: center;
-        padding: 0.5rem;
+    .editor-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
-    .text-area-container textarea {
-        min-height: 200px;
-    }
-
-    .action-buttons {
-        flex-direction: column;
-    }
-
-    .action-buttons button {
-        width: 100%;
+    .editor {
+        min-height: 300px;
+        font-size: 0.9rem;
     }
 }

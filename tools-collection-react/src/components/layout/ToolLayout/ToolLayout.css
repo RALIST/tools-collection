@@ -13,6 +13,7 @@
     box-shadow: var(--card-shadow);
     position: relative;
     overflow: hidden;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .tool-header::before {
@@ -28,7 +29,8 @@
 .tool-header h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: var(--text-dark);
+    color: var(--text-color);
+    transition: color 0.3s ease;
 }
 
 .tool-description {
@@ -37,6 +39,7 @@
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;
+    transition: color 0.3s ease;
 }
 
 .tool-content {
@@ -44,6 +47,7 @@
     border-radius: var(--border-radius);
     padding: 2rem;
     box-shadow: var(--card-shadow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ad-space {
@@ -56,12 +60,23 @@
     padding: 2rem;
     text-align: center;
     color: var(--text-light);
-    border: 2px dashed rgba(0, 0, 0, 0.1);
+    border: 2px dashed var(--border-color);
     min-height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .tool-header,
+[data-theme='dark'] .tool-content,
+[data-theme='dark'] .ad-placeholder {
+    border: 1px solid var(--border-color);
+}
+
+[data-theme='dark'] .tool-header::before {
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
 }
 
 @media (max-width: 768px) {

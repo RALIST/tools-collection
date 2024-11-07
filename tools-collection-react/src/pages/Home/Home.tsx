@@ -150,32 +150,47 @@ const categoryInfo = {
 const Home: React.FC = () => {
     return (
         <div className="home">
-            {(Object.keys(toolsByCategory) as ToolCategory[]).map((category) => (
-                <section key={category} className="category-row">
-                    <div className="category-header">
-                        <div className="icon">{categoryInfo[category].icon}</div>
-                        <h2>{categoryInfo[category].name}</h2>
-                    </div>
-                    <div className="tools-list">
-                        {toolsByCategory[category].map((tool) => (
-                            <Link
-                                key={tool.id}
-                                to={tool.path}
-                                className={`tool-item ${tool.status === 'coming-soon' ? 'coming-soon' : ''}`}
-                            >
-                                <div className="tool-icon">{tool.icon}</div>
-                                <div className="tool-info">
-                                    <h3>{tool.name}</h3>
-                                    <p>{tool.description}</p>
-                                </div>
-                                {tool.status === 'coming-soon' && (
-                                    <span className="status-badge">Coming Soon</span>
-                                )}
-                            </Link>
-                        ))}
-                    </div>
-                </section>
-            ))}
+            {/* Accessibility: Skip link for keyboard users */}
+            <a href="#main-content" className="skip-link">
+                Skip to main content
+            </a>
+
+            <main id="main-content">
+                {(Object.keys(toolsByCategory) as ToolCategory[]).map((category) => (
+                    <section key={category} className="category-row" aria-labelledby={`${category}-heading`}>
+                        <div className="category-header">
+                            <span className="icon" aria-hidden="true">
+                                {categoryInfo[category].icon}
+                            </span>
+                            <h2 id={`${category}-heading`}>{categoryInfo[category].name}</h2>
+                        </div>
+                        <div className="tools-list">
+                            {toolsByCategory[category].map((tool) => (
+                                <Link
+                                    key={tool.id}
+                                    to={tool.path}
+                                    className={`tool-item ${tool.status === 'coming-soon' ? 'coming-soon' : ''}`}
+                                    tabIndex={tool.status === 'coming-soon' ? -1 : 0}
+                                    aria-label={`${tool.name} - ${tool.description}${tool.status === 'coming-soon' ? ' (Coming Soon)' : ''}`}
+                                >
+                                    <span className="tool-icon" aria-hidden="true">
+                                        {tool.icon}
+                                    </span>
+                                    <div className="tool-info">
+                                        <h3>{tool.name}</h3>
+                                        <p>{tool.description}</p>
+                                    </div>
+                                    {tool.status === 'coming-soon' && (
+                                        <span className="status-badge" aria-hidden="true">
+                                            Coming Soon
+                                        </span>
+                                    )}
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
+                ))}
+            </main>
         </div>
     );
 };

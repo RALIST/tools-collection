@@ -1,47 +1,73 @@
 .time-converter {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
     animation: fadeIn 0.3s ease-out;
 }
 
 .time-section {
     background: white;
-    padding: 1.5rem;
+    padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: visible;
+    margin-bottom: 2rem;
+}
+
+.time-section:last-child {
+    margin-bottom: 0;
+}
+
+.source-section {
+    border-left: 4px solid var(--primary-color);
+}
+
+.target-section {
+    border-left: 4px solid var(--success-color);
 }
 
 .time-controls {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
 
 .format-selector,
 .timezone-selector {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
 }
 
 .format-selector label,
 .timezone-selector label {
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-dark);
+    font-size: 0.95rem;
 }
 
 .format-selector select,
 .timezone-selector select {
-    padding: 0.75rem;
+    width: 100%;
+    padding: 0.875rem;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: var(--border-radius);
     background: white;
     font-size: 0.95rem;
     color: var(--text-dark);
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
 }
 
 .format-selector select:hover,
@@ -59,17 +85,18 @@
 .time-input {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.25rem;
 }
 
 .time-input input {
     width: 100%;
-    padding: 0.75rem;
+    padding: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: var(--border-radius);
     font-family: 'Fira Code', monospace;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background: white;
 }
 
 .time-input input:focus {
@@ -85,19 +112,26 @@
 
 .input-buttons {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
     justify-content: flex-end;
+    margin-top: 0.5rem;
 }
 
 .input-buttons button {
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
     background: transparent;
-    border: 1px solid var(--primary-color);
+    border: 2px solid var(--primary-color);
     color: var(--primary-color);
     border-radius: var(--border-radius);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    min-width: 100px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
 }
 
 .input-buttons button:hover {
@@ -107,22 +141,52 @@
     box-shadow: var(--hover-shadow);
 }
 
-@media (max-width: 768px) {
-    .time-controls {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+.input-buttons button:active {
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
 
-    .format-selector select,
-    .timezone-selector select {
-        width: 100%;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .time-converter {
+        padding: 1rem;
+    }
+
+    .time-section {
+        padding: 1.5rem;
+    }
+
+    .time-controls {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
     }
 
     .input-buttons {
         flex-direction: column;
+        align-items: stretch;
     }
 
     .input-buttons button {
         width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .time-converter {
+        padding: 0.75rem;
+    }
+
+    .time-section {
+        padding: 1.25rem;
     }
 }

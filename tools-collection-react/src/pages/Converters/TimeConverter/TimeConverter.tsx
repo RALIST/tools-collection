@@ -12,7 +12,16 @@ interface TimeState {
     value: string;
 }
 
-// Common timezone list
+interface TimeSectionProps {
+    isSource: boolean;
+    timeState: TimeState;
+    onFormatChange: (format: TimeFormat, isSource: boolean) => void;
+    onTimezoneChange: (timezone: TimeZone, isSource: boolean) => void;
+    onTimeChange?: (value: string) => void;
+    onNow?: () => void;
+    onCopy: (text: string) => void;
+}
+
 const commonTimeZones = [
     'UTC',
     'America/New_York',
@@ -28,6 +37,63 @@ const commonTimeZones = [
     'Australia/Sydney',
     'Pacific/Auckland'
 ];
+
+const TimeSection: React.FC<TimeSectionProps> = ({
+    isSource,
+    timeState,
+    onFormatChange,
+    onTimezoneChange,
+    onTimeChange,
+    onNow,
+    onCopy
+}) => {
+    const title = isSource ? 'Source' : 'Target';
+
+    return (
+        <div className={`time-section ${isSource ? 'source-section' : 'target-section'}`}>
+            <div className="time-controls">
+                <div className="format-selector">
+                    <label>{title} Format:</label>
+                    <select
+                        value={timeState.format}
+                        onChange={(e) => onFormatChange(e.target.value as TimeFormat, isSource)}
+                    >
+                        <option value="24hour">24-hour</option>
+                        <option value="12hour">12-hour</option>
+                        <option value="unix">Unix Timestamp</option>
+                        <option value="iso">ISO 8601</option>
+                    </select>
+                </div>
+                <div className="timezone-selector">
+                    <label>{title} Timezone:</label>
+                    <select
+                        value={timeState.timezone}
+                        onChange={(e) => onTimezoneChange(e.target.value, isSource)}
+                    >
+                        {commonTimeZones.map((zone) => (
+                            <option key={zone} value={zone}>{zone}</option>
+                        ))}
+                    </select>
+                </div>
+            </div>
+            <div className="time-input">
+                <input
+                    type="text"
+                    value={timeState.value}
+                    onChange={onTimeChange ? (e) => onTimeChange(e.target.value) : undefined}
+                    readOnly={!isSource}
+                    placeholder={isSource ? `Enter time in ${timeState.format} format...` : 'Converted time will appear here...'}
+                />
+                <div className="input-buttons">
+                    {isSource && onNow && (
+                        <button onClick={onNow}>Now</button>
+                    )}
+                    <button onClick={() => onCopy(timeState.value)}>Copy</button>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const TimeConverter: React.FC = () => {
     const [sourceTime, setSourceTime] = useState<TimeState>({
@@ -191,84 +257,22 @@ const TimeConverter: React.FC = () => {
             description="Convert between different time formats and timezones."
         >
             <div className="time-converter">
-                <div className="time-section">
-                    <div className="time-controls">
-                        <div className="format-selector">
-                            <label>Format:</label>
-                            <select
-                                value={sourceTime.format}
-                                onChange={(e) => handleFormatChange(e.target.value as TimeFormat, true)}
-                            >
-                                <option value="24hour">24-hour</option>
-                                <option value="12hour">12-hour</option>
-                                <option value="unix">Unix Timestamp</option>
-                                <option value="iso">ISO 8601</option>
-                            </select>
-                        </div>
-                        <div className="timezone-selector">
-                            <label>Timezone:</label>
-                            <select
-                                value={sourceTime.timezone}
-                                onChange={(e) => handleTimezoneChange(e.target.value, true)}
-                            >
-                                {commonTimeZones.map((zone) => (
-                                    <option key={zone} value={zone}>{zone}</option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                    <div className="time-input">
-                        <input
-                            type="text"
-                            value={sourceTime.value}
-                            onChange={(e) => handleTimeChange(e.target.value)}
-                            placeholder={`Enter time in ${sourceTime.format} format...`}
-                        />
-                        <div className="input-buttons">
-                            <button onClick={handleNow}>Now</button>
-                            <button onClick={() => handleCopy(sourceTime.value)}>Copy</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="time-section">
-                    <div className="time-controls">
-                        <div className="format-selector">
-                            <label>Format:</label>
-                            <select
-                                value={targetTime.format}
-                                onChange={(e) => handleFormatChange(e.target.value as TimeFormat, false)}
-                            >
-                                <option value="24hour">24-hour</option>
-                                <option value="12hour">12-hour</option>
-                                <option value="unix">Unix Timestamp</option>
-                                <option value="iso">ISO 8601</option>
-                            </select>
-                        </div>
-                        <div className="timezone-selector">
-                            <label>Timezone:</label>
-                            <select
-                                value={targetTime.timezone}
-                                onChange={(e) => handleTimezoneChange(e.target.value, false)}
-                            >
-                                {commonTimeZones.map((zone) => (
-                                    <option key={zone} value={zone}>{zone}</option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                    <div className="time-input">
-                        <input
-                            type="text"
-                            value={targetTime.value}
-                            readOnly
-                            placeholder="Converted time will appear here..."
-                        />
-                        <div className="input-buttons">
-                            <button onClick={() => handleCopy(targetTime.value)}>Copy</button>
-                        </div>
-                    </div>
-                </div>
+                <TimeSection
+                    isSource={true}
+                    timeState={sourceTime}
+                    onFormatChange={handleFormatChange}
+                    onTimezoneChange={handleTimezoneChange}
+                    onTimeChange={handleTimeChange}
+                    onNow={handleNow}
+                    onCopy={handleCopy}
+                />
+                <TimeSection
+                    isSource={false}
+                    timeState={targetTime}
+                    onFormatChange={handleFormatChange}
+                    onTimezoneChange={handleTimezoneChange}
+                    onCopy={handleCopy}
+                />
             </div>
         </ToolLayout>
     );

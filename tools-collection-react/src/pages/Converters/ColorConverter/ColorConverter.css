@@ -1,229 +1,135 @@
 .color-converter {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    animation: fadeIn 0.3s ease-out;
+    gap: 2rem;
 }
 
-.format-selector {
-    display: flex;
-    gap: 1rem;
-    background: white;
-    padding: 1.5rem;
+.color-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.color-section {
+    background-color: var(--card-background);
     border-radius: var(--border-radius);
+    padding: 2rem;
     box-shadow: var(--card-shadow);
-    overflow-x: auto;
-}
-
-.format-selector button {
-    padding: 0.75rem 1.25rem;
-    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05));
-    border: 1px solid rgba(33, 150, 243, 0.1);
-    border-radius: var(--border-radius);
-    color: var(--text-color);
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
+    border: 1px solid var(--border-color);
     transition: all 0.3s ease;
-    white-space: nowrap;
 }
 
-.format-selector button:hover {
-    transform: translateY(-2px);
+.color-section:hover {
     box-shadow: var(--hover-shadow);
-    background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(33, 150, 243, 0.1));
-}
-
-.format-selector button.active {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    color: white;
-    border-color: transparent;
-    box-shadow: var(--card-shadow);
 }
 
 .color-preview {
-    height: 120px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-    transition: background-color 0.3s ease;
-}
-
-.converter-section {
-    background: white;
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
-}
-
-.color-input {
-    display: flex;
-    gap: 1rem;
-}
-
-.color-input input[type="text"] {
-    flex: 1;
-    padding: 0.75rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: var(--border-radius);
-    font-family: 'Fira Code', monospace;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-}
-
-.color-input input[type="text"]:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
-}
-
-.rgb-input {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.rgb-sliders {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 1rem;
-    align-items: center;
-}
-
-.rgb-sliders label {
-    font-weight: 500;
-    color: var(--text-dark);
-    width: 30px;
-}
-
-.rgb-sliders input[type="range"] {
     width: 100%;
-    height: 6px;
-    -webkit-appearance: none;
-    background: linear-gradient(to right, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.3));
-    border-radius: 3px;
-    outline: none;
+    height: 150px;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: border-color 0.3s ease;
 }
 
-.rgb-sliders input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 18px;
-    height: 18px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    cursor: pointer;
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.input-group label {
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--input-background);
+    color: var(--text-color);
+    font-size: 1rem;
     transition: all 0.3s ease;
 }
 
-.rgb-sliders input[type="range"]::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
-}
-
-.rgb-sliders input[type="number"] {
-    width: 60px;
-    padding: 0.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: var(--border-radius);
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-    text-align: center;
-}
-
-.rgb-sliders input[type="number"]:focus {
+.input-group input:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
 }
 
-.color-values {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    background: white;
-    padding: 1.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--card-shadow);
+.input-group input[type="color"] {
+    height: 40px;
+    padding: 0.25rem;
+    cursor: pointer;
 }
 
-.value-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem;
-    background: rgba(33, 150, 243, 0.05);
-    border-radius: var(--border-radius);
+.input-group input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
 }
 
-.value-group label {
-    font-weight: 500;
-    color: var(--text-dark);
+.input-group input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: calc(var(--border-radius) - 2px);
 }
 
-.value-display {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.value-display span {
-    font-family: 'Fira Code', monospace;
-    color: var(--text-dark);
-}
-
-.value-display button,
-.color-input button {
-    padding: 0.5rem 1rem;
-    background: transparent;
-    border: 1px solid var(--primary-color);
+.copy-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
     color: var(--primary-color);
     border-radius: var(--border-radius);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-top: 1rem;
 }
 
-.value-display button:hover,
-.color-input button:hover {
-    background: var(--primary-color);
-    color: white;
+.copy-button:hover {
+    background-color: var(--primary-color);
+    color: var(--button-text);
     transform: translateY(-2px);
-    box-shadow: var(--hover-shadow);
+}
+
+.copy-button:active {
+    transform: translateY(0);
+}
+
+[data-theme='dark'] .color-preview {
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .input-group input[type="color"] {
+    background-color: var(--input-background);
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .copy-button:hover {
+    background-color: var(--primary-dark);
 }
 
 @media (max-width: 768px) {
-    .format-selector {
-        padding: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
+    .color-inputs {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
-    .format-selector button {
-        flex: 1;
-        min-width: calc(33.33% - 0.67rem);
-        padding: 0.5rem 1rem;
+    .color-section {
+        padding: 1.5rem;
     }
 
     .color-preview {
-        height: 100px;
+        height: 120px;
     }
 
-    .rgb-sliders {
-        grid-template-columns: auto 1fr;
-        gap: 0.5rem;
-    }
-
-    .rgb-sliders input[type="number"] {
-        grid-column: 2;
-        justify-self: end;
-    }
-
-    .value-group {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .value-display {
-        width: 100%;
-        justify-content: space-between;
+    .input-group input {
+        font-size: 0.95rem;
     }
 }
