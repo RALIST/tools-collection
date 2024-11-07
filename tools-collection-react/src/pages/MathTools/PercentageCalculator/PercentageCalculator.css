@@ -1,0 +1,176 @@
+.percentage-calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.percentage-calculator h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.calculator-container {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    margin-top: 1rem;
+}
+
+.calculation-type {
+    margin-bottom: 2rem;
+}
+
+.calculation-type label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.calculation-type select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--input-background);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.calculation-type select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.input-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-field label {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.input-field input {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--input-background);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-field input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.calculate-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calculate-button:hover {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+}
+
+.calculate-button:active {
+    transform: translateY(0);
+}
+
+.result {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(to right, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05));
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    text-align: center;
+    border: 1px solid rgba(33, 150, 243, 0.2);
+}
+
+.error-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: rgba(244, 67, 54, 0.1);
+    border: 1px solid rgba(244, 67, 54, 0.3);
+    border-radius: var(--border-radius);
+    color: #f44336;
+    text-align: center;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .calculator-container {
+    background-color: var(--card-background);
+}
+
+[data-theme='dark'] .input-field input,
+[data-theme='dark'] .calculation-type select {
+    background-color: var(--input-background);
+    color: var(--text-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .percentage-calculator {
+        padding: 1rem;
+    }
+
+    .calculator-container {
+        padding: 1.5rem;
+    }
+
+    .input-group {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .result {
+        font-size: 1.1rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .percentage-calculator h1 {
+        font-size: 2rem;
+    }
+
+    .calculator-container {
+        padding: 1rem;
+    }
+
+    .calculate-button {
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+}

@@ -8,6 +8,7 @@ import TextTools from './pages/TextTools/TextTools';
 import DeveloperTools from './pages/DeveloperTools/DeveloperTools';
 import Converters from './pages/Converters/Converters';
 import Generators from './pages/Generators/Generators';
+import MathTools from './pages/MathTools/MathTools';
 import { ThemeProvider } from './contexts/ThemeContext';
 
 // Tool Pages
@@ -24,6 +25,8 @@ import UnitConverter from './pages/Converters/UnitConverter/UnitConverter';
 import TimeConverter from './pages/Converters/TimeConverter/TimeConverter';
 import LoremGenerator from './pages/Generators/LoremGenerator/LoremGenerator';
 import PasswordGenerator from './pages/Generators/PasswordGenerator/PasswordGenerator';
+import PercentageCalculator from './pages/MathTools/PercentageCalculator/PercentageCalculator';
+import ScientificCalculator from './pages/MathTools/ScientificCalculator/ScientificCalculator';
 
 // Styles
 import './App.css';
@@ -43,6 +46,7 @@ const App: React.FC = () => {
                 <Route path="/developer-tools" element={<DeveloperTools />} />
                 <Route path="/converters" element={<Converters />} />
                 <Route path="/generators" element={<Generators />} />
+                <Route path="/math-tools" element={<MathTools />} />
 
                 {/* Text Tools Routes */}
                 <Route path="/text-tools/case-converter" element={<CaseConverter />} />
@@ -64,6 +68,10 @@ const App: React.FC = () => {
                 {/* Generators Routes */}
                 <Route path="/generators/lorem-generator" element={<LoremGenerator />} />
                 <Route path="/generators/password-generator" element={<PasswordGenerator />} />
+
+                {/* Math Tools Routes */}
+                <Route path="/math-tools/percentage-calculator" element={<PercentageCalculator />} />
+                <Route path="/math-tools/scientific-calculator" element={<ScientificCalculator />} />
               </Routes>
             </main>
             <Footer />

@@ -138,6 +138,44 @@ const toolsByCategory: Record<ToolCategory, Tool[]> = {
             status: 'coming-soon',
             path: '/generators/qr-generator'
         }
+    ],
+    math: [
+        {
+            id: 'percentage-calculator',
+            name: 'Percentage Calculator',
+            description: 'Calculate percentages and ratios',
+            icon: '%',
+            category: 'math',
+            status: 'active',
+            path: '/math-tools/percentage-calculator'
+        },
+        {
+            id: 'scientific-calculator',
+            name: 'Scientific Calculator',
+            description: 'Advanced mathematical calculations',
+            icon: '🧮',
+            category: 'math',
+            status: 'active',
+            path: '/math-tools/scientific-calculator'
+        },
+        {
+            id: 'ratio-calculator',
+            name: 'Ratio Calculator',
+            description: 'Calculate and scale ratios',
+            icon: '⚖️',
+            category: 'math',
+            status: 'coming-soon',
+            path: '/math-tools/ratio-calculator'
+        },
+        {
+            id: 'area-calculator',
+            name: 'Area/Volume Calculator',
+            description: 'Calculate geometric measurements',
+            icon: '📐',
+            category: 'math',
+            status: 'coming-soon',
+            path: '/math-tools/area-calculator'
+        }
     ]
 };
 
@@ -145,21 +183,22 @@ const categoryInfo = {
     text: { name: 'Text Tools', icon: '📝' },
     developer: { name: 'Developer Tools', icon: '💻' },
     converter: { name: 'Converters', icon: '🔄' },
-    generator: { name: 'Generators', icon: '⚡' }
+    generator: { name: 'Generators', icon: '⚡' },
+    math: { name: 'Math Tools', icon: '🧮' }
 };
 
 const Home: React.FC = () => {
     return (
         <div className="home">
             <MetaTags
-                title="Free Online Tools Collection - Text, Developer, Conversion & Generator Tools"
-                description="Comprehensive collection of free online tools for developers and users. Features text manipulation, JSON formatting, code beautification, unit conversion, password generation, and more. All tools are free, easy to use, and work directly in your browser."
-                keywords="online tools, developer tools, text tools, unit converter, json formatter, password generator, code beautifier, word counter, color picker, lorem ipsum generator, free tools, web tools"
+                title="Free Online Tools Collection - Text, Developer, Math, Conversion & Generator Tools"
+                description="Comprehensive collection of free online tools for developers and users. Features text manipulation, JSON formatting, mathematical calculations, code beautification, unit conversion, password generation, and more. All tools are free, easy to use, and work directly in your browser."
+                keywords="online tools, developer tools, text tools, math tools, unit converter, json formatter, percentage calculator, password generator, code beautifier, word counter, color picker, lorem ipsum generator, free tools, web tools"
                 structuredData={{
                     "@context": "https://schema.org",
                     "@type": "WebApplication",
                     "name": "Free Online Tools Collection",
-                    "description": "Comprehensive suite of free online tools including text manipulation, developer utilities, converters, and generators.",
+                    "description": "Comprehensive suite of free online tools including text manipulation, developer utilities, mathematical calculations, converters, and generators.",
                     "url": window.location.href,
                     "applicationCategory": "DeveloperApplication",
                     "operatingSystem": "Any",
@@ -173,6 +212,7 @@ const Home: React.FC = () => {
             />
 
             <main id="main-content">
+
                 {(Object.keys(toolsByCategory) as ToolCategory[]).map((category) => (
                     <section key={category} className="category-row" aria-labelledby={`${category}-heading`}>
                         <div className="category-header">
@@ -207,6 +247,87 @@ const Home: React.FC = () => {
                         </div>
                     </section>
                 ))}
+                <div className="tool-description">
+                    <h1>Free Online Tools for Developers and Content Creators</h1>
+                    <p>
+                        Welcome to our comprehensive collection of free online tools designed to streamline your workflow
+                        and boost productivity. Whether you're a developer, designer, content creator, or professional,
+                        our tools help you accomplish tasks quickly and efficiently, right in your browser.
+                    </p>
+
+                    <div className="tools-overview">
+                        <h2>Our Tool Categories</h2>
+
+                        <div className="tool-details">
+                            <div className="category-detail">
+                                <h3>Text Tools</h3>
+                                <p>
+                                    Transform and analyze text with our powerful text manipulation tools. Convert between
+                                    different cases, count words and characters, encode strings, and more. Perfect for
+                                    content writers, developers, and anyone working with text.
+                                </p>
+                            </div>
+
+                            <div className="category-detail">
+                                <h3>Developer Tools</h3>
+                                <p>
+                                    Essential utilities for developers including JSON formatter, code beautifier, minifier,
+                                    regex tester, and hash generator. These tools help you write, format, and validate
+                                    code more efficiently during development.
+                                </p>
+                            </div>
+
+                            <div className="category-detail">
+                                <h3>Math Tools</h3>
+                                <p>
+                                    Powerful mathematical calculators for various computations. Calculate percentages,
+                                    ratios, geometric measurements, and perform advanced calculations. Perfect for
+                                    students, professionals, and anyone working with numbers.
+                                </p>
+                            </div>
+
+                            <div className="category-detail">
+                                <h3>Converters</h3>
+                                <p>
+                                    Convert between different formats and units with ease. From unit conversion to color
+                                    formats, our converters help you transform data accurately and quickly. Essential for
+                                    international projects and cross-platform development.
+                                </p>
+                            </div>
+
+                            <div className="category-detail">
+                                <h3>Generators</h3>
+                                <p>
+                                    Create various types of content with our generator tools. Generate secure passwords,
+                                    lorem ipsum text, and more. Perfect for development, testing, and content creation
+                                    needs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="features-overview">
+                        <h2>Why Choose Our Tools?</h2>
+                        <ul>
+                            <li>
+                                <strong>Free and Easy to Use:</strong> All tools are completely free and designed with
+                                user-friendly interfaces for maximum efficiency.
+                            </li>
+                            <li>
+                                <strong>No Installation Required:</strong> Access all tools directly in your browser
+                                without downloading or installing any software.
+                            </li>
+                            <li>
+                                <strong>Privacy Focused:</strong> All processing happens in your browser - we don't
+                                store or collect any of your data.
+                            </li>
+                            <li>
+                                <strong>Regular Updates:</strong> We continuously improve our tools and add new features
+                                based on user feedback.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </main>
         </div>
     );

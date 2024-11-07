@@ -80,6 +80,22 @@
 🟢 Premium Preview
 - File Format Converter (locked)
 
+🟢 Percentage Calculator
+- Basic percentage calculations
+- Percentage increase/decrease
+- Percentage ratio calculations
+- Percentage change calculations
+- Real-time validation
+- Clear error handling
+
+🟢 Scientific Calculator
+- Basic arithmetic operations
+- Advanced mathematical functions (sin, cos, tan, log, ln)
+- Memory operations (M+, M-, MR, MC, MS)
+- Calculation history tracking
+- Keyboard support
+- Error handling for invalid operations
+
 ## Free Tools Roadmap
 
 ### Text Tools
@@ -97,8 +113,8 @@
 - 🟢 Hash generator (MD5, SHA)
 
 ### Math Tools
-- 🔴 ⭐ Scientific calculator
-- 🟡 ⭐ Percentage calculator (Next Priority)
+- 🟢 ⭐ Percentage calculator
+- 🟢 ⭐ Scientific calculator
 - 🔴 Ratio calculator
 - 🔴 Area/volume calculator
 - 🔴 Binary/Decimal/Hex converter
@@ -216,15 +232,14 @@ All features must maintain:
 - Document any dependencies or technical requirements for each feature
 
 ## Next Easy Features to Implement
-1. Percentage Calculator (marked as 🟡)
-   - Basic percentage calculations
-   - Percentage of a number
-   - Percentage increase/decrease
-   - Common percentage formulas
-   - Clear, intuitive interface
+1. Ratio Calculator
+   - Calculate ratios and proportions
+   - Scale ratios up/down
+   - Find missing values in proportions
+   - Common ratio templates
    
-2. String Encoder/Decoder
-   - Base64 encoding/decoding
-   - URL encoding/decoding
-   - HTML entity encoding/decoding
-   - Simple interface with copy functionality
+2. Area/Volume Calculator
+   - Calculate area of common shapes
+   - Calculate volume of 3D objects
+   - Unit conversion support
+   - Visual shape reference

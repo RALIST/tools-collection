@@ -5,6 +5,7 @@
     animation: fadeIn 0.3s ease-out;
 }
 
+/* Existing Category Row Styles */
 .category-row {
     display: flex;
     flex-direction: column;
@@ -16,7 +17,6 @@
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
 }
-
 
 .category-header h2 {
     font-size: 1.8rem;
@@ -47,14 +47,12 @@
     outline: none;
 }
 
-/* Accessibility: Focus state */
 .tool-item:focus-visible {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
     box-shadow: var(--hover-shadow);
 }
 
-/* Accessibility: Keyboard navigation */
 .tool-item:focus {
     outline: none;
     border-color: var(--primary-color);
@@ -126,10 +124,10 @@
     border-radius: var(--border-radius);
     font-size: 0.8rem;
     font-weight: 500;
-    /* Accessibility: Ensure proper contrast */
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+/* Dark Mode Styles */
 [data-theme='dark'] .tool-item {
     background-color: var(--card-background);
     border-color: var(--border-color);
@@ -145,7 +143,16 @@
     color: var(--text-color);
 }
 
-/* Accessibility: Skip navigation for keyboard users */
+[data-theme='dark'] .category-detail {
+    background: linear-gradient(to right, rgba(144, 202, 249, 0.05), rgba(144, 202, 249, 0.02));
+}
+
+[data-theme='dark'] .features-overview {
+    background: var(--card-background);
+    border-color: var(--border-color);
+}
+
+/* Accessibility */
 .skip-link {
     position: absolute;
     top: -40px;
@@ -161,9 +168,46 @@
     top: 0;
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
     .home {
         gap: 2rem;
+    }
+
+    .tool-description {
+        padding: 1.5rem;
+    }
+
+    .tool-description h1 {
+        font-size: 2rem;
+    }
+
+    .tool-description>p {
+        font-size: 1.1rem;
+    }
+
+    .tools-overview h2 {
+        font-size: 1.6rem;
+    }
+
+    .category-detail h3 {
+        font-size: 1.3rem;
+    }
+
+    .category-detail p {
+        font-size: 1rem;
+    }
+
+    .features-overview {
+        padding: 1.5rem;
+    }
+
+    .features-overview h2 {
+        font-size: 1.5rem;
+    }
+
+    .features-overview li {
+        font-size: 1rem;
     }
 
     .category-row {
@@ -201,6 +245,40 @@
 
     .tool-info p {
         font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tool-description {
+        padding: 1.25rem;
+    }
+
+    .tool-description h1 {
+        font-size: 1.75rem;
+    }
+
+    .category-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .tool-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    .tool-info h3 {
+        font-size: 1rem;
+    }
+
+    .tool-info p {
+        font-size: 0.85rem;
+    }
+
+    .features-overview ul {
+        grid-template-columns: 1fr;
     }
 }
 

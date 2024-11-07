@@ -30,7 +30,6 @@ const Generators: React.FC = () => {
                 <div className="icon">⚡</div>
                 <h2>Generators</h2>
             </div>
-            <p>Collection of tools to generate various types of content and data.</p>
 
             <div className="tools-grid">
                 <Link to="/generators/password-generator" className="tool-card">
@@ -83,6 +82,81 @@ const Generators: React.FC = () => {
                         <p>Generate random numbers, strings, and other data types.</p>
                     </div>
                     <span className="status-badge">Coming Soon</span>
+                </div>
+            </div>
+
+            <div className="tool-description">
+                <h2>Powerful Generation Tools for Developers and Creators</h2>
+                <p>
+                    Our collection of generator tools helps you create various types of content and data quickly and efficiently.
+                    From secure passwords to placeholder text, these tools are designed to streamline your workflow and enhance
+                    your productivity in development, design, and content creation.
+                </p>
+
+                <div className="tools-overview">
+                    <h3>Available Tools:</h3>
+                    <div className="tool-details">
+                        <h4>Password Generator</h4>
+                        <p>
+                            Create strong, secure passwords with customizable options for length, character types
+                            (uppercase, lowercase, numbers, symbols), and complexity requirements. Perfect for
+                            generating secure credentials that meet specific password policies and security standards.
+                        </p>
+
+                        <h4>Lorem Ipsum Generator</h4>
+                        <p>
+                            Generate professional placeholder text for mockups, designs, and layouts. Customize the
+                            amount of text (words, sentences, or paragraphs) and format to perfectly fit your design
+                            needs. Essential for designers and developers working on content-driven projects.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="coming-soon-features">
+                    <h3>Coming Soon:</h3>
+                    <ul>
+                        <li>
+                            <strong>Color Palette Generator:</strong> Create harmonious color schemes for your designs
+                            with options for complementary, analogous, and triadic color relationships. Perfect for
+                            establishing consistent brand colors and design systems.
+                        </li>
+                        <li>
+                            <strong>Chart Data Generator:</strong> Generate realistic sample data for charts and graphs
+                            with customizable patterns and trends. Ideal for testing data visualization components
+                            and creating demo presentations.
+                        </li>
+                        <li>
+                            <strong>Form Data Generator:</strong> Create sample data for testing forms and databases
+                            with support for various data types including names, emails, addresses, and custom fields.
+                        </li>
+                        <li>
+                            <strong>Random Generator:</strong> Generate random numbers, strings, and other data types
+                            with specific patterns or constraints. Essential for testing and development scenarios
+                            requiring randomized data.
+                        </li>
+                    </ul>
+                </div>
+
+                <div className="seo-content">
+                    <h3>Why Use Our Generator Tools?</h3>
+                    <ul>
+                        <li>
+                            <strong>Security First:</strong> Our password generator creates cryptographically secure
+                            passwords that help protect your accounts from unauthorized access.
+                        </li>
+                        <li>
+                            <strong>Time-Saving:</strong> Generate placeholder content and test data instantly,
+                            allowing you to focus on design and development rather than content creation.
+                        </li>
+                        <li>
+                            <strong>Customizable:</strong> Each tool offers various options to generate content
+                            that perfectly matches your specific requirements.
+                        </li>
+                        <li>
+                            <strong>Professional Quality:</strong> All generators produce high-quality output
+                            suitable for professional use in development, design, and testing environments.
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

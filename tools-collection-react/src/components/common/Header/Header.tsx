@@ -15,12 +15,12 @@ const Header: React.FC = () => {
             <Link to="/" className="logo">
                 <h1>Useful Online Tools</h1>
             </Link>
-            <p>Text Tools, Developer Tools, Converters, and Generators</p>
+            <p>Text Tools, Developer Tools, Math Tools, Converters, and Generators</p>
 
             <nav className="nav">
                 <ul>
                     <li>
-                        <Link to="/" className={isActive('/') && !isActive('/text-tools') && !isActive('/developer-tools') && !isActive('/converters') && !isActive('/generators') ? 'active' : ''}>
+                        <Link to="/" className={isActive('/') && !isActive('/text-tools') && !isActive('/developer-tools') && !isActive('/converters') && !isActive('/generators') && !isActive('/math-tools') ? 'active' : ''}>
                             Home
                         </Link>
                     </li>
@@ -32,6 +32,11 @@ const Header: React.FC = () => {
                     <li>
                         <Link to="/developer-tools" className={isActive('/developer-tools') ? 'active' : ''}>
                             Developer Tools
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to="/math-tools" className={isActive('/math-tools') ? 'active' : ''}>
+                            Math Tools
                         </Link>
                     </li>
                     <li>

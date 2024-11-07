@@ -30,7 +30,6 @@ const TextTools: React.FC = () => {
                 <div className="icon">✏️</div>
                 <h2>Text Tools</h2>
             </div>
-            <p>A collection of text manipulation and analysis tools.</p>
 
             <div className="tools-grid">
                 <Link to="/text-tools/case-converter" className="tool-card">
@@ -82,6 +81,49 @@ const TextTools: React.FC = () => {
                         <p>Clean and format text by removing extra spaces, fixing line breaks, and more.</p>
                     </div>
                     <span className="status-badge">Coming Soon</span>
+                </div>
+            </div>
+
+            <div className="tool-description">
+                <h2>Powerful Text Manipulation and Analysis Tools</h2>
+                <p>
+                    Our collection of text tools provides everything you need for efficient text manipulation and analysis.
+                    Whether you're a writer, developer, or content creator, these tools help streamline your text-related tasks
+                    with instant results and user-friendly interfaces.
+                </p>
+
+                <div className="tools-overview">
+                    <h2>Available Tools:</h2>
+                    <div className="tool-details">
+                        <h4>Text Case Converter</h4>
+                        <p>
+                            Transform your text between different case styles including UPPERCASE, lowercase, Title Case,
+                            and Sentence case. Perfect for formatting titles, headings, and maintaining consistent text styling
+                            across your content.
+                        </p>
+
+                        <h4>Word Counter</h4>
+                        <p>
+                            Analyze your text with detailed statistics including word count, character count (with and without spaces),
+                            sentence count, and estimated reading time. Essential for content writers, students, and professionals
+                            working with word limits.
+                        </p>
+
+                        <h4>String Encoder</h4>
+                        <p>
+                            Convert text between various encoding formats including Base64, URL encoding, and HTML entities.
+                            A must-have tool for developers working with different text encoding requirements.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="coming-soon-features">
+                    <h3>Coming Soon:</h3>
+                    <ul>
+                        <li><strong>Text Diff Compare:</strong> Compare two texts and highlight the differences between them</li>
+                        <li><strong>Text Transformer:</strong> Advanced text manipulation with reverse, repeat, and randomize operations</li>
+                        <li><strong>Text Cleaner:</strong> Remove extra spaces, fix line breaks, and clean up text formatting</li>
+                    </ul>
                 </div>
             </div>
         </div>

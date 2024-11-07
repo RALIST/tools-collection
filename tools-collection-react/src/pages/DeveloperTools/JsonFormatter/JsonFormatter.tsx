@@ -135,7 +135,6 @@ const JsonFormatter: React.FC = () => {
             />
 
             <h1>JSON Formatter</h1>
-            <p>Format, validate, and beautify JSON data with customizable indentation.</p>
 
             <div className="controls">
                 <div className="control-group">
@@ -225,6 +224,37 @@ const JsonFormatter: React.FC = () => {
             </div>
 
             {error && <div className="error-message" role="alert">{error}</div>}
+
+
+            <div className="tool-description">
+                <h2>Format, Validate, and Beautify JSON Data</h2>
+                <p>
+                    Our JSON formatter is a powerful online tool designed to help developers and data analysts work with JSON data more efficiently.
+                    Whether you need to format raw JSON for better readability, validate JSON syntax, or minify JSON for production, this tool has you covered.
+                </p>
+
+                <div className="features-list">
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li><strong>JSON Formatting:</strong> Beautify your JSON with customizable indentation (2, 4, or 8 spaces) for improved readability</li>
+                        <li><strong>Syntax Validation:</strong> Instantly validate your JSON to ensure it follows proper syntax and structure</li>
+                        <li><strong>Key Sorting:</strong> Optionally sort object keys alphabetically for consistent formatting</li>
+                        <li><strong>JSON Minification:</strong> Compress JSON by removing unnecessary whitespace for reduced file size</li>
+                        <li><strong>Copy to Clipboard:</strong> Easily copy formatted or minified JSON with one click</li>
+                    </ul>
+                </div>
+
+                <div className="usage-guide">
+                    <h3>How to Use:</h3>
+                    <ol>
+                        <li>Paste your JSON data into the input field</li>
+                        <li>Select your preferred indentation size</li>
+                        <li>Choose whether to sort keys alphabetically</li>
+                        <li>Click 'Format' to beautify, 'Minify' to compress, or 'Validate' to check syntax</li>
+                        <li>Use the 'Copy' button to copy the result to your clipboard</li>
+                    </ol>
+                </div>
+            </div>
         </div>
     );
 };

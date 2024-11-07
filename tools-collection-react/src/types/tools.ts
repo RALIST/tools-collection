@@ -1,5 +1,5 @@
 // Tool Categories
-export type ToolCategory = 'text' | 'developer' | 'converter' | 'generator';
+export type ToolCategory = 'text' | 'developer' | 'converter' | 'generator' | 'math';
 
 // Tool Status
 export type ToolStatus = 'active' | 'coming-soon';
@@ -29,6 +29,7 @@ export interface ToolCollections {
     developer: Tool[];
     converter: Tool[];
     generator: Tool[];
+    math: Tool[];
 }
 
 // Tool-specific Types

@@ -30,7 +30,6 @@ const Converters: React.FC = () => {
                 <div className="icon">🔄</div>
                 <h2>Converters</h2>
             </div>
-            <p>A collection of tools for converting between different formats and units.</p>
 
             <div className="tools-grid">
                 <Link to="/converters/unit-converter" className="tool-card">
@@ -82,6 +81,50 @@ const Converters: React.FC = () => {
                         <p>Convert between different digital storage units.</p>
                     </div>
                     <span className="status-badge">Coming Soon</span>
+                </div>
+            </div>
+
+
+            <div className="tool-description">
+                <h2>Universal Conversion Tools for Every Need</h2>
+                <p>
+                    Our comprehensive suite of conversion tools helps you quickly and accurately convert between different units,
+                    formats, and measurements. Whether you're a developer, designer, or professional working with various units
+                    and formats, our converters provide precise results with an intuitive interface.
+                </p>
+
+                <div className="tools-overview">
+                    <h3>Available Tools:</h3>
+                    <div className="tool-details">
+                        <h4>Unit Converter</h4>
+                        <p>
+                            Convert between various units of measurement including length (meters, feet, inches),
+                            weight (kilograms, pounds, ounces), and temperature (Celsius, Fahrenheit, Kelvin).
+                            Perfect for international projects and scientific calculations.
+                        </p>
+
+                        <h4>Color Picker & Converter</h4>
+                        <p>
+                            Transform colors between different formats including HEX (#RRGGBB), RGB (Red, Green, Blue),
+                            and HSL (Hue, Saturation, Lightness). Essential for web developers and designers working
+                            with different color systems.
+                        </p>
+
+                        <h4>Time Converter</h4>
+                        <p>
+                            Convert between different time zones and formats. Ideal for coordinating across global time zones
+                            and managing international schedules. Includes support for daylight saving time and military time formats.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="coming-soon-features">
+                    <h3>Coming Soon:</h3>
+                    <ul>
+                        <li><strong>File Format Converter:</strong> Convert between different document and image formats seamlessly</li>
+                        <li><strong>Currency Converter:</strong> Real-time currency conversion with up-to-date exchange rates</li>
+                        <li><strong>Data Unit Converter:</strong> Convert between bytes, kilobytes, megabytes, and more</li>
+                    </ul>
                 </div>
             </div>
         </div>
