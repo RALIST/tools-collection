@@ -1,87 +1,72 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ToolLayout from '../../components/layout/ToolLayout/ToolLayout';
-import './DeveloperTools.css';
-
-interface Tool {
-    id: string;
-    name: string;
-    description: string;
-    path: string;
-    icon: string;
-    comingSoon?: boolean;
-}
-
-const tools: Tool[] = [
-    {
-        id: 'json-formatter',
-        name: 'JSON Formatter',
-        description: 'Format, validate, and beautify JSON data',
-        path: '/developer-tools/json-formatter',
-        icon: '{ }'
-    },
-    {
-        id: 'code-minifier',
-        name: 'Code Minifier',
-        description: 'Minify JavaScript, CSS, and HTML code',
-        path: '/developer-tools/code-minifier',
-        icon: '≤≥'
-    },
-    {
-        id: 'regex-tester',
-        name: 'Regex Tester',
-        description: 'Test and debug regular expressions',
-        path: '/developer-tools/regex-tester',
-        icon: '.*'
-    },
-    {
-        id: 'code-beautifier',
-        name: 'Code Beautifier',
-        description: 'Beautify and format source code',
-        path: '/developer-tools/code-beautifier',
-        icon: '< >'
-    },
-    {
-        id: 'hash-generator',
-        name: 'Hash Generator',
-        description: 'Generate various hash values',
-        path: '/developer-tools/hash-generator',
-        icon: '#',
-        comingSoon: true
-    }
-];
+import MetaTags from '../../components/common/MetaTags/MetaTags';
 
 const DeveloperTools: React.FC = () => {
     return (
-        <ToolLayout
-            title="Developer Tools"
-            description="A collection of tools for developers to streamline their workflow."
-        >
-            <div className="tools-grid">
-                {tools.map((tool) => (
-                    <div key={tool.id} className={`tool-card ${tool.comingSoon ? 'coming-soon' : ''}`}>
-                        {tool.comingSoon ? (
-                            <div className="tool-card-content">
-                                <div className="tool-icon">{tool.icon}</div>
-                                <div className="tool-info">
-                                    <h3>{tool.name}</h3>
-                                    <p>{tool.description}</p>
-                                </div>
-                                <div className="status-badge">Coming Soon</div>
-                            </div>
-                        ) : (
-                            <Link to={tool.path} className="tool-card-content">
-                                <div className="tool-icon">{tool.icon}</div>
-                                <div className="tool-info">
-                                    <h3>{tool.name}</h3>
-                                    <p>{tool.description}</p>
-                                </div>
-                            </Link>
-                        )}
-                    </div>
-                ))}
+        <div className="tools">
+            <MetaTags
+                title="Developer Tools"
+                description="A collection of tools for developers to streamline their workflow."
+            />
+
+            <div className="category-header">
+                <div className="icon">💻</div>
+                <h2>Developer Tools</h2>
             </div>
-        </ToolLayout>
+            <p>A collection of tools for developers to streamline their workflow.</p>
+
+            <div className="tools-grid">
+                <Link to="/developer-tools/json-formatter" className="tool-card">
+                    <div className="tool-icon">{'{ }'}</div>
+                    <div className="tool-info">
+                        <h2>JSON Formatter & Validator</h2>
+                        <p>Format, minify, and validate JSON data with ease.</p>
+                    </div>
+                </Link>
+
+                <Link to="/developer-tools/code-minifier" className="tool-card">
+                    <div className="tool-icon">📦</div>
+                    <div className="tool-info">
+                        <h2>Code Minifier</h2>
+                        <p>Minify HTML, CSS, and JavaScript code to reduce file size.</p>
+                    </div>
+                </Link>
+
+                <Link to="/developer-tools/regex-tester" className="tool-card">
+                    <div className="tool-icon">*</div>
+                    <div className="tool-info">
+                        <h2>Regex Tester</h2>
+                        <p>Test and debug your regular expressions with real-time matching.</p>
+                    </div>
+                </Link>
+
+                <Link to="/developer-tools/code-beautifier" className="tool-card">
+                    <div className="tool-icon">🎨</div>
+                    <div className="tool-info">
+                        <h2>Code Beautifier</h2>
+                        <p>Format and beautify your code with customizable options.</p>
+                    </div>
+                </Link>
+
+                <Link to="/developer-tools/hash-generator" className="tool-card">
+                    <div className="tool-icon">#</div>
+                    <div className="tool-info">
+                        <h2>Hash Generator</h2>
+                        <p>Generate various types of hash values for your text.</p>
+                    </div>
+                </Link>
+
+                <div className="tool-card coming-soon">
+                    <div className="tool-icon">🔍</div>
+                    <div className="tool-info">
+                        <h2>API Tester</h2>
+                        <p>Test API endpoints with customizable requests.</p>
+                    </div>
+                    <span className="status-badge">Coming Soon</span>
+                </div>
+            </div>
+        </div>
     );
 };
 

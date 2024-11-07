@@ -23,7 +23,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+    background: linear-gradient(to right, var(--card-background), var(--primary-light));
 }
 
 .tool-header h1 {

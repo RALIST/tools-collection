@@ -1,5 +1,4 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import MetaTags from '../../common/MetaTags/MetaTags';
 import './ToolLayout.css';
 
@@ -16,24 +15,21 @@ const ToolLayout: React.FC<ToolLayoutProps> = ({
     keywords,
     children
 }) => {
-    const location = useLocation();
-    const canonicalUrl = location.pathname;
-
+    const canonicalUrl = `https://usefulonlinetools.com${window.location.pathname}`;
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         "name": title,
         "description": description,
-        "url": `${process.env.PUBLIC_URL}${canonicalUrl}`,
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Any",
+        "url": canonicalUrl,
+        "applicationCategory": "WebApplication",
+        "operatingSystem": "All",
+        "permissions": "none",
         "offers": {
             "@type": "Offer",
-            "price": "0"
-        },
-        "browserRequirements": "Requires JavaScript. Requires HTML5.",
-        "softwareVersion": "1.0.0",
-        "permissions": "none"
+            "price": "0",
+            "priceCurrency": "USD"
+        }
     };
 
     return (
@@ -47,15 +43,10 @@ const ToolLayout: React.FC<ToolLayoutProps> = ({
             />
             <div className="tool-header">
                 <h1>{title}</h1>
-                <p className="tool-description">{description}</p>
+                <p>{description}</p>
             </div>
             <div className="tool-content">
                 {children}
-            </div>
-            <div className="ad-space">
-                <div className="ad-placeholder" role="complementary">
-                    Advertisement Space
-                </div>
             </div>
         </div>
     );

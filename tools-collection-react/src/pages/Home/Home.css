@@ -17,18 +17,6 @@
     transition: all 0.3s ease;
 }
 
-.category-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.category-header .icon {
-    font-size: 2rem;
-    color: var(--primary-color);
-}
 
 .category-header h2 {
     font-size: 1.8rem;

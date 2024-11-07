@@ -2,67 +2,51 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 interface MetaTagsProps {
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
     keywords?: string;
     canonicalUrl?: string;
-    structuredData?: object;
+    structuredData?: {
+        "@context": string;
+        "@type": string;
+        name: string;
+        description: string;
+        url: string;
+        applicationCategory: string;
+        operatingSystem: string;
+        permissions: string;
+        offers: {
+            "@type": string;
+            price: string;
+            priceCurrency: string;
+        };
+    };
 }
 
 const MetaTags: React.FC<MetaTagsProps> = ({
-    title,
-    description,
+    title = 'Useful Online Tools',
+    description = 'Collection of useful online tools for text manipulation, development, conversion, and generation.',
     keywords,
     canonicalUrl,
     structuredData
 }) => {
-    const baseUrl = process.env.PUBLIC_URL || '';
-    const fullUrl = canonicalUrl ? `${baseUrl}${canonicalUrl}` : baseUrl;
-    const defaultKeywords = 'online tools, developer tools, web tools, free tools';
-    const fullKeywords = keywords ? `${keywords}, ${defaultKeywords}` : defaultKeywords;
-
-    const defaultStructuredData = {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": title,
-        "description": description,
-        "url": fullUrl,
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0"
-        }
-    };
-
-    const finalStructuredData = structuredData || defaultStructuredData;
+    const fullTitle = title === 'Useful Online Tools' ? title : `${title} | Useful Online Tools`;
 
     return (
         <Helmet>
-            {/* Basic Meta Tags */}
-            <title>{title} - Useful Online Tools</title>
+            <title>{fullTitle}</title>
             <meta name="description" content={description} />
-            <meta name="keywords" content={fullKeywords} />
-
-            {/* Open Graph / Facebook */}
-            <meta property="og:type" content="website" />
-            <meta property="og:url" content={fullUrl} />
-            <meta property="og:title" content={title} />
+            {keywords && <meta name="keywords" content={keywords} />}
+            {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+            <meta property="og:title" content={fullTitle} />
             <meta property="og:description" content={description} />
-
-            {/* Twitter */}
-            <meta property="twitter:card" content="summary_large_image" />
-            <meta property="twitter:url" content={fullUrl} />
-            <meta property="twitter:title" content={title} />
-            <meta property="twitter:description" content={description} />
-
-            {/* Canonical URL */}
-            {canonicalUrl && <link rel="canonical" href={fullUrl} />}
-
-            {/* Structured Data */}
-            <script type="application/ld+json">
-                {JSON.stringify(finalStructuredData)}
-            </script>
+            <meta name="twitter:title" content={fullTitle} />
+            <meta name="twitter:description" content={description} />
+            {structuredData && (
+                <script type="application/ld+json">
+                    {JSON.stringify(structuredData)}
+                </script>
+            )}
         </Helmet>
     );
 };
