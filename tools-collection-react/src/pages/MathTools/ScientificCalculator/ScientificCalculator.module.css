@@ -1,0 +1,220 @@
+.calculatorContainer {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.displaySection {
+    background: linear-gradient(to right, rgba(33, 150, 243, 0.05), rgba(33, 150, 243, 0.02));
+    border: 1px solid rgba(33, 150, 243, 0.1);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.expression {
+    font-size: 1rem;
+    color: var(--text-light);
+    min-height: 1.5rem;
+    text-align: right;
+    font-family: monospace;
+    margin-bottom: 0.5rem;
+}
+
+.display {
+    font-size: 2rem;
+    color: var(--text-dark);
+    text-align: right;
+    font-family: monospace;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: calc(var(--border-radius) / 2);
+}
+
+.error {
+    color: #f44336;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(244, 67, 54, 0.1);
+    border-radius: calc(var(--border-radius) / 2);
+}
+
+.memorySection {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.scientificSection {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.calculatorContainer button {
+    padding: 1rem;
+    border: none;
+    border-radius: calc(var(--border-radius) / 2);
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05));
+    color: var(--text-color);
+    border: 1px solid rgba(33, 150, 243, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.calculatorContainer button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.calculatorContainer button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--hover-shadow);
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(33, 150, 243, 0.1));
+}
+
+.calculatorContainer button:hover::before {
+    transform: translateX(100%);
+}
+
+.calculatorContainer button:active {
+    transform: translateY(0);
+}
+
+.memorySection button,
+.scientificSection button {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.05), rgba(33, 150, 243, 0.02));
+}
+
+.controlSection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.controlSection button {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    border: none;
+}
+
+.controlSection button:hover {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+}
+
+.historySection {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.historySection h3 {
+    color: var(--text-dark);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.historySection ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.historySection li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.historySection li:last-child {
+    border-bottom: none;
+}
+
+.historySection small {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .calculatorContainer {
+    background-color: var(--card-background);
+}
+
+[data-theme='dark'] .display {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .scientific-calculator {
+        padding: 1rem;
+    }
+
+    .calculatorContainer {
+        border: none;
+        box-shadow: none;
+        padding: 1rem;
+    }
+
+    .display {
+        font-size: 1.5rem;
+    }
+
+    .scientificSection {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .memorySection button,
+    .scientificSection button,
+    .keypad button {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .scientificSection {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .memorySection {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .controlSection {
+        grid-template-columns: 1fr;
+    }
+}

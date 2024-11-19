@@ -1,7 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
+
 import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
-import './ColorConverter.css';
+
+import styles from "./ColorConverter.module.css";
+import ButtonMain from '../../../components/common/UI/Buttons/ButtonMain/ButtonMain';
+import ButtonSecond from '../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond';
+import Input from '../../../components/common/UI/Input/Input';
 
 type ColorFormat = 'hex' | 'rgb' | 'hsl' | 'hsv' | 'cmyk';
 
@@ -172,20 +177,20 @@ const ColorConverter: React.FC = () => {
         switch (format) {
             case 'hex':
                 return (
-                    <div className="color-input">
-                        <input
+                    <div className={styles.colorHexInput}>
+                        <Input
                             type="text"
                             value={color.hex}
                             onChange={(e) => handleHexInput(e.target.value)}
                             placeholder="#000000"
                         />
-                        <button onClick={() => handleCopy(color.hex)}>Copy</button>
+                        <ButtonSecond onClick={() => handleCopy(color.hex)}>Copy</ButtonSecond>
                     </div>
                 );
             case 'rgb':
                 return (
-                    <div className="color-input rgb-input">
-                        <div className="rgb-sliders">
+                    <div className={styles.colorRgbInput}>
+                        <div className={styles.rgbSliders}>
                             <label>R:</label>
                             <input
                                 type="range"
@@ -194,7 +199,7 @@ const ColorConverter: React.FC = () => {
                                 value={color.rgb.r}
                                 onChange={(e) => handleRgbInput(parseInt(e.target.value), color.rgb.g, color.rgb.b)}
                             />
-                            <input
+                            <Input
                                 type="number"
                                 min="0"
                                 max="255"
@@ -202,7 +207,7 @@ const ColorConverter: React.FC = () => {
                                 onChange={(e) => handleRgbInput(parseInt(e.target.value), color.rgb.g, color.rgb.b)}
                             />
                         </div>
-                        <div className="rgb-sliders">
+                        <div className={styles.rgbSliders}>
                             <label>G:</label>
                             <input
                                 type="range"
@@ -211,7 +216,7 @@ const ColorConverter: React.FC = () => {
                                 value={color.rgb.g}
                                 onChange={(e) => handleRgbInput(color.rgb.r, parseInt(e.target.value), color.rgb.b)}
                             />
-                            <input
+                            <Input
                                 type="number"
                                 min="0"
                                 max="255"
@@ -219,7 +224,7 @@ const ColorConverter: React.FC = () => {
                                 onChange={(e) => handleRgbInput(color.rgb.r, parseInt(e.target.value), color.rgb.b)}
                             />
                         </div>
-                        <div className="rgb-sliders">
+                        <div className={styles.rgbSliders}>
                             <label>B:</label>
                             <input
                                 type="range"
@@ -228,7 +233,7 @@ const ColorConverter: React.FC = () => {
                                 value={color.rgb.b}
                                 onChange={(e) => handleRgbInput(color.rgb.r, color.rgb.g, parseInt(e.target.value))}
                             />
-                            <input
+                            <Input
                                 type="number"
                                 min="0"
                                 max="255"
@@ -248,80 +253,80 @@ const ColorConverter: React.FC = () => {
             title="Color Converter"
             description="Convert between different color formats (HEX, RGB, HSL, HSV, CMYK)."
         >
-            <div className="color-converter">
-                <div className="format-selector">
-                    <button
-                        className={format === 'hex' ? 'active' : ''}
+            <div className={styles.converter}>
+                <div className={styles.formatSelector}>
+                    <ButtonMain
+                        active={format === 'hex'}
                         onClick={() => setFormat('hex')}
                     >
                         HEX
-                    </button>
-                    <button
-                        className={format === 'rgb' ? 'active' : ''}
+                    </ButtonMain>
+                    <ButtonMain
+                        active={format === 'rgb'}
                         onClick={() => setFormat('rgb')}
                     >
                         RGB
-                    </button>
-                    <button
-                        className={format === 'hsl' ? 'active' : ''}
+                    </ButtonMain>
+                    <ButtonMain
+                        active={format === 'hsl'}
                         onClick={() => setFormat('hsl')}
                     >
                         HSL
-                    </button>
-                    <button
-                        className={format === 'hsv' ? 'active' : ''}
+                    </ButtonMain>
+                    <ButtonMain
+                        active={format === 'hsv'}
                         onClick={() => setFormat('hsv')}
                     >
                         HSV
-                    </button>
-                    <button
-                        className={format === 'cmyk' ? 'active' : ''}
+                    </ButtonMain>
+                    <ButtonMain
+                        active={format === 'cmyk'}
                         onClick={() => setFormat('cmyk')}
                     >
                         CMYK
-                    </button>
+                    </ButtonMain>
                 </div>
 
-                <div className="color-preview" style={{ backgroundColor: color.hex }} />
+                <div className={styles.colorPreview} style={{ backgroundColor: color.hex }} />
 
-                <div className="converter-section">
+                <div className={styles.converterSection}>
                     {renderColorInput()}
                 </div>
 
-                <div className="color-values">
-                    <div className="value-group">
+                <div className={styles.colorValues}>
+                    <div className={styles.valueGroup}>
                         <label>HEX:</label>
-                        <div className="value-display">
-                            <span>{color.hex}</span>
-                            <button onClick={() => handleCopy(color.hex)}>Copy</button>
+                        <div className={styles.valueDisplay}>
+                            <Input type='text' value={color.hex} readOnly/>{}
+                            <ButtonSecond onClick={() => handleCopy(color.hex)}>Copy</ButtonSecond>
                         </div>
                     </div>
-                    <div className="value-group">
+                    <div className={styles.valueGroup}>
                         <label>RGB:</label>
-                        <div className="value-display">
-                            <span>{`rgb(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b})`}</span>
-                            <button onClick={() => handleCopy(`rgb(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b})`)}>Copy</button>
+                        <div className={styles.valueDisplay}>
+                            <Input type='text' value={`rgb(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b})`} readOnly/>
+                            <ButtonSecond onClick={() => handleCopy(`rgb(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b})`)}>Copy</ButtonSecond>
                         </div>
                     </div>
-                    <div className="value-group">
+                    <div className={styles.valueGroup}>
                         <label>HSL:</label>
-                        <div className="value-display">
-                            <span>{`hsl(${color.hsl.h}°, ${color.hsl.s}%, ${color.hsl.l}%)`}</span>
-                            <button onClick={() => handleCopy(`hsl(${color.hsl.h}, ${color.hsl.s}%, ${color.hsl.l}%)`)}>Copy</button>
+                        <div className={styles.valueDisplay}>
+                            <Input type='text' value={`hsl(${color.hsl.h}°, ${color.hsl.s}%, ${color.hsl.l}%)`} readOnly/>
+                            <ButtonSecond onClick={() => handleCopy(`hsl(${color.hsl.h}, ${color.hsl.s}%, ${color.hsl.l}%)`)}>Copy</ButtonSecond>
                         </div>
                     </div>
-                    <div className="value-group">
+                    <div className={styles.valueGroup}>
                         <label>HSV:</label>
-                        <div className="value-display">
-                            <span>{`hsv(${color.hsv.h}°, ${color.hsv.s}%, ${color.hsv.v}%)`}</span>
-                            <button onClick={() => handleCopy(`hsv(${color.hsv.h}, ${color.hsv.s}%, ${color.hsv.v}%)`)}>Copy</button>
+                        <div className={styles.valueDisplay}>
+                            <Input type='text' value={`hsv(${color.hsv.h}°, ${color.hsv.s}%, ${color.hsv.v}%)`} readOnly/>
+                            <ButtonSecond onClick={() => handleCopy(`hsv(${color.hsv.h}, ${color.hsv.s}%, ${color.hsv.v}%)`)}>Copy</ButtonSecond>
                         </div>
                     </div>
-                    <div className="value-group">
+                    <div className={styles.valueGroup}>
                         <label>CMYK:</label>
-                        <div className="value-display">
-                            <span>{`cmyk(${color.cmyk.c}%, ${color.cmyk.m}%, ${color.cmyk.y}%, ${color.cmyk.k}%)`}</span>
-                            <button onClick={() => handleCopy(`cmyk(${color.cmyk.c}%, ${color.cmyk.m}%, ${color.cmyk.y}%, ${color.cmyk.k}%)`)}>Copy</button>
+                        <div className={styles.valueDisplay}>
+                            <Input type='text' value={`cmyk(${color.cmyk.c}%, ${color.cmyk.m}%, ${color.cmyk.y}%, ${color.cmyk.k}%)`} readOnly/>
+                            <ButtonSecond onClick={() => handleCopy(`cmyk(${color.cmyk.c}%, ${color.cmyk.m}%, ${color.cmyk.y}%, ${color.cmyk.k}%)`)}>Copy</ButtonSecond>
                         </div>
                     </div>
                 </div>

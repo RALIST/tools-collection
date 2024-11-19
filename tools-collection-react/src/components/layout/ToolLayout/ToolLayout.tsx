@@ -1,6 +1,7 @@
 import React from 'react';
 import MetaTags from '../../common/MetaTags/MetaTags';
 import './ToolLayout.css';
+import ToolHeader from './components/ToolHeader/ToolHeader';
 
 interface ToolLayoutProps {
     title: string;
@@ -41,10 +42,9 @@ const ToolLayout: React.FC<ToolLayoutProps> = ({
                 canonicalUrl={canonicalUrl}
                 structuredData={structuredData}
             />
-            <div className="tool-header">
-                <h1>{title}</h1>
-                <p>{description}</p>
-            </div>
+            
+            <ToolHeader title={title} description={description} />
+
             <div className="tool-content">
                 {children}
             </div>

@@ -1,0 +1,56 @@
+.toolHeader {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.toolHeader::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--card-background), var(--primary-light));
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+[data-theme='dark'] .toolHeader {
+    border: 1px solid var(--border-color);
+}
+
+[data-theme='dark'] .toolHeader::before {
+    background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
+}
+
+@media (max-width: 768px) {
+    .toolHeader {
+        padding: 2rem 1.5rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .toolHeader {
+        padding: 1.5rem 1rem;
+    }
+
+    .title {
+        font-size: 1.75rem;
+    }
+}

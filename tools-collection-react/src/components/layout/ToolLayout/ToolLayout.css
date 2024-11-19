@@ -5,7 +5,7 @@
     animation: fadeIn 0.3s ease-out;
 }
 
-.tool-header {
+/* .tool-header {
     background-color: var(--card-background);
     border-radius: var(--border-radius);
     padding: 2.5rem 2rem;
@@ -31,7 +31,7 @@
     margin-bottom: 1rem;
     color: var(--text-color);
     transition: color 0.3s ease;
-}
+} */
 
 .tool-description {
     color: var(--text-light);
@@ -69,28 +69,28 @@
     transition: all 0.3s ease;
 }
 
-[data-theme='dark'] .tool-header,
+/* [data-theme='dark'] .tool-header, */
 [data-theme='dark'] .tool-content,
 [data-theme='dark'] .ad-placeholder {
     border: 1px solid var(--border-color);
 }
 
-[data-theme='dark'] .tool-header::before {
+/* [data-theme='dark'] .tool-header::before {
     background: linear-gradient(to right, var(--primary-dark), var(--primary-color));
-}
+} */
 
 @media (max-width: 768px) {
     .tool-layout {
         gap: 1.5rem;
     }
 
-    .tool-header {
+    /* .tool-header {
         padding: 2rem 1.5rem;
     }
 
     .tool-header h1 {
         font-size: 2rem;
-    }
+    } */
 
     .tool-description {
         font-size: 1rem;
@@ -108,13 +108,13 @@
 }
 
 @media (max-width: 480px) {
-    .tool-header {
+    /* .tool-header {
         padding: 1.5rem 1rem;
     }
 
     .tool-header h1 {
         font-size: 1.75rem;
-    }
+    } */
 
     .tool-content {
         padding: 1rem;

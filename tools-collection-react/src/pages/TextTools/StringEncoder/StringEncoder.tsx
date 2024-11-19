@@ -1,7 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
+
 import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
-import './StringEncoder.css';
+import ButtonSecond from '../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond';
+
+import styles from "./StringEncoder.module.css";
+import ButtonMain from '../../../components/common/UI/Buttons/ButtonMain/ButtonMain';
+import Textarea from '../../../components/common/UI/Textarea/Textarea';
 
 type EncodingMethod = 'base64' | 'url' | 'html';
 
@@ -140,51 +145,55 @@ const StringEncoder: React.FC = () => {
             title="String Encoder"
             description="Encode and decode text using various methods like Base64, URL encoding, and HTML entities."
         >
-            <div className="string-encoder">
-                <div className="encoding-methods">
+            <div className={styles.stringEncoder}>
+                <div className={styles.encodingMethods}>
                     {encodingMethods.map((method) => (
-                        <button
+                        <ButtonMain 
                             key={method.id}
-                            className={selectedMethod === method.id ? 'active' : ''}
                             onClick={() => handleMethodChange(method.id)}
+                            active={selectedMethod === method.id}
                             title={method.description}
                         >
                             {method.label}
-                        </button>
+                        </ButtonMain>
                     ))}
                 </div>
 
-                <div className="text-areas">
-                    <div className="text-area-container">
+                <div className={styles.textAreas}>
+                    <div className={styles.textAreaContainer}>
                         <label>Original Text</label>
-                        <textarea
+
+                        <Textarea 
                             value={text}
                             onChange={(e) => setText(e.target.value)}
                             placeholder="Enter text to encode..."
-                            rows={8}
+                            rows={12}
                         />
-                        <button onClick={() => handleCopy(text)}>Copy</button>
+
+                        <ButtonSecond onClick={() => handleCopy(text)} size='small'>Copy</ButtonSecond>
                     </div>
 
-                    <div className="encode-decode-buttons">
-                        <button onClick={encodeText}>Encode →</button>
-                        <button onClick={decodeText}>← Decode</button>
+                    <div className={styles.encodeDecodeButtons}>
+                        <ButtonMain onClick={encodeText} active>Encode →</ButtonMain>
+                        <ButtonMain onClick={decodeText} active>← Decode</ButtonMain>
                     </div>
 
-                    <div className="text-area-container">
+                    <div className={styles.textAreaContainer}>
                         <label>Encoded Text</label>
-                        <textarea
+
+                        <Textarea 
                             value={encodedText}
                             onChange={(e) => setEncodedText(e.target.value)}
                             placeholder="Encoded text will appear here..."
-                            rows={8}
+                            rows={12}
                         />
-                        <button onClick={() => handleCopy(encodedText)}>Copy</button>
+
+                        <ButtonSecond onClick={() => handleCopy(encodedText)} size='small'>Copy</ButtonSecond>
                     </div>
                 </div>
 
-                <div className="action-buttons">
-                    <button onClick={handleClear}>Clear All</button>
+                <div className={styles.actionButtons}>
+                    <ButtonSecond onClick={handleClear}>Clear All</ButtonSecond>
                 </div>
             </div>
         </ToolLayout>

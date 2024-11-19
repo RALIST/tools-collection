@@ -1,7 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
+
 import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
-import './TimeConverter.css';
+import ButtonSecond from '../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond';
+import Select from '../../../components/common/UI/Select/Select';
+import Input from '../../../components/common/UI/Input/Input';
+
+import styles from "./TimeConverter.module.css";
 
 type TimeFormat = '12hour' | '24hour' | 'unix' | 'iso';
 type TimeZone = string;
@@ -49,46 +54,49 @@ const TimeSection: React.FC<TimeSectionProps> = ({
 }) => {
     const title = isSource ? 'Source' : 'Target';
 
+    const optionsListTime = [
+        {value: '24hour', name: '24-hour'},
+        {value: '12hour', name: '12-hour'},
+        {value: 'unix', name: 'Unix Timestamp'},
+        {value: 'iso', name: 'ISO 8601'}
+    ];
+
+    const optionsListTimeZones = commonTimeZones.map((zone) => {return {value: zone, name: zone}})
+
+
     return (
-        <div className={`time-section ${isSource ? 'source-section' : 'target-section'}`}>
-            <div className="time-controls">
-                <div className="format-selector">
+        <div className={`${styles.timeSection} ${isSource ? styles.sourceSection : styles.targetSection}`}>
+            <div className={styles.timeControls}>
+                <div className={styles.formatSelector}>
                     <label>{title} Format:</label>
-                    <select
+                    <Select
                         value={timeState.format}
                         onChange={(e) => onFormatChange(e.target.value as TimeFormat, isSource)}
-                    >
-                        <option value="24hour">24-hour</option>
-                        <option value="12hour">12-hour</option>
-                        <option value="unix">Unix Timestamp</option>
-                        <option value="iso">ISO 8601</option>
-                    </select>
+                        optionsList={optionsListTime}
+                    />
                 </div>
-                <div className="timezone-selector">
+                <div className={styles.timezoneSelector}>
                     <label>{title} Timezone:</label>
-                    <select
+                    <Select
                         value={timeState.timezone}
                         onChange={(e) => onTimezoneChange(e.target.value, isSource)}
-                    >
-                        {commonTimeZones.map((zone) => (
-                            <option key={zone} value={zone}>{zone}</option>
-                        ))}
-                    </select>
+                        optionsList={optionsListTimeZones}
+                    />
                 </div>
             </div>
-            <div className="time-input">
-                <input
+            <div className={styles.timeInput}>
+                <Input
                     type="text"
                     value={timeState.value}
                     onChange={onTimeChange ? (e) => onTimeChange(e.target.value) : undefined}
                     readOnly={!isSource}
                     placeholder={isSource ? `Enter time in ${timeState.format} format...` : 'Converted time will appear here...'}
                 />
-                <div className="input-buttons">
+                <div className={styles.inputButtons}>
                     {isSource && onNow && (
-                        <button onClick={onNow}>Now</button>
+                        <ButtonSecond onClick={onNow}>Now</ButtonSecond>
                     )}
-                    <button onClick={() => onCopy(timeState.value)}>Copy</button>
+                    <ButtonSecond onClick={() => onCopy(timeState.value)}>Copy</ButtonSecond>
                 </div>
             </div>
         </div>
@@ -256,7 +264,7 @@ const TimeConverter: React.FC = () => {
             title="Time Converter"
             description="Convert between different time formats and timezones."
         >
-            <div className="time-converter">
+            <div className={styles.timeConverter}>
                 <TimeSection
                     isSource={true}
                     timeState={sourceTime}

@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+
 import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
-import './CaseConverter.css';
+import Textarea from '../../../components/common/UI/Textarea/Textarea';
+import ButtonMain from '../../../components/common/UI/Buttons/ButtonMain/ButtonMain';
+import ButtonSecond from '../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond';
+
+import styles from "./CaseConverter.module.css";
 
 const CaseConverter: React.FC = () => {
+    const [currentCase, setCurrentCase] = useState('')
     const [text, setText] = useState('');
 
     const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -14,9 +20,11 @@ const CaseConverter: React.FC = () => {
         switch (type) {
             case 'upper':
                 setText(text.toUpperCase());
+                setCurrentCase('upper');
                 break;
             case 'lower':
                 setText(text.toLowerCase());
+                setCurrentCase('lower');
                 break;
             case 'title':
                 setText(
@@ -26,6 +34,7 @@ const CaseConverter: React.FC = () => {
                         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                         .join(' ')
                 );
+                setCurrentCase('title');
                 break;
             case 'sentence':
                 setText(
@@ -38,6 +47,7 @@ const CaseConverter: React.FC = () => {
                         })
                         .join('. ')
                 );
+                setCurrentCase('sentence');
                 break;
         }
     };
@@ -70,22 +80,24 @@ const CaseConverter: React.FC = () => {
             title="Text Case Converter"
             description="Convert text between UPPERCASE, lowercase, Title Case, and Sentence case formats."
         >
-            <div className="case-converter">
-                <div className="button-group">
-                    <button onClick={() => convertCase('upper')}>UPPERCASE</button>
-                    <button onClick={() => convertCase('lower')}>lowercase</button>
-                    <button onClick={() => convertCase('title')}>Title Case</button>
-                    <button onClick={() => convertCase('sentence')}>Sentence case</button>
+            <div className={styles.caseConverter}>
+                <div className={styles.buttonGroup}>
+                    <ButtonMain onClick={() => convertCase('upper')} active={currentCase === 'upper'}>UPPERCASE</ButtonMain>
+                    <ButtonMain onClick={() => convertCase('lower')} active={currentCase === 'lower'}>lowercase</ButtonMain>
+                    <ButtonMain onClick={() => convertCase('title')} active={currentCase === 'title'}>Title Case</ButtonMain>
+                    <ButtonMain onClick={() => convertCase('sentence')} active={currentCase === 'sentence'}>Sentence case</ButtonMain>
                 </div>
-                <textarea
+
+                <Textarea 
                     value={text}
                     onChange={handleTextChange}
                     placeholder="Enter or paste your text here..."
                     rows={10}
                 />
-                <div className="action-buttons">
-                    <button onClick={handleCopy}>Copy to Clipboard</button>
-                    <button onClick={handleClear}>Clear Text</button>
+                
+                <div className={styles.actionButtons}>
+                    <ButtonSecond onClick={handleCopy}>Copy to Clipboard</ButtonSecond>
+                    <ButtonSecond onClick={handleClear}>Clear Text</ButtonSecond>
                 </div>
             </div>
         </ToolLayout>

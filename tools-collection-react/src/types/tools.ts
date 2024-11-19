@@ -9,6 +9,7 @@ export interface Tool {
     id: string;
     name: string;
     description: string;
+    detailedDescription: string;
     icon: string;
     category: ToolCategory;
     status: ToolStatus;

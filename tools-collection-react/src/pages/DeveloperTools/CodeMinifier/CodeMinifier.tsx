@@ -1,7 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
+
 import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
-import './CodeMinifier.css';
+import ButtonMain from '../../../components/common/UI/Buttons/ButtonMain/ButtonMain';
+import ButtonSecond from '../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond';
+import Textarea from '../../../components/common/UI/Textarea/Textarea';
+
+import styles from "./CodeMinifier.module.css";
 
 type CodeType = 'javascript' | 'css' | 'html';
 
@@ -134,63 +139,63 @@ const CodeMinifier: React.FC = () => {
             title="Code Minifier"
             description="Minify JavaScript, CSS, and HTML code to reduce file size."
         >
-            <div className="code-minifier">
-                <div className="code-type-selector">
-                    <button
-                        className={codeType === 'javascript' ? 'active' : ''}
+            <div className={styles.codeMinifier}>
+                <div className={styles.codeTypeSelector}>
+                    <ButtonMain
+                        active={codeType === 'javascript'}
                         onClick={() => setCodeType('javascript')}
                     >
                         JavaScript
-                    </button>
-                    <button
-                        className={codeType === 'css' ? 'active' : ''}
+                    </ButtonMain>
+                    <ButtonMain
+                        active={codeType === 'css'}
                         onClick={() => setCodeType('css')}
                     >
                         CSS
-                    </button>
-                    <button
-                        className={codeType === 'html' ? 'active' : ''}
+                    </ButtonMain>
+                    <ButtonMain
+                        active={codeType === 'html'}
                         onClick={() => setCodeType('html')}
                     >
                         HTML
-                    </button>
+                    </ButtonMain>
                 </div>
 
-                <div className="text-areas">
-                    <div className="text-area-container">
+                <div className={styles.textAreas}>
+                    <div className={styles.textAreaContainer}>
                         <label>Input Code</label>
-                        <textarea
+                        <Textarea
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             placeholder={`Enter your ${codeType.toUpperCase()} code here...`}
                             rows={12}
                         />
-                        <div className="button-group">
-                            <button onClick={handlePaste}>Paste</button>
-                            <button onClick={() => handleCopy(input)}>Copy</button>
+                        <div className={styles.buttonGroup}>
+                            <ButtonSecond onClick={handlePaste} size='small'>Paste</ButtonSecond>
+                            <ButtonSecond onClick={() => handleCopy(input)} size='small'>Copy</ButtonSecond>
                         </div>
                     </div>
 
-                    <div className="minify-buttons">
-                        <button onClick={minifyCode}>Minify →</button>
+                    <div className={styles.minifyButtons}>
+                        <ButtonMain onClick={minifyCode} active>Minify →</ButtonMain>
                     </div>
 
-                    <div className="text-area-container">
+                    <div className={styles.textAreaContainer}>
                         <label>Minified Code</label>
-                        <textarea
+                        <Textarea
                             value={output}
                             readOnly
                             placeholder="Minified code will appear here..."
                             rows={12}
                         />
-                        <div className="button-group">
-                            <button onClick={() => handleCopy(output)}>Copy</button>
+                        <div className={styles.buttonGroup}>
+                            <ButtonSecond onClick={() => handleCopy(output)} size='small'>Copy</ButtonSecond>
                         </div>
                     </div>
                 </div>
 
-                <div className="action-buttons">
-                    <button onClick={handleClear}>Clear All</button>
+                <div className={styles.actionButtons}>
+                    <ButtonSecond onClick={handleClear}>Clear All</ButtonSecond>
                 </div>
             </div>
         </ToolLayout>

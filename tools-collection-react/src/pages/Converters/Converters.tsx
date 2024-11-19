@@ -1,6 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { dataToolsByCategory } from '../../assets/data/dataToolsByCategory';
+import { dataPagesDescription } from '../../assets/data/dataPagesDescription';
 import MetaTags from '../../components/common/MetaTags/MetaTags';
+import CategoryBlock from '../../components/common/CategoryBlock/CategoryBlock';
+import DescriptionBlock from '../../components/common/DescriptionBlock/DescriptionBlock';
+import DescriptionHeader from '../../components/common/DescriptionBlock/components/DescriptionHeader/DescriptionHeader';
+import DescriptionTools from '../../components/common/DescriptionBlock/components/DescriptionAvailableTools/DescriptionTools';
+import DescriptionWhyChoose from '../../components/common/DescriptionBlock/components/DescriptionWhyChoose/DescriptionWhyChoose';
+
+const currentPage = 'converter';
+const PageDescription = dataPagesDescription[currentPage];
+const category = 'converter';
+const toolsByCategory = dataToolsByCategory;
 
 const Converters: React.FC = () => {
     return (
@@ -26,12 +38,23 @@ const Converters: React.FC = () => {
                 }}
             />
 
-            <div className="category-header">
-                <div className="icon">🔄</div>
-                <h2>Converters</h2>
-            </div>
+            <CategoryBlock category={category} toolsByCategory={toolsByCategory}/>
 
-            <div className="tools-grid">
+            <DescriptionBlock>
+                <DescriptionHeader
+                    title={PageDescription.title}
+                    description={PageDescription.description}
+                />
+
+                <DescriptionTools category={category}/>
+
+                <DescriptionWhyChoose 
+                    whyChooseList={PageDescription.whyChooseList}
+                    whyChooseTitle={PageDescription.whyChooseTitle}
+                />
+            </DescriptionBlock>
+
+            {/* <div className="tools-grid">
                 <Link to="/converters/unit-converter" className="tool-card">
                     <div className="tool-icon">📏</div>
                     <div className="tool-info">
@@ -82,10 +105,9 @@ const Converters: React.FC = () => {
                     </div>
                     <span className="status-badge">Coming Soon</span>
                 </div>
-            </div>
+            </div>  */}
 
-
-            <div className="tool-description">
+            {/* <div className="tool-description">
                 <h2>Universal Conversion Tools for Every Need</h2>
                 <p>
                     Our comprehensive suite of conversion tools helps you quickly and accurately convert between different units,
@@ -126,7 +148,7 @@ const Converters: React.FC = () => {
                         <li><strong>Data Unit Converter:</strong> Convert between bytes, kilobytes, megabytes, and more</li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

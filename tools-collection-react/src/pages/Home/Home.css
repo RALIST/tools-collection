@@ -1,12 +1,12 @@
 .home {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
     animation: fadeIn 0.3s ease-out;
 }
 
 /* Existing Category Row Styles */
-.category-row {
+/* .category-row {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -16,14 +16,14 @@
     box-shadow: var(--card-shadow);
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
-}
+} */
 
-.category-header h2 {
+/* .category-header h2 {
     font-size: 1.8rem;
     margin: 0;
     color: var(--text-color);
     transition: color 0.3s ease;
-}
+} */
 
 .tools-list {
     display: grid;
@@ -31,7 +31,7 @@
     gap: 1.5rem;
 }
 
-.tool-item {
+/* .tool-item {
     display: flex;
     align-items: flex-start;
     gap: 1rem;
@@ -125,10 +125,10 @@
     font-size: 0.8rem;
     font-weight: 500;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
+} */
 
 /* Dark Mode Styles */
-[data-theme='dark'] .tool-item {
+/* [data-theme='dark'] .tool-item {
     background-color: var(--card-background);
     border-color: var(--border-color);
 }
@@ -141,16 +141,16 @@
 [data-theme='dark'] .status-badge {
     background-color: var(--primary-dark);
     color: var(--text-color);
-}
+} */
 
 [data-theme='dark'] .category-detail {
     background: linear-gradient(to right, rgba(144, 202, 249, 0.05), rgba(144, 202, 249, 0.02));
 }
 
-[data-theme='dark'] .features-overview {
+/* [data-theme='dark'] .features-overview {
     background: var(--card-background);
     border-color: var(--border-color);
-}
+} */
 
 /* Accessibility */
 .skip-link {
@@ -186,7 +186,7 @@
         font-size: 1.1rem;
     }
 
-    .tools-overview h2 {
+    /* .tools-overview h2 {
         font-size: 1.6rem;
     }
 
@@ -196,9 +196,9 @@
 
     .category-detail p {
         font-size: 1rem;
-    }
+    } */
 
-    .features-overview {
+    /* .features-overview {
         padding: 1.5rem;
     }
 
@@ -208,13 +208,13 @@
 
     .features-overview li {
         font-size: 1rem;
-    }
+    } */
 
-    .category-row {
+    /* .category-row {
         padding: 1.5rem;
-    }
+    } */
 
-    .category-header {
+    /* .category-header {
         padding-bottom: 0.75rem;
     }
 
@@ -224,7 +224,7 @@
 
     .category-header h2 {
         font-size: 1.5rem;
-    }
+    } */
 
     .tools-list {
         grid-template-columns: 1fr;
@@ -235,17 +235,17 @@
         padding: 1.25rem;
     }
 
-    .tool-icon {
+    /* .tool-icon {
         font-size: 1.75rem;
-    }
+    } */
 
-    .tool-info h3 {
+    /* .tool-info h3 {
         font-size: 1.1rem;
     }
 
     .tool-info p {
         font-size: 0.9rem;
-    }
+    } */
 }
 
 @media (max-width: 480px) {
@@ -257,29 +257,29 @@
         font-size: 1.75rem;
     }
 
-    .category-header {
+    /* .category-header {
         flex-direction: column;
         text-align: center;
         gap: 0.75rem;
-    }
+    } */
 
-    .tool-icon {
+    /* .tool-icon {
         width: 36px;
         height: 36px;
         font-size: 1.1rem;
-    }
+    } */
 
-    .tool-info h3 {
+    /* .tool-info h3 {
         font-size: 1rem;
     }
 
     .tool-info p {
         font-size: 0.85rem;
-    }
+    } */
 
-    .features-overview ul {
+    /* .features-overview ul {
         grid-template-columns: 1fr;
-    }
+    } */
 }
 
 /* High contrast mode support */

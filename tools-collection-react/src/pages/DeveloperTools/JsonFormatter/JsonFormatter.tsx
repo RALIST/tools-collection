@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import './JsonFormatter.css';
-import MetaTags from '../../../components/common/MetaTags/MetaTags';
+
+// import MetaTags from '../../../components/common/MetaTags/MetaTags';
+import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
+import ButtonSecond from '../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond';
+import Select from '../../../components/common/UI/Select/Select';
+import Checkbox from '../../../components/common/UI/Checkbox/Checkbox';
+import Textarea from '../../../components/common/UI/Textarea/Textarea';
+
+import styles from "./JsonFormatter.module.css";
 
 const JsonFormatter: React.FC = () => {
     const [input, setInput] = useState<string>('');
@@ -8,6 +15,12 @@ const JsonFormatter: React.FC = () => {
     const [indentSize, setIndentSize] = useState<number>(2);
     const [sortKeys, setSortKeys] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
+
+    const optionsList = [
+        {value: 2, name: '2 spaces'},
+        {value: 4, name: '4 spaces'},
+        {value: 8, name: '8 spaces'}
+    ];
 
     useEffect(() => {
         if (input.trim()) {
@@ -112,119 +125,110 @@ const JsonFormatter: React.FC = () => {
     };
 
     return (
-        <div className="json-formatter">
-            <MetaTags
-                title="JSON Formatter and Validator"
-                description="Free online JSON formatter, validator and beautifier with advanced features. Format JSON with custom indentation, sort keys, minify JSON data, and validate JSON syntax instantly."
-                keywords="json formatter, json validator, json beautifier, format json, pretty print json, json tools, json parser, minify json, json lint, json editor"
-                structuredData={{
-                    "@context": "https://schema.org",
-                    "@type": "SoftwareApplication",
-                    "name": "JSON Formatter and Validator",
-                    "description": "Online tool to format, validate, and beautify JSON data with customizable indentation and key sorting options.",
-                    "url": window.location.href,
-                    "applicationCategory": "DeveloperApplication",
-                    "operatingSystem": "Any",
-                    "permissions": "browser",
-                    "offers": {
-                        "@type": "Offer",
-                        "price": "0",
-                        "priceCurrency": "USD"
-                    }
-                }}
-            />
+        <div className={styles.jsonFormatter}>
+            <ToolLayout 
+                title='JSON Formatter'
+                description=''
+            >
+                {/* <MetaTags
+                    title="JSON Formatter and Validator"
+                    description="Free online JSON formatter, validator and beautifier with advanced features. Format JSON with custom indentation, sort keys, minify JSON data, and validate JSON syntax instantly."
+                    keywords="json formatter, json validator, json beautifier, format json, pretty print json, json tools, json parser, minify json, json lint, json editor"
+                    structuredData={{
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": "JSON Formatter and Validator",
+                        "description": "Online tool to format, validate, and beautify JSON data with customizable indentation and key sorting options.",
+                        "url": window.location.href,
+                        "applicationCategory": "DeveloperApplication",
+                        "operatingSystem": "Any",
+                        "permissions": "browser",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        }
+                    }}
+                /> */}
+            
+                <div className={styles.controls}>
+                    <div className={styles.controlGroup}>
+                        <label htmlFor="indent-size">Indent Size:</label>
+                        <Select
+                            id="indent-size"
+                            value={indentSize}
+                            onChange={(e) => setIndentSize(Number(e.target.value))}
+                            optionsList={optionsList}
+                        />
+                    </div>
 
-            <h1>JSON Formatter</h1>
-
-            <div className="controls">
-                <div className="control-group">
-                    <label htmlFor="indent-size">Indent Size:</label>
-                    <select
-                        id="indent-size"
-                        value={indentSize}
-                        onChange={(e) => setIndentSize(Number(e.target.value))}
-                    >
-                        <option value="2">2 spaces</option>
-                        <option value="4">4 spaces</option>
-                        <option value="8">8 spaces</option>
-                    </select>
-                </div>
-
-                <div className="control-group">
-                    <label htmlFor="sort-keys">
-                        <input
-                            type="checkbox"
-                            id="sort-keys"
+                    <div className={styles.controlGroup}>
+                        <Checkbox 
                             checked={sortKeys}
                             onChange={(e) => setSortKeys(e.target.checked)}
+                            label='Sort Keys'
                         />
-                        Sort Keys
-                    </label>
+                    </div>
+
+                    <div className={styles.actionButtons}>
+                        <ButtonSecond
+                            onClick={handleFormat}
+                            aria-label="Format JSON"
+                        >
+                            Format
+                        </ButtonSecond>
+                        <ButtonSecond
+                            onClick={handleMinify}
+                            aria-label="Minify JSON"
+                        >
+                            Minify
+                        </ButtonSecond>
+                        <ButtonSecond
+                            onClick={handleValidate}
+                            aria-label="Validate JSON"
+                        >
+                            Validate
+                        </ButtonSecond>
+                        <ButtonSecond
+                            onClick={handleCopy}
+                            aria-label="Copy JSON"
+                        >
+                            Copy
+                        </ButtonSecond>
+                    </div>
                 </div>
 
-                <div className="action-buttons">
-                    <button
-                        className="action-button"
-                        onClick={handleFormat}
-                        aria-label="Format JSON"
-                    >
-                        Format
-                    </button>
-                    <button
-                        className="action-button"
-                        onClick={handleMinify}
-                        aria-label="Minify JSON"
-                    >
-                        Minify
-                    </button>
-                    <button
-                        className="action-button"
-                        onClick={handleValidate}
-                        aria-label="Validate JSON"
-                    >
-                        Validate
-                    </button>
-                    <button
-                        className="action-button"
-                        onClick={handleCopy}
-                        aria-label="Copy JSON"
-                    >
-                        Copy
-                    </button>
-                </div>
-            </div>
+                <div className={styles.editorContainer}>
+                    <div className={styles.editorSection}>
+                        <h3>Input JSON</h3>
+                        <Textarea
+                            value={input}
+                            onChange={(e) => {
+                                setInput(e.target.value);
+                                setError('');
+                            }}
+                            rows={16}
+                            placeholder="Enter or paste your JSON"
+                            spellCheck={false}
+                            ariaLabel="Input JSON"
+                        />
+                    </div>
 
-            <div className="editor-container">
-                <div className="editor-section">
-                    <h3>Input JSON</h3>
-                    <textarea
-                        className="editor"
-                        value={input}
-                        onChange={(e) => {
-                            setInput(e.target.value);
-                            setError('');
-                        }}
-                        placeholder="Enter or paste your JSON"
-                        spellCheck={false}
-                        aria-label="Input JSON"
-                    />
+                    <div className={styles.editorSection}>
+                        <h3>Formatted JSON</h3>
+                        <Textarea
+                            value={output}
+                            rows={16}
+                            readOnly
+                            placeholder="Formatted JSON will appear here"
+                            spellCheck={false}
+                            aria-label="Formatted JSON output"
+                        />
+                    </div>
                 </div>
 
-                <div className="editor-section">
-                    <h3>Formatted JSON</h3>
-                    <textarea
-                        className="editor readonly"
-                        value={output}
-                        readOnly
-                        placeholder="Formatted JSON will appear here"
-                        spellCheck={false}
-                        aria-label="Formatted JSON output"
-                    />
-                </div>
-            </div>
-
-            {error && <div className="error-message" role="alert">{error}</div>}
-
+                {error && <div className={styles.errorMessage} role="alert">{error}</div>}
+            </ToolLayout>
 
             <div className="tool-description">
                 <h2>Format, Validate, and Beautify JSON Data</h2>

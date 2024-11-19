@@ -88,7 +88,11 @@ body {
 }
 
 .main-content {
+  display: flex;
   flex: 1;
+  flex-direction: column;
+  gap: 2rem;
+
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -118,9 +122,9 @@ a:hover {
 }
 
 /* Form Elements */
-input,
-textarea,
-select {
+/* select,  */
+/* textarea, */
+/* input {
   background-color: var(--input-background);
   color: var(--text-color);
   border: 1px solid var(--border-color);
@@ -128,17 +132,17 @@ select {
   padding: 0.75rem;
   font-size: 0.95rem;
   transition: all 0.3s ease;
-}
+} */
 
-input:focus,
-textarea:focus,
-select:focus {
+/* select:focus, */
+/* textarea:focus, */
+/* input:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
-}
+} */
 
-button {
+/* button {
   background-color: var(--primary-color);
   color: var(--button-text);
   border: none;
@@ -157,7 +161,7 @@ button:hover {
 
 button:active {
   transform: translateY(0);
-}
+} */
 
 /* Code Elements */
 pre,
@@ -200,7 +204,7 @@ code {
 /* Responsive Design */
 @media (max-width: 768px) {
   .main-content {
-    padding: 1rem;
+    padding: 2rem 1rem 1rem;
   }
 
   h1 {

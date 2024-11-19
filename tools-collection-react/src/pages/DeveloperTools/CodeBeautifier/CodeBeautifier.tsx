@@ -1,7 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
+
 import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
-import './CodeBeautifier.css';
+import ButtonMain from '../../../components/common/UI/Buttons/ButtonMain/ButtonMain';
+import ButtonSecond from '../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond';
+import Select from '../../../components/common/UI/Select/Select';
+import Textarea from '../../../components/common/UI/Textarea/Textarea';
+
+import styles from "./CodeBeautifier.module.css";
 
 type CodeType = 'javascript' | 'css' | 'html' | 'json';
 
@@ -10,6 +16,12 @@ const CodeBeautifier: React.FC = () => {
     const [output, setOutput] = useState('');
     const [codeType, setCodeType] = useState<CodeType>('javascript');
     const [indentSize, setIndentSize] = useState(2);
+
+    const optionsList = [
+        {value: 2, name: '2 spaces'},
+        {value: 4, name: '4 spaces'},
+        {value: 8, name: '8 spaces'}
+    ];
 
     const beautifyJavaScript = (code: string, indent: number): string => {
         try {
@@ -166,83 +178,80 @@ const CodeBeautifier: React.FC = () => {
             title="Code Beautifier"
             description="Format and beautify code with proper indentation."
         >
-            <div className="code-beautifier">
-                <div className="controls">
-                    <div className="code-type-selector">
-                        <button
-                            className={codeType === 'javascript' ? 'active' : ''}
+            <div className={styles.codeBeautifier}>
+                <div className={styles.controls}>
+                    <div className={styles.codeTypeSelector}>
+                        <ButtonMain
+                            active={codeType === 'javascript'}
                             onClick={() => setCodeType('javascript')}
                         >
                             JavaScript
-                        </button>
-                        <button
-                            className={codeType === 'css' ? 'active' : ''}
+                        </ButtonMain>
+                        <ButtonMain
+                            active={codeType === 'css'}
                             onClick={() => setCodeType('css')}
                         >
                             CSS
-                        </button>
-                        <button
-                            className={codeType === 'html' ? 'active' : ''}
+                        </ButtonMain>
+                        <ButtonMain
+                            active={codeType === 'html'}
                             onClick={() => setCodeType('html')}
                         >
                             HTML
-                        </button>
-                        <button
-                            className={codeType === 'json' ? 'active' : ''}
+                        </ButtonMain>
+                        <ButtonMain
+                            active={codeType === 'json'}
                             onClick={() => setCodeType('json')}
                         >
                             JSON
-                        </button>
+                        </ButtonMain>
                     </div>
 
-                    <div className="indent-selector">
+                    <div className={styles.indentSelector}>
                         <label>Indent Size:</label>
-                        <select
+                        <Select
                             value={indentSize}
                             onChange={(e) => setIndentSize(Number(e.target.value))}
-                        >
-                            <option value="2">2 spaces</option>
-                            <option value="4">4 spaces</option>
-                            <option value="8">8 spaces</option>
-                        </select>
+                            optionsList={optionsList}
+                        />
                     </div>
                 </div>
 
-                <div className="text-areas">
-                    <div className="text-area-container">
+                <div className={styles.textAreas}>
+                    <div className={styles.textAreaContainer}>
                         <label>Input Code</label>
-                        <textarea
+                        <Textarea
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             placeholder={`Enter your ${codeType.toUpperCase()} code here...`}
                             rows={12}
                         />
-                        <div className="button-group">
-                            <button onClick={handlePaste}>Paste</button>
-                            <button onClick={() => handleCopy(input)}>Copy</button>
+                        <div className={styles.buttonGroup}>
+                            <ButtonSecond onClick={handlePaste} size='small'>Paste</ButtonSecond>
+                            <ButtonSecond onClick={() => handleCopy(input)} size='small'>Copy</ButtonSecond>
                         </div>
                     </div>
 
-                    <div className="beautify-buttons">
-                        <button onClick={beautifyCode}>Beautify →</button>
+                    <div className={styles.beautifyButtons}>
+                        <ButtonMain onClick={beautifyCode} active>Beautify →</ButtonMain>
                     </div>
 
-                    <div className="text-area-container">
+                    <div className={styles.textAreaContainer}>
                         <label>Beautified Code</label>
-                        <textarea
+                        <Textarea
                             value={output}
                             readOnly
                             placeholder="Beautified code will appear here..."
                             rows={12}
                         />
-                        <div className="button-group">
-                            <button onClick={() => handleCopy(output)}>Copy</button>
+                        <div className={styles.buttonGroup}>
+                            <ButtonSecond onClick={() => handleCopy(output)} size='small'>Copy</ButtonSecond>
                         </div>
                     </div>
                 </div>
 
-                <div className="action-buttons">
-                    <button onClick={handleClear}>Clear All</button>
+                <div className={styles.actionButtons}>
+                    <ButtonSecond onClick={handleClear}>Clear All</ButtonSecond>
                 </div>
             </div>
         </ToolLayout>

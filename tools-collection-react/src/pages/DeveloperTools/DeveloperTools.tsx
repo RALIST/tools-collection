@@ -1,6 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { dataToolsByCategory } from '../../assets/data/dataToolsByCategory';
+import { dataPagesDescription } from '../../assets/data/dataPagesDescription';
 import MetaTags from '../../components/common/MetaTags/MetaTags';
+import CategoryBlock from '../../components/common/CategoryBlock/CategoryBlock';
+import DescriptionBlock from '../../components/common/DescriptionBlock/DescriptionBlock';
+import DescriptionHeader from '../../components/common/DescriptionBlock/components/DescriptionHeader/DescriptionHeader';
+import DescriptionTools from '../../components/common/DescriptionBlock/components/DescriptionAvailableTools/DescriptionTools';
+import DescriptionWhyChoose from '../../components/common/DescriptionBlock/components/DescriptionWhyChoose/DescriptionWhyChoose';
+
+
+const currentPage = 'developer';
+const PageDescription = dataPagesDescription[currentPage];
+const category = 'developer';
+const toolsByCategory = dataToolsByCategory;
 
 const DeveloperTools: React.FC = () => {
     return (
@@ -26,13 +39,23 @@ const DeveloperTools: React.FC = () => {
                 }}
             />
 
-            <div className="category-header">
-                <div className="icon">💻</div>
-                <h2>Developer Tools</h2>
-            </div>
+            <CategoryBlock category={category} toolsByCategory={toolsByCategory}/>
 
+            <DescriptionBlock>
+                <DescriptionHeader
+                    title={PageDescription.title}
+                    description={PageDescription.description}
+                />
 
-            <div className="tools-grid">
+                <DescriptionTools category={category}/>
+
+                <DescriptionWhyChoose 
+                    whyChooseList={PageDescription.whyChooseList}
+                    whyChooseTitle={PageDescription.whyChooseTitle}
+                />
+            </DescriptionBlock>
+
+            {/* <div className="tools-grid">
                 <Link to="/developer-tools/json-formatter" className="tool-card">
                     <div className="tool-icon">{'{ }'}</div>
                     <div className="tool-info">
@@ -81,9 +104,9 @@ const DeveloperTools: React.FC = () => {
                     </div>
                     <span className="status-badge">Coming Soon</span>
                 </div>
-            </div>
+            </div>  */}
 
-            <div className="tool-description">
+            {/* <div className="tool-description">
                 <h2>Essential Tools for Modern Development</h2>
                 <p>
                     Our collection of developer tools is designed to streamline your development workflow and boost productivity.
@@ -161,7 +184,7 @@ const DeveloperTools: React.FC = () => {
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

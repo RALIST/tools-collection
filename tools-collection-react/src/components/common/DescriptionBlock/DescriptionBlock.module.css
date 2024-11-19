@@ -1,0 +1,34 @@
+.toolDescription {
+    max-width: 800px;
+    padding: 2.5rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    font-size: 1.1rem;
+    line-height: 1.6;
+
+    transition: all 0.3s ease;
+}
+
+[data-theme='dark'] .toolDescription {
+    background: var(--card-background);
+    border-color: var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .toolDescription {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .toolDescription {
+        padding: 1.25rem;
+    }
+}

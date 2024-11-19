@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
-import './PercentageCalculator.css';
-import MetaTags from '../../../components/common/MetaTags/MetaTags';
+
+// import MetaTags from '../../../components/common/MetaTags/MetaTags';
+import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
+import ButtonMain from '../../../components/common/UI/Buttons/ButtonMain/ButtonMain';
+import Select from '../../../components/common/UI/Select/Select';
+import Input from '../../../components/common/UI/Input/Input';
+
+import styles from "./PercentageCalculator.module.css";
 
 type CalculationType = 'basic' | 'increase' | 'ratio' | 'change';
 
@@ -10,6 +16,13 @@ const PercentageCalculator: React.FC = () => {
     const [number2, setNumber2] = useState<string>('');
     const [result, setResult] = useState<string>('');
     const [error, setError] = useState<string>('');
+
+    const optionsList = [
+        {value: 'basic', name: 'Basic Percentage'},
+        {value: 'increase', name: 'Percentage Change'},
+        {value: 'ratio', name: 'Percentage Ratio'},
+        {value: 'change', name: 'Calculate Change'}
+    ];
 
     const validateInputs = (inputs: string[]): boolean => {
         for (const input of inputs) {
@@ -102,8 +115,13 @@ const PercentageCalculator: React.FC = () => {
     const labels = getInputLabels();
 
     return (
-        <div className="percentage-calculator">
-            <MetaTags
+        <div className={styles.percentageCalculator}>
+        <ToolLayout 
+            title="Percentage Calculator"
+            description="Free online percentage calculator. Calculate percentages, percentage changes, ratios, and more with this easy-to-use tool."
+            keywords="percentage calculator, percent calculator, percentage increase calculator, percentage decrease calculator, percentage change calculator, calculate ratio, math tools"
+        >
+            {/* <MetaTags
                 title="Percentage Calculator"
                 description="Free online percentage calculator. Calculate percentages, percentage changes, ratios, and more with this easy-to-use tool."
                 keywords="percentage calculator, percent calculator, percentage increase calculator, percentage decrease calculator, percentage change calculator, calculate ratio, math tools"
@@ -122,14 +140,12 @@ const PercentageCalculator: React.FC = () => {
                         "priceCurrency": "USD"
                     }
                 }}
-            />
+            /> */}
 
-            <h1>Percentage Calculator</h1>
-
-            <div className="calculator-container">
-                <div className="calculation-type">
+            <div className={styles.container}>
+                <div className={styles.calculationType}>
                     <label htmlFor="calc-type">Calculation Type:</label>
-                    <select
+                    <Select 
                         id="calc-type"
                         value={calculationType}
                         onChange={(e) => {
@@ -137,18 +153,14 @@ const PercentageCalculator: React.FC = () => {
                             setResult('');
                             setError('');
                         }}
-                    >
-                        <option value="basic">Basic Percentage</option>
-                        <option value="increase">Percentage Change</option>
-                        <option value="ratio">Percentage Ratio</option>
-                        <option value="change">Calculate Change</option>
-                    </select>
+                        optionsList={optionsList}
+                    />
                 </div>
 
-                <div className="input-group">
-                    <div className="input-field">
+                <div className={styles.inputGroup}>
+                    <div className={styles.inputField}>
                         <label htmlFor="number1">{labels[0]}:</label>
-                        <input
+                        <Input
                             type="number"
                             id="number1"
                             value={number1}
@@ -160,9 +172,9 @@ const PercentageCalculator: React.FC = () => {
                         />
                     </div>
 
-                    <div className="input-field">
+                    <div className={styles.inputField}>
                         <label htmlFor="number2">{labels[1]}:</label>
-                        <input
+                        <Input
                             type="number"
                             id="number2"
                             value={number2}
@@ -175,28 +187,30 @@ const PercentageCalculator: React.FC = () => {
                     </div>
                 </div>
 
-                <button
-                    className="calculate-button"
+                <ButtonMain
                     onClick={calculate}
-                    aria-label="Calculate percentage"
+                    ariaLabel="Calculate percentage"
+                    active
                 >
                     Calculate
-                </button>
+                </ButtonMain>
+                
 
                 {result && (
-                    <div className="result" role="status">
+                    <div className={styles.result} role="status">
                         {result}
                     </div>
                 )}
 
                 {error && (
-                    <div className="error-message" role="alert">
+                    <div className={styles.errorMessage} role="alert">
                         {error}
                     </div>
                 )}
             </div>
+        </ToolLayout>
 
-            <div className="tool-description">
+        <div className="tool-description">
                 <h2>Calculate Percentages and Ratios</h2>
                 <p>
                     A versatile percentage calculator that helps you solve various percentage-related calculations.

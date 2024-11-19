@@ -1,0 +1,170 @@
+.toolCard {
+    min-height: 112px; /* 7rem */
+    background: linear-gradient(to right, rgba(33, 150, 243, 0.05), rgba(33, 150, 243, 0.02));
+    padding: 1.25rem;
+    border-radius: var(--border-radius);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-color);
+    border: 1px solid rgba(33, 150, 243, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.toolCard:hover {
+    background: linear-gradient(to right, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05));
+    transform: translateY(-4px) translateX(2px);
+    box-shadow: var(--hover-shadow);
+    border-color: rgba(33, 150, 243, 0.2);
+}
+
+.toolCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--primary-light));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.toolCard:hover::before {
+    opacity: 1;
+}
+
+.toolIcon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, white, #f8f9fa);
+    border-radius: 12px;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.toolCard:hover .toolIcon {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 4px 8px rgba(33, 150, 243, 0.2);
+}
+
+.toolInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.toolInfo h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.3s ease;
+}
+
+.toolInfo p {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.statusBadge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
+    border-radius: 1rem;
+    margin-left: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(33, 150, 243, 0.2);
+    flex-shrink: 0;
+}
+
+.comingSoon {
+    position: relative;
+
+    opacity: 0.7;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+
+/* Dark Mode Styles */
+[data-theme='dark'] .toolCard {
+    background: linear-gradient(to right, rgba(33, 150, 243, 0.05), rgba(33, 150, 243, 0.02));
+    border-color: var(--border-color);
+}
+
+[data-theme='dark'] .toolIcon {
+    background: linear-gradient(135deg, var(--card-background), var(--input-background));
+    color: var(--primary-color);
+}
+
+[data-theme='dark'] .toolCard:hover .toolIcon {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: var(--button-text);
+}
+
+[data-theme='dark'] .statusBadge {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--button-text);
+}
+
+
+@media (max-width: 768px) {
+    .toolCard {
+        padding: 1rem;
+    }
+
+    .toolIcon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .toolInfo h2 {
+        font-size: 1.1rem;
+    }
+
+    .toolInfo p {
+        font-size: 0.9rem;
+    }
+
+    .statusBadge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    } 
+}
+
+@media (max-width: 480px) {
+    .toolIcon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.1rem;
+    }
+
+    .toolInfo h2 {
+        font-size: 1rem;
+    }
+
+    .toolInfo p {
+        font-size: 0.85rem;
+    }
+}
