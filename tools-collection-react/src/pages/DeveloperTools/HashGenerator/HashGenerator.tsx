@@ -94,8 +94,7 @@ const HashGenerator: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Hash Generator"
-            description="Generate various types of hash values from text input."
+            toolName='hashGenerator'
         >
             <div className={styles.hashGenerator}>
                 <div className={styles.codeTypeSelector}>

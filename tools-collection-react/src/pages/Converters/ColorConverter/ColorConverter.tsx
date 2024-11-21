@@ -250,8 +250,7 @@ const ColorConverter: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Color Converter"
-            description="Convert between different color formats (HEX, RGB, HSL, HSV, CMYK)."
+            toolName='colorConverter'
         >
             <div className={styles.converter}>
                 <div className={styles.formatSelector}>

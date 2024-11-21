@@ -52,9 +52,8 @@ const PasswordGenerator: React.FC = () => {
     };
 
     return (
-        <ToolLayout 
-            title='Password Generator'
-            description=''
+        <ToolLayout
+            toolName='passwordGenerator'
         >
             <div className={styles.controls}>
                 <label>

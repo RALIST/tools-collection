@@ -261,8 +261,7 @@ const TimeConverter: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Time Converter"
-            description="Convert between different time formats and timezones."
+            toolName='timeConverter'
         >
             <div className={styles.timeConverter}>
                 <TimeSection

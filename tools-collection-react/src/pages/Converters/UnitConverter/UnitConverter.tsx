@@ -220,8 +220,7 @@ const UnitConverter: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Unit Converter"
-            description="Convert between different units of measurement."
+            toolName='unitConverter'
         >
             <div className={styles.unitConverter}>
                 <div className={styles.categorySelector}>

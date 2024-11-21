@@ -136,8 +136,7 @@ const CodeMinifier: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Code Minifier"
-            description="Minify JavaScript, CSS, and HTML code to reduce file size."
+            toolName='codeMinifier'
         >
             <div className={styles.codeMinifier}>
                 <div className={styles.codeTypeSelector}>

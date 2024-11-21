@@ -77,9 +77,8 @@ const LoremGenerator: React.FC = () => {
     };
 
     return (
-        <ToolLayout 
-            title='Lorem Ipsum Generator'
-            description='Generate placeholder text for your designs and layouts.'
+        <ToolLayout
+            toolName='loremIpsumGenerator'
         >
             <div className={styles.options}>
                 <div className={styles.optionGroup}>

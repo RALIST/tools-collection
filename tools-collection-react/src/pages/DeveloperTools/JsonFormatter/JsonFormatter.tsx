@@ -126,9 +126,8 @@ const JsonFormatter: React.FC = () => {
 
     return (
         <div className={styles.jsonFormatter}>
-            <ToolLayout 
-                title='JSON Formatter'
-                description=''
+            <ToolLayout
+                toolName='jsonFormatter'
             >
                 {/* <MetaTags
                     title="JSON Formatter and Validator"

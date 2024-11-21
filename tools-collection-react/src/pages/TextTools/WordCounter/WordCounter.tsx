@@ -74,8 +74,7 @@ const WordCounter: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Word Counter"
-            description="Count words, characters, sentences, and estimate reading time."
+            toolName='wordCounte'
         >
             <div className={styles.wordCounter}>
                 <div className={styles.statsGrid}>

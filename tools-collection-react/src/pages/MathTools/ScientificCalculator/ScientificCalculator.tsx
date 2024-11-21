@@ -12,7 +12,7 @@ interface HistoryEntry {
     expression: string;
     result: string;
     timestamp: Date;
-}
+};
 
 const ScientificCalculator: React.FC = () => {
     const [display, setDisplay] = useState<string>('0');
@@ -30,7 +30,7 @@ const ScientificCalculator: React.FC = () => {
             return;
         } else {
             setDisplay(display + num);
-        }
+        };
     };
 
     const handleOperation = (op: Operation) => {
@@ -168,9 +168,8 @@ const ScientificCalculator: React.FC = () => {
     }, [handleKeyboard]);
 
     return (
-        <ToolLayout 
-            title='Scientific Calculator'
-            description=''
+        <ToolLayout
+            toolName='scientificCalculator'
         >
             {/* <MetaTags
                 title="Scientific Calculator - Free Online Calculator"

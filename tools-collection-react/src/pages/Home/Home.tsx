@@ -10,7 +10,7 @@ import DescriptionHeader from '../../components/common/DescriptionBlock/componen
 import DescriptionCategories from '../../components/common/DescriptionBlock/components/DescriptionCategories/DescriptionCategories';
 import DescriptionWhyChoose from '../../components/common/DescriptionBlock/components/DescriptionWhyChoose/DescriptionWhyChoose';
 
-import './Home.css';
+import styles from "./Home.module.css";
 
 const currentPage = 'home';
 const PageDescription = dataPagesDescription[currentPage];
@@ -18,7 +18,7 @@ const toolsByCategory = dataToolsByCategory;
 
 const Home: React.FC = () => {
     return (
-        <div className="home">
+        <div className={styles.root}>
             <MetaTags
                 title="Free Online Tools Collection - Text, Developer, Math, Conversion & Generator Tools"
                 description="Comprehensive collection of free online tools for developers and users. Features text manipulation, JSON formatting, mathematical calculations, code beautification, unit conversion, password generation, and more. All tools are free, easy to use, and work directly in your browser."

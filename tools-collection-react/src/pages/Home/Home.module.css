@@ -1,0 +1,13 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+
+@media (max-width: 768px) {
+    .root {
+        gap: 2rem;
+    }
+}

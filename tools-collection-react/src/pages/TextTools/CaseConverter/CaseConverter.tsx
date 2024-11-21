@@ -77,8 +77,7 @@ const CaseConverter: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Text Case Converter"
-            description="Convert text between UPPERCASE, lowercase, Title Case, and Sentence case formats."
+            toolName='caseConverter'
         >
             <div className={styles.caseConverter}>
                 <div className={styles.buttonGroup}>

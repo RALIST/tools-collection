@@ -97,8 +97,7 @@ const RegexTester: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Regex Tester"
-            description="Test and debug regular expressions with real-time matching."
+            toolName='regexTester'
         >
             <div className={styles.regexTester}>
                 <div className={styles.patternSection}>

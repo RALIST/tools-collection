@@ -142,8 +142,7 @@ const StringEncoder: React.FC = () => {
 
     return (
         <ToolLayout
-            title="String Encoder"
-            description="Encode and decode text using various methods like Base64, URL encoding, and HTML entities."
+            toolName='stringEncoder'
         >
             <div className={styles.stringEncoder}>
                 <div className={styles.encodingMethods}>

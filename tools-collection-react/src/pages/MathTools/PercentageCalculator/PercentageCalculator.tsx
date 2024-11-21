@@ -116,10 +116,8 @@ const PercentageCalculator: React.FC = () => {
 
     return (
         <div className={styles.percentageCalculator}>
-        <ToolLayout 
-            title="Percentage Calculator"
-            description="Free online percentage calculator. Calculate percentages, percentage changes, ratios, and more with this easy-to-use tool."
-            keywords="percentage calculator, percent calculator, percentage increase calculator, percentage decrease calculator, percentage change calculator, calculate ratio, math tools"
+        <ToolLayout
+            toolName='percentageCalculator'
         >
             {/* <MetaTags
                 title="Percentage Calculator"
@@ -210,7 +208,7 @@ const PercentageCalculator: React.FC = () => {
             </div>
         </ToolLayout>
 
-        <div className="tool-description">
+        {/* <div className="tool-description">
                 <h2>Calculate Percentages and Ratios</h2>
                 <p>
                     A versatile percentage calculator that helps you solve various percentage-related calculations.
@@ -227,8 +225,8 @@ const PercentageCalculator: React.FC = () => {
                         <li><strong>Change Calculator:</strong> Calculate the percentage change between two numbers</li>
                     </ul>
                 </div>
-            </div>
-        </div>
+            </div> */}
+    </div>
     );
 };
 

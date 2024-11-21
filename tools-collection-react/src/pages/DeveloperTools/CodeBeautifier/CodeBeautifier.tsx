@@ -175,8 +175,7 @@ const CodeBeautifier: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Code Beautifier"
-            description="Format and beautify code with proper indentation."
+            toolName='codeBeautifier'
         >
             <div className={styles.codeBeautifier}>
                 <div className={styles.controls}>

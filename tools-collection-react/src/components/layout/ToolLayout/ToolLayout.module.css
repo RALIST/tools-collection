@@ -1,0 +1,36 @@
+.toolLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.tool {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.toolContent {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--card-shadow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+@media (max-width: 768px) {
+    .tool {
+        gap: 1.5rem;
+    }
+    .toolContent {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .toolContent {
+        padding: 1rem;
+    }
+}

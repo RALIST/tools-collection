@@ -1,27 +1,27 @@
 import React from 'react';
+
+import { ToolName } from '../../../types/tools';
+import { dataToolsDescription } from '../../../assets/data/dataToolsDescription';
 import MetaTags from '../../common/MetaTags/MetaTags';
-import './ToolLayout.css';
 import ToolHeader from './components/ToolHeader/ToolHeader';
+import ToolDescription from './components/ToolDescription/ToolDescription';
+
+import styles from "./ToolLayout.module.css";
 
 interface ToolLayoutProps {
-    title: string;
-    description: string;
-    keywords?: string;
+    toolName: ToolName;
     children: React.ReactNode;
 }
 
-const ToolLayout: React.FC<ToolLayoutProps> = ({
-    title,
-    description,
-    keywords,
-    children
-}) => {
+const ToolLayout: React.FC<ToolLayoutProps> = ({ toolName, children }) => {
+    const toolDescription = dataToolsDescription[toolName];
+
     const canonicalUrl = `https://usefulonlinetools.com${window.location.pathname}`;
     const structuredData = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": title,
-        "description": description,
+        "name": toolDescription.title,
+        "description": toolDescription.description,
         "url": canonicalUrl,
         "applicationCategory": "WebApplication",
         "operatingSystem": "All",
@@ -34,20 +34,24 @@ const ToolLayout: React.FC<ToolLayoutProps> = ({
     };
 
     return (
-        <div className="tool-layout">
-            <MetaTags
-                title={title}
-                description={description}
-                keywords={keywords}
-                canonicalUrl={canonicalUrl}
-                structuredData={structuredData}
-            />
-            
-            <ToolHeader title={title} description={description} />
+        <div className={styles.toolLayout}>
+            <div className={styles.tool}>
+                <MetaTags
+                    title={toolDescription.title}
+                    description={toolDescription.description}
+                    keywords={toolDescription.keywords}
+                    canonicalUrl={canonicalUrl}
+                    structuredData={structuredData}
+                />
+                
+                <ToolHeader title={toolDescription.title} description={toolDescription.description} />
 
-            <div className="tool-content">
-                {children}
+                <div className={styles.toolContent}>
+                    {children}
+                </div>
             </div>
+
+            <ToolDescription tool={toolDescription}/>
         </div>
     );
 };

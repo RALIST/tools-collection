@@ -97,8 +97,8 @@ export const dataToolsByCategory: Record<ToolCategory, Tool[]> = {
             path: '/converters/unit-converter'
         },
         {
-            id: 'color-picker',
-            name: 'Color Picker',
+            id: 'color-converter',
+            name: 'Color Converter',
             description: 'Pick and convert colors',
             detailedDescription: 'Transform colors between different formats including HEX (#RRGGBB), RGB (Red, Green, Blue), and HSL (Hue, Saturation, Lightness). Essential for web developers and designers working with different color systems.',
             icon: '🎨',
