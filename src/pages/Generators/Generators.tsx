@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { dataToolsByCategory } from '../../assets/data/dataToolsByCategory';
 import { dataPagesDescription } from '../../assets/data/dataPagesDescription';
+import { dataCategoryInfo } from '../../assets/data/dataCategoryInfo';
+import { changeFavicon } from '../../utils/changeFavicon';
 import MetaTags from '../../components/common/MetaTags/MetaTags';
 import CategoryBlock from '../../components/common/CategoryBlock/CategoryBlock';
 import DescriptionBlock from '../../components/common/DescriptionBlock/DescriptionBlock';
@@ -13,8 +15,13 @@ const currentPage = 'generator';
 const PageDescription = dataPagesDescription[currentPage];
 const category = 'generator';
 const toolsByCategory = dataToolsByCategory;
+const pageIcon  = dataCategoryInfo[category].icon;
 
 const Generators: React.FC = () => {
+    useEffect(() => {
+        changeFavicon(pageIcon);
+    }, []);
+
     return (
         <div className="tools">
             <MetaTags

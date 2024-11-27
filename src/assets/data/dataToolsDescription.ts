@@ -6,6 +6,7 @@ import { ToolName, ToolsDescriptionTool } from "../../types/tools";
     // title: '',
     // description: '',
     // keywords: '',
+    // favicon: '',  
     // about: {
     //     title: '',
     //     description: '',
@@ -35,6 +36,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Text Case Converter',
         description: 'Convert text between UPPERCASE, lowercase, Title Case, and Sentence case formats.',
         keywords: '',
+        favicon: 'Aa',                    
         about: {
             title: 'About Text Case Converter',
             description: 'Our Text Case Converter is a powerful tool that helps you quickly transform your text into different cases:',
@@ -73,6 +75,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Word Counter',
         description: 'Count words, characters, sentences, and estimate reading time.',
         keywords: '',
+        favicon: '123',
         about: {
             title: 'About Word & Character Counter',
             description: 'Our Word & Character Counter is a comprehensive text analysis tool that provides detailed statistics about your text:',
@@ -100,6 +103,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'String Encoder',
         description: 'Encode and decode text using various methods like Base64, URL encoding, and HTML entities.',
         keywords: '',
+        favicon: '{}',
         about: {
             title: 'About String Encoder/Decoder',
             description: 'Our String Encoder/Decoder tool supports multiple encoding methods commonly used in web development and data handling:',
@@ -127,6 +131,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'JSON Formatter',
         description: 'Format, minify, and validate your JSON data. Perfect for debugging and cleaning up JSON data from various sources.',
         keywords: '',
+        favicon: '{}',
         about: {
             title: 'About JSON Formatter & Validator',
             description: 'Our JSON tool provides several essential functions for working with JSON data:',
@@ -165,6 +170,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Code Minifier',
         description: 'Minify JavaScript, CSS, and HTML code to reduce file size.',
         keywords: '',
+        favicon: '📦',
         about: {
             title: 'About Code Minifier',
             description: 'Our Code Minifier tool helps optimize your web assets by:',
@@ -195,6 +201,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Regex Tester',
         description: 'Test and debug regular expressions with real-time matching.',
         keywords: '',
+        favicon: '.*',
         about: {
             title: 'About Regex Tester',
             description: 'Our Regex Tester provides these essential features:',
@@ -230,6 +237,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Code Beautifier',
         description: 'Format and beautify code with proper indentation.',
         keywords: '',
+        favicon: '🎨',
         about: {
             title: 'About Code Beautifier',
             description: 'Our Code Beautifier tool helps improve code readability by:',
@@ -260,6 +268,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Hash Generator',
         description: 'Generate various types of hash values from text input.',
         keywords: '',
+        favicon: '#',
         about: {
             title: 'About Hash Generator',
             description: 'Our Hash Generator tool supports multiple hash algorithms:',
@@ -293,6 +302,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Unit Converter',
         description: 'Convert between different units of measurement.',
         keywords: '',
+        favicon: '📏',
         about: {
             title: 'About Unit Converter',
             description: 'Our Unit Converter tool supports various measurement types and units:',
@@ -317,6 +327,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Color Converter',
         description: 'Convert between different color formats (HEX, RGB, HSL, HSV, CMYK).',
         keywords: '',
+        favicon: '🎨',
         about: {
             title: 'About Color Picker',
             description: 'Our Color Picker tool supports multiple color formats commonly used in design and development:',
@@ -341,6 +352,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Time Converter',
         description: 'Convert between different time formats and timezones.',
         keywords: '',
+        favicon: '',
         about: null,
         useCases: null,
         FAQ: null
@@ -352,6 +364,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Password Generator',
         description: 'Generate secure, random passwords with customizable options. Perfect for creating strong passwords for your accounts.',
         keywords: '',
+        favicon: '🔐',
         about: {
             title: 'About Password Generator',
             description: 'Our Password Generator creates strong, random passwords with these customizable options:',
@@ -392,6 +405,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Lorem Ipsum Generator',
         description: 'Generate placeholder text for your designs and layouts.',
         keywords: '',
+        favicon: '📝',
         about: {
             title: 'About Lorem Ipsum Generator',
             description: 'Our Lorem Ipsum Generator creates placeholder text with these customizable options:',
@@ -429,6 +443,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Percentage Calculator',
         description: 'Free online percentage calculator. Calculate percentages, percentage changes, ratios, and more with this easy-to-use tool.',
         keywords: 'percentage calculator, percent calculator, percentage increase calculator, percentage decrease calculator, percentage change calculator, calculate ratio, math tools',
+        favicon: '%',
         about: null,
         useCases: null,
         FAQ: null,
@@ -437,6 +452,7 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         title: 'Scientific Calculator',
         description: '',
         keywords: '',
+        favicon: '🧮',
         about: null,
         useCases: null,
         FAQ: null,

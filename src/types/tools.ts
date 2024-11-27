@@ -122,6 +122,7 @@ export interface ToolsDescriptionTool {
     title: string;
     description: string;
     keywords: string;
+    favicon: string;
     about: ToolsDescriptionAbout | null;
     useCases: ToolsDescriptionUseCases | null;
     FAQ: ToolsDescriptionFAQ | null;

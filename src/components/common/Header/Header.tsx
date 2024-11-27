@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import { Link, useLocation } from 'react-router-dom';
+import { changeFavicon } from '../../../utils/changeFavicon';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import './Header.css';
+
 
 const Header: React.FC = () => {
     const location = useLocation();
@@ -9,6 +12,10 @@ const Header: React.FC = () => {
     const isActive = (path: string) => {
         return location.pathname === path || location.pathname.startsWith(`${path}/`);
     };
+
+    useEffect(() => {
+        changeFavicon();
+    }, [location]);
 
     return (
         <header className="header">
