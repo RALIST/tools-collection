@@ -1,6 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { dataToolsByCategory } from '../../assets/data/dataToolsByCategory';
+import { dataPagesDescription } from '../../assets/data/dataPagesDescription';
 import MetaTags from '../../components/common/MetaTags/MetaTags';
+import CategoryBlock from '../../components/common/CategoryBlock/CategoryBlock';
+import DescriptionBlock from '../../components/common/DescriptionBlock/DescriptionBlock';
+import DescriptionHeader from '../../components/common/DescriptionBlock/components/DescriptionHeader/DescriptionHeader';
+import DescriptionTools from '../../components/common/DescriptionBlock/components/DescriptionAvailableTools/DescriptionTools';
+import DescriptionWhyChoose from '../../components/common/DescriptionBlock/components/DescriptionWhyChoose/DescriptionWhyChoose';
+
+const currentPage = 'math';
+const PageDescription = dataPagesDescription[currentPage];
+const category = 'math';
+const toolsByCategory = dataToolsByCategory;
 
 const MathTools: React.FC = () => {
     return (
@@ -26,17 +38,23 @@ const MathTools: React.FC = () => {
                 }}
             />
 
-            <div className="category-header">
-                <div className="icon">🧮</div>
-                <h2>Math Tools</h2>
-            </div>
+            <CategoryBlock category={category} toolsByCategory={toolsByCategory}/>
 
-            <p>
-                A collection of mathematical tools and calculators designed to help you with various calculations.
-                From basic percentage calculations to complex mathematical operations, these tools make math easier and more accessible.
-            </p>
+            <DescriptionBlock>
+                <DescriptionHeader
+                    title={PageDescription.title}
+                    description={PageDescription.description}
+                />
 
-            <div className="tools-grid">
+                <DescriptionTools category={category}/>
+
+                <DescriptionWhyChoose 
+                    whyChooseList={PageDescription.whyChooseList}
+                    whyChooseTitle={PageDescription.whyChooseTitle}
+                />
+            </DescriptionBlock>
+
+            {/* <div className="tools-grid">
                 <Link to="/math-tools/percentage-calculator" className="tool-card">
                     <div className="tool-icon">%</div>
                     <div className="tool-info">
@@ -79,9 +97,9 @@ const MathTools: React.FC = () => {
                     </div>
                     <span className="status-badge">Coming Soon</span>
                 </div>
-            </div>
+            </div> */}
 
-            <div className="tool-description">
+            {/* <div className="tool-description">
                 <div className="features-overview">
                     <h2>Why Use Our Math Tools?</h2>
                     <ul>
@@ -113,7 +131,7 @@ const MathTools: React.FC = () => {
                         <li><strong>Number System Converter:</strong> Convert between binary, decimal, and hexadecimal</li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
         </div >
     );
 };

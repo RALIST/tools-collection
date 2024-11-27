@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './PasswordGenerator.css';
+
+import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
+import ButtonMain from '../../../components/common/UI/Buttons/ButtonMain/ButtonMain';
+import ButtonSecond from '../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond';
+import Checkbox from '../../../components/common/UI/Checkbox/Checkbox';
+import Input from '../../../components/common/UI/Input/Input';
+
+import styles from "./PasswordGenerator.module.css";
 
 const PasswordGenerator: React.FC = () => {
     const [length, setLength] = useState<number>(12);
@@ -45,9 +52,10 @@ const PasswordGenerator: React.FC = () => {
     };
 
     return (
-        <div className="password-generator">
-            <h2>Password Generator</h2>
-            <div className="controls">
+        <ToolLayout
+            toolName='passwordGenerator'
+        >
+            <div className={styles.controls}>
                 <label>
                     Length: {length}
                     <input
@@ -58,41 +66,36 @@ const PasswordGenerator: React.FC = () => {
                         onChange={(e) => setLength(parseInt(e.target.value))}
                     />
                 </label>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={useUppercase}
-                        onChange={(e) => setUseUppercase(e.target.checked)}
-                    />
-                    Include Uppercase Letters
-                </label>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={useNumbers}
-                        onChange={(e) => setUseNumbers(e.target.checked)}
-                    />
-                    Include Numbers
-                </label>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={useSymbols}
-                        onChange={(e) => setUseSymbols(e.target.checked)}
-                    />
-                    Include Symbols
-                </label>
-                <button className="generate-btn" onClick={generatePassword}>Generate Password</button>
+
+                <Checkbox 
+                    label='Include Uppercase Letters'
+                    checked={useUppercase}
+                    onChange={(e) => setUseUppercase(e.target.checked)}
+                />
+                <Checkbox 
+                    label='Include Numbers'
+                    checked={useNumbers}
+                    onChange={(e) => setUseNumbers(e.target.checked)}
+                />
+                <Checkbox 
+                    label='Include Symbols'
+                    checked={useSymbols}
+                    onChange={(e) => setUseSymbols(e.target.checked)}
+                />
+
+                <ButtonMain onClick={generatePassword} active>Generate Password</ButtonMain>
             </div>
-            <div className="result">
-                <input
+
+            <div className={styles.result}>
+                <Input
                     type="text"
                     value={password}
                     readOnly
                 />
-                <button className="copy-btn" onClick={copyPassword}>Copy</button>
+
+                <ButtonSecond onClick={copyPassword}>Copy</ButtonSecond>
             </div>
-        </div>
+        </ToolLayout>
     );
 };
 

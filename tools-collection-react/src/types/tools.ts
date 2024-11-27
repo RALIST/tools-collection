@@ -9,6 +9,7 @@ export interface Tool {
     id: string;
     name: string;
     description: string;
+    detailedDescription: string;
     icon: string;
     category: ToolCategory;
     status: ToolStatus;
@@ -63,3 +64,65 @@ export interface Theme {
     text: string;
     border: string;
 }
+
+
+// dataToolsDescription Types
+
+export type ToolName = 
+    // Text Tools
+    'caseConverter' |
+    'wordCounte' |
+    'stringEncoder' |
+
+    // Developer Tools
+    'jsonFormatter' |
+    'codeMinifier' |
+    'regexTester' |
+    'codeBeautifier' |
+    'hashGenerator' |
+
+    // Converter Tools
+    'unitConverter' |
+    'colorConverter' |
+    'timeConverter' |
+
+    // Generator Tools
+    'passwordGenerator' |
+    'loremIpsumGenerator' |
+
+    // Math Tools
+    'percentageCalculator' |
+    'scientificCalculator'
+;
+
+interface AboutInfoItem {
+    title: string;
+    description: string;
+};
+
+interface FAQItem {
+    question: string;
+    answer: string;
+};
+
+export interface ToolsDescriptionAbout {
+    title: string;
+    description: string;
+    info: AboutInfoItem[];
+};
+
+export interface ToolsDescriptionUseCases {
+    title: string;
+    cases: string[];
+};
+
+export type ToolsDescriptionFAQ = FAQItem[];
+
+export interface ToolsDescriptionTool {
+    title: string;
+    description: string;
+    keywords: string;
+    about: ToolsDescriptionAbout | null;
+    useCases: ToolsDescriptionUseCases | null;
+    FAQ: ToolsDescriptionFAQ | null;
+};

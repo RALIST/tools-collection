@@ -1,0 +1,92 @@
+.percentageCalculator {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calculationType {
+    margin-bottom: 2rem;
+}
+
+.calculationType label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.inputGroup {
+    display: grid;
+    grid-template-columns: repeat(autoFit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.inputField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inputField label {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.result {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: linear-gradient(to right, rgba(33, 150, 243, 0.1), rgba(33, 150, 243, 0.05));
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    font-size: 1.2rem;
+    text-align: center;
+    border: 1px solid rgba(33, 150, 243, 0.2);
+
+    animation: open 500ms;
+}
+
+.errorMessage {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: rgba(244, 67, 54, 0.1);
+    border: 1px solid rgba(244, 67, 54, 0.3);
+    border-radius: var(--border-radius);
+    color: #f44336;
+    text-align: center;
+
+    animation: open 500ms;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .percentageCalculator {
+        padding: 1rem;
+    }
+
+    .inputGroup {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .result {
+        font-size: 1.1rem;
+        padding: 1rem;
+    }
+}
+
+@keyframes open {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

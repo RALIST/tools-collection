@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import MetaTags from '../../../components/common/MetaTags/MetaTags';
-import './ScientificCalculator.css';
+
+// import MetaTags from '../../../components/common/MetaTags/MetaTags';
+import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
+
+import styles from "./ScientificCalculator.module.css";
 
 type Operation = '+' | '-' | '*' | '/' | '^' | 'sqrt' | 'sin' | 'cos' | 'tan' | 'log' | 'ln';
 type MemoryOperation = 'MC' | 'MR' | 'M+' | 'M-' | 'MS';
@@ -9,7 +12,7 @@ interface HistoryEntry {
     expression: string;
     result: string;
     timestamp: Date;
-}
+};
 
 const ScientificCalculator: React.FC = () => {
     const [display, setDisplay] = useState<string>('0');
@@ -27,7 +30,7 @@ const ScientificCalculator: React.FC = () => {
             return;
         } else {
             setDisplay(display + num);
-        }
+        };
     };
 
     const handleOperation = (op: Operation) => {
@@ -165,8 +168,10 @@ const ScientificCalculator: React.FC = () => {
     }, [handleKeyboard]);
 
     return (
-        <div className="scientific-calculator">
-            <MetaTags
+        <ToolLayout
+            toolName='scientificCalculator'
+        >
+            {/* <MetaTags
                 title="Scientific Calculator - Free Online Calculator"
                 description="Free online scientific calculator with advanced mathematical functions, memory operations, and calculation history. Perfect for students, engineers, and professionals."
                 keywords="scientific calculator, online calculator, math calculator, trigonometry calculator, logarithm calculator, engineering calculator"
@@ -185,18 +190,16 @@ const ScientificCalculator: React.FC = () => {
                         "priceCurrency": "USD"
                     }
                 }}
-            />
+            /> */}
 
-            <h1>Scientific Calculator</h1>
-
-            <div className="calculator-container">
-                <div className="display-section">
-                    <div className="expression">{expression}</div>
-                    <div className="display">{display}</div>
-                    {error && <div className="error">{error}</div>}
+            <div className={styles.calculatorContainer}>
+                <div className={styles.displaySection}>
+                    <div className={styles.expression}>{expression}</div>
+                    <div className={styles.display}>{display}</div>
+                    {error && <div className={styles.error}>{error}</div>}
                 </div>
 
-                <div className="memory-section">
+                <div className={styles.memorySection}>
                     <button onClick={() => handleMemory('MC')}>MC</button>
                     <button onClick={() => handleMemory('MR')}>MR</button>
                     <button onClick={() => handleMemory('M+')}>M+</button>
@@ -204,7 +207,7 @@ const ScientificCalculator: React.FC = () => {
                     <button onClick={() => handleMemory('MS')}>MS</button>
                 </div>
 
-                <div className="scientific-section">
+                <div className={styles.scientificSection}>
                     <button onClick={() => handleOperation('sqrt')}>√</button>
                     <button onClick={() => handleOperation('sin')}>sin</button>
                     <button onClick={() => handleOperation('cos')}>cos</button>
@@ -214,7 +217,7 @@ const ScientificCalculator: React.FC = () => {
                     <button onClick={() => handleOperation('^')}>x^y</button>
                 </div>
 
-                <div className="keypad">
+                <div className={styles.keypad}>
                     <button onClick={() => handleNumber('7')}>7</button>
                     <button onClick={() => handleNumber('8')}>8</button>
                     <button onClick={() => handleNumber('9')}>9</button>
@@ -236,7 +239,7 @@ const ScientificCalculator: React.FC = () => {
                     <button onClick={() => handleOperation('+')}>+</button>
                 </div>
 
-                <div className="control-section">
+                <div className={styles.controlSection}>
                     <button onClick={clearDisplay}>C</button>
                     <button onClick={() => setShowHistory(!showHistory)}>
                         {showHistory ? 'Hide History' : 'Show History'}
@@ -244,7 +247,7 @@ const ScientificCalculator: React.FC = () => {
                 </div>
 
                 {showHistory && (
-                    <div className="history-section">
+                    <div className={styles.historySection}>
                         <h3>Calculation History</h3>
                         {history.length === 0 ? (
                             <p>No calculations yet</p>
@@ -263,7 +266,7 @@ const ScientificCalculator: React.FC = () => {
                     </div>
                 )}
             </div>
-        </div>
+        </ToolLayout>
     );
 };
 

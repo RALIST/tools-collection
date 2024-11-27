@@ -1,7 +1,13 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { toast } from 'react-toastify';
+
 import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
-import './RegexTester.css';
+import ButtonMain from '../../../components/common/UI/Buttons/ButtonMain/ButtonMain';
+import ButtonSecond from '../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond';
+import Textarea from '../../../components/common/UI/Textarea/Textarea';
+import Input from '../../../components/common/UI/Input/Input';
+
+import styles from "./RegexTester.module.css";
 
 interface Match {
     text: string;
@@ -91,65 +97,62 @@ const RegexTester: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Regex Tester"
-            description="Test and debug regular expressions with real-time matching."
+            toolName='regexTester'
         >
-            <div className="regex-tester">
-                <div className="pattern-section">
-                    <div className="pattern-input">
-                        <label>Pattern</label>
-                        <div className="input-with-copy">
-                            <input
-                                type="text"
-                                value={pattern}
-                                onChange={(e) => setPattern(e.target.value)}
-                                placeholder="Enter regex pattern..."
-                            />
-                            <button onClick={() => handleCopy(pattern)}>Copy</button>
-                        </div>
+            <div className={styles.regexTester}>
+                <div className={styles.patternSection}>
+                    <div className={styles.patternInput}>
+                        <label>Pattern:</label>
+                        <Input
+                            type="text"
+                            value={pattern}
+                            onChange={(e) => setPattern(e.target.value)}
+                            placeholder="Enter regex pattern..."
+                        />
+                        <ButtonSecond onClick={() => handleCopy(pattern)}>Copy</ButtonSecond>
                     </div>
 
-                    <div className="flags-section">
+                    <div className={styles.flagsSection}>
                         <label>Flags:</label>
-                        <div className="flag-buttons">
-                            <button
-                                className={flags.includes('g') ? 'active' : ''}
+                        <div className={styles.flagButtons}>
+                            <ButtonMain
+                                active={flags.includes('g')}
                                 onClick={() => toggleFlag('g')}
                                 title="Global search"
                             >
                                 g
-                            </button>
-                            <button
-                                className={flags.includes('i') ? 'active' : ''}
+                            </ButtonMain>
+                            <ButtonMain
+                                active={flags.includes('i')}
                                 onClick={() => toggleFlag('i')}
                                 title="Case-insensitive search"
                             >
                                 i
-                            </button>
-                            <button
-                                className={flags.includes('m') ? 'active' : ''}
+                            </ButtonMain>
+                            <ButtonMain
+                                active={flags.includes('m')}
                                 onClick={() => toggleFlag('m')}
                                 title="Multiline search"
                             >
                                 m
-                            </button>
-                            <button
-                                className={flags.includes('s') ? 'active' : ''}
+                            </ButtonMain>
+                            <ButtonMain
+                                active={flags.includes('s')}
                                 onClick={() => toggleFlag('s')}
                                 title="Allows . to match newline characters"
                             >
                                 s
-                            </button>
+                            </ButtonMain>
                         </div>
                     </div>
                 </div>
 
-                {error && <div className="error-message">{error}</div>}
+                {error && <div className={styles.errorMessage}>{error}</div>}
 
-                <div className="test-section">
-                    <div className="test-input">
+                <div className={styles.testSection}>
+                    <div className={styles.testInput}>
                         <label>Test Text</label>
-                        <textarea
+                        <Textarea
                             value={testText}
                             onChange={(e) => setTestText(e.target.value)}
                             placeholder="Enter text to test against..."
@@ -157,22 +160,22 @@ const RegexTester: React.FC = () => {
                         />
                     </div>
 
-                    <div className="matches-section">
+                    <div className={styles.matchesSection}>
                         <label>Matches ({matches.length})</label>
-                        <div className="matches-list">
+                        <div className={styles.matchesList}>
                             {matches.length > 0 ? (
                                 matches.map((match, index) => (
-                                    <div key={index} className="match-item">
-                                        <div className="match-header">
+                                    <div key={index} className={styles.matchItem}>
+                                        <div className={styles.matchHeader}>
                                             <span>Match {index + 1}</span>
                                             <span>Index: {match.index}</span>
                                         </div>
-                                        <div className="match-text">
+                                        <div className={styles.matchText}>
                                             <span>Text: </span>
                                             <code>{match.text}</code>
                                         </div>
                                         {match.groups.length > 0 && (
-                                            <div className="match-groups">
+                                            <div className={styles.matchGroups}>
                                                 <span>Groups:</span>
                                                 {match.groups.map((group, groupIndex) => (
                                                     <div key={groupIndex} className="group-item">
@@ -185,7 +188,7 @@ const RegexTester: React.FC = () => {
                                     </div>
                                 ))
                             ) : (
-                                <div className="no-matches">
+                                <div className={styles.noMatches}>
                                     {pattern ? 'No matches found' : 'Enter a pattern to start matching'}
                                 </div>
                             )}
@@ -193,8 +196,8 @@ const RegexTester: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="action-buttons">
-                    <button onClick={handleClear}>Clear All</button>
+                <div className={styles.actionButtons}>
+                    <ButtonSecond onClick={handleClear}>Clear All</ButtonSecond>
                 </div>
             </div>
         </ToolLayout>

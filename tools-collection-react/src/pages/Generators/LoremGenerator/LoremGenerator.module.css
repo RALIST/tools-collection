@@ -1,0 +1,96 @@
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+}
+
+.optionGroup {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.optionGroup label {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.output {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    animation: open 500ms
+}
+
+.outputText {
+    padding: 1.5rem;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    min-height: 200px;
+    white-space: pre-wrap;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.output button {
+   margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .options {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .optionGroup {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .optionGroup select,
+    .optionGroup input[type="number"] {
+        width: 100%;
+    }
+
+    .outputText {
+        font-size: 0.95rem;
+        padding: 1rem;
+    }
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+    .options,
+    .outputText {
+        border: 2px solid CanvasText;
+    }
+
+    .optionGroup select,
+    .optionGroup input[type="number"] {
+        border: 1px solid CanvasText;
+    }
+}
+
+@keyframes open {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

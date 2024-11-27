@@ -1,7 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
+
 import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
-import './UnitConverter.css';
+
+import styles from "./UnitConverter.module.css";
+import ButtonMain from '../../../components/common/UI/Buttons/ButtonMain/ButtonMain';
+import Select from '../../../components/common/UI/Select/Select';
+import Input from '../../../components/common/UI/Input/Input';
 
 type UnitCategory = 'length' | 'mass' | 'temperature' | 'volume' | 'area';
 
@@ -171,6 +176,10 @@ const UnitConverter: React.FC = () => {
     const [fromValue, setFromValue] = useState<string>('');
     const [toValue, setToValue] = useState<string>('');
 
+    const optionsList = Object.entries(unitCategories[category]).map(([key, unit]) => {
+        return {value: key, name: unit.name}
+    })
+
     const handleConversion = useCallback((value: string, from: string, to: string) => {
         if (!value || isNaN(Number(value))) {
             setToValue('');
@@ -211,38 +220,34 @@ const UnitConverter: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Unit Converter"
-            description="Convert between different units of measurement."
+            toolName='unitConverter'
         >
-            <div className="unit-converter">
-                <div className="category-selector">
+            <div className={styles.unitConverter}>
+                <div className={styles.categorySelector}>
                     {Object.keys(unitCategories).map((cat) => (
-                        <button
+                        <ButtonMain
                             key={cat}
-                            className={category === cat ? 'active' : ''}
+                            active={category === cat}
                             onClick={() => handleCategoryChange(cat as UnitCategory)}
                         >
                             {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                        </button>
+                        </ButtonMain>
                     ))}
                 </div>
 
-                <div className="conversion-section">
-                    <div className="unit-input">
-                        <select
+                <div className={styles.conversionSection}>
+                    <div className={styles.unitInput}>
+                        <Select
+                            id='UnitConverterSelect1'
                             value={fromUnit}
                             onChange={(e) => {
                                 setFromUnit(e.target.value);
                                 handleConversion(fromValue, e.target.value, toUnit);
                             }}
-                        >
-                            {Object.entries(unitCategories[category]).map(([key, unit]) => (
-                                <option key={key} value={key}>
-                                    {unit.name}
-                                </option>
-                            ))}
-                        </select>
-                        <input
+                            optionsList={optionsList}
+                        />
+                        <Input
+                            id='UnitConverterInput1'
                             type="number"
                             value={fromValue}
                             onChange={(e) => handleFromValueChange(e.target.value)}
@@ -250,25 +255,22 @@ const UnitConverter: React.FC = () => {
                         />
                     </div>
 
-                    <button className="swap-button" onClick={handleSwapUnits}>
+                    <button className={styles.swapButton} onClick={handleSwapUnits}>
                         ⇄
                     </button>
 
-                    <div className="unit-input">
-                        <select
+                    <div className={styles.unitInput}>
+                        <Select
+                            id='UnitConverterSelect2'
                             value={toUnit}
                             onChange={(e) => {
                                 setToUnit(e.target.value);
                                 handleConversion(fromValue, fromUnit, e.target.value);
                             }}
-                        >
-                            {Object.entries(unitCategories[category]).map(([key, unit]) => (
-                                <option key={key} value={key}>
-                                    {unit.name}
-                                </option>
-                            ))}
-                        </select>
-                        <input
+                            optionsList={optionsList}
+                        />
+                        <Input
+                            id='UnitConverterInput2'
                             type="number"
                             value={toValue}
                             readOnly
@@ -277,7 +279,7 @@ const UnitConverter: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="formula-display">
+                <div className={styles.formulaDisplay}>
                     {fromValue && toValue && (
                         <p>
                             {fromValue} {unitCategories[category][fromUnit].name} = {toValue}{' '}

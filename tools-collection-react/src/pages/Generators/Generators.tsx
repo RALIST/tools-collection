@@ -1,6 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { dataToolsByCategory } from '../../assets/data/dataToolsByCategory';
+import { dataPagesDescription } from '../../assets/data/dataPagesDescription';
 import MetaTags from '../../components/common/MetaTags/MetaTags';
+import CategoryBlock from '../../components/common/CategoryBlock/CategoryBlock';
+import DescriptionBlock from '../../components/common/DescriptionBlock/DescriptionBlock';
+import DescriptionHeader from '../../components/common/DescriptionBlock/components/DescriptionHeader/DescriptionHeader';
+import DescriptionTools from '../../components/common/DescriptionBlock/components/DescriptionAvailableTools/DescriptionTools';
+import DescriptionWhyChoose from '../../components/common/DescriptionBlock/components/DescriptionWhyChoose/DescriptionWhyChoose';
+
+const currentPage = 'generator';
+const PageDescription = dataPagesDescription[currentPage];
+const category = 'generator';
+const toolsByCategory = dataToolsByCategory;
 
 const Generators: React.FC = () => {
     return (
@@ -26,12 +38,23 @@ const Generators: React.FC = () => {
                 }}
             />
 
-            <div className="category-header">
-                <div className="icon">⚡</div>
-                <h2>Generators</h2>
-            </div>
+            <CategoryBlock category={category} toolsByCategory={toolsByCategory}/>
 
-            <div className="tools-grid">
+            <DescriptionBlock>
+                <DescriptionHeader
+                    title={PageDescription.title}
+                    description={PageDescription.description}
+                />
+
+                <DescriptionTools category={category}/>
+
+                <DescriptionWhyChoose 
+                    whyChooseList={PageDescription.whyChooseList}
+                    whyChooseTitle={PageDescription.whyChooseTitle}
+                />
+            </DescriptionBlock>
+
+            {/* <div className="tools-grid">
                 <Link to="/generators/password-generator" className="tool-card">
                     <div className="tool-icon">🔒</div>
                     <div className="tool-info">
@@ -83,9 +106,9 @@ const Generators: React.FC = () => {
                     </div>
                     <span className="status-badge">Coming Soon</span>
                 </div>
-            </div>
+            </div> */}
 
-            <div className="tool-description">
+            {/* <div className="tool-description">
                 <h2>Powerful Generation Tools for Developers and Creators</h2>
                 <p>
                     Our collection of generator tools helps you create various types of content and data quickly and efficiently.
@@ -158,7 +181,7 @@ const Generators: React.FC = () => {
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

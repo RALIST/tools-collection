@@ -1,7 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
+
 import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
-import './HashGenerator.css';
+import ButtonMain from '../../../components/common/UI/Buttons/ButtonMain/ButtonMain';
+import ButtonSecond from '../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond';
+import Textarea from '../../../components/common/UI/Textarea/Textarea';
+
+import styles from "./HashGenerator.module.css";
 
 type HashType = 'md5' | 'sha1' | 'sha256' | 'sha512';
 
@@ -89,76 +94,75 @@ const HashGenerator: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Hash Generator"
-            description="Generate various types of hash values from text input."
+            toolName='hashGenerator'
         >
-            <div className="hash-generator">
-                <div className="hash-type-selector">
-                    <button
-                        className={hashType === 'md5' ? 'active' : ''}
+            <div className={styles.hashGenerator}>
+                <div className={styles.codeTypeSelector}>
+                    <ButtonMain
+                        active={hashType === 'md5'}
                         onClick={() => setHashType('md5')}
                         title="Not recommended for security purposes"
                     >
                         MD5
-                    </button>
-                    <button
-                        className={hashType === 'sha1' ? 'active' : ''}
+                    </ButtonMain>
+                    <ButtonMain
+                        active={hashType === 'sha1'}
                         onClick={() => setHashType('sha1')}
                         title="SHA-1 (160 bits)"
                     >
                         SHA-1
-                    </button>
-                    <button
-                        className={hashType === 'sha256' ? 'active' : ''}
+                    </ButtonMain>
+                    <ButtonMain
+                        active={hashType === 'sha256'}
                         onClick={() => setHashType('sha256')}
                         title="SHA-256 (256 bits)"
                     >
                         SHA-256
-                    </button>
-                    <button
-                        className={hashType === 'sha512' ? 'active' : ''}
+                    </ButtonMain>
+                    <ButtonMain
+                        active={hashType === 'sha512'}
                         onClick={() => setHashType('sha512')}
                         title="SHA-512 (512 bits)"
                     >
                         SHA-512
-                    </button>
+                    </ButtonMain>
                 </div>
 
-                <div className="text-areas">
-                    <div className="text-area-container">
+                <div className={styles.textAreas}>
+                    <div className={styles.textAreaContainer}>
                         <label>Input Text</label>
-                        <textarea
+                        <Textarea
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             placeholder="Enter text to hash..."
-                            rows={6}
+                            rows={12}
                         />
-                        <div className="button-group">
-                            <button onClick={handlePaste}>Paste</button>
-                            <button onClick={() => handleCopy(input)}>Copy</button>
+                        <div className={styles.buttonGroup}>
+                            <ButtonSecond onClick={handlePaste} size='small'>Paste</ButtonSecond>
+                            <ButtonSecond onClick={() => handleCopy(input)} size='small'>Copy</ButtonSecond>
                         </div>
                     </div>
 
-                    <div className="hash-buttons">
-                        <button onClick={generateHash}>Generate Hash →</button>
+                    <div className={styles.hashButtons}>
+                        <ButtonMain onClick={generateHash} active>Generate Hash →</ButtonMain>
                     </div>
 
-                    <div className="text-area-container">
+                    <div className={styles.textAreaContainer}>
                         <label>Hash Value</label>
-                        <textarea
+                        <Textarea
                             value={output}
                             readOnly
                             placeholder="Hash value will appear here..."
-                            rows={6}
+                            rows={12}
                         />
-                        <div className="button-group">
-                            <button onClick={() => handleCopy(output)}>Copy</button>
+                        <div className={styles.buttonGroup}>
+                            <ButtonSecond onClick={() => handleCopy(output)} size='small'>Copy</ButtonSecond>
                         </div>
                     </div>
                 </div>
 
-                <div className="action-buttons">
-                    <button onClick={handleClear}>Clear All</button>
+                <div className={styles.actionButtons}>
+                    <ButtonSecond onClick={handleClear}>Clear All</ButtonSecond>
                 </div>
             </div>
         </ToolLayout>

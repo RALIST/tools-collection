@@ -1,0 +1,49 @@
+.textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 1rem;
+
+    background-color: var(--input-background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+
+    line-height: 1.5;
+    /* font-size: 1rem;
+    font-family: inherit; */
+    font-size: 0.95rem;
+    font-family: 'Fira Code', monospace;
+
+    transition: all 0.3s ease;
+    resize: vertical;
+}
+
+.textarea:hover {
+    border-color: var(--primary-color);
+}
+
+.textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.textarea[readOnly] {
+    background-color: var(--code-background);
+    cursor: default;
+}
+
+[data-theme='dark'] .textarea {
+    background-color: var(--input-background);
+    color: var(--text-color);
+}
+
+[data-theme='dark'] .textarea[readOnly] {
+    background-color: var(--code-background);
+}
+
+@media (max-width: 768px) {
+    .textarea {
+        min-height: 150px;
+    }
+}

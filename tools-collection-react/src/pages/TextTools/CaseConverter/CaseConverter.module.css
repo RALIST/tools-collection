@@ -1,0 +1,46 @@
+.caseConverter {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.buttonGroup {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .buttonGroup {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .actionButtons {
+        flex-direction: column;
+    }
+
+    .actionButtons button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .buttonGroup {
+        grid-template-columns: 1fr;
+    }
+
+    .buttonGroup button {
+        padding: 0.875rem;
+        font-size: 0.95rem;
+    }
+
+    .actionButtons button {
+        padding: 0.5rem;
+    }
+}

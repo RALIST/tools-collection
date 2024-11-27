@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+
 import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
-import './WordCounter.css';
+import Textarea from '../../../components/common/UI/Textarea/Textarea';
+import ButtonSecond from '../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond';
+
+import styles from "./WordCounte.module.css";
 
 interface TextStats {
     words: number;
@@ -70,41 +74,42 @@ const WordCounter: React.FC = () => {
 
     return (
         <ToolLayout
-            title="Word Counter"
-            description="Count words, characters, sentences, and estimate reading time."
+            toolName='wordCounte'
         >
-            <div className="word-counter">
-                <div className="stats-grid">
-                    <div className="stat-card">
-                        <div className="stat-value">{stats.words}</div>
-                        <div className="stat-label">Words</div>
+            <div className={styles.wordCounter}>
+                <div className={styles.statsGrid}>
+                    <div className={styles.statCard}>
+                        <div className={styles.statValue}>{stats.words}</div>
+                        <div className={styles.statLabel}>Words</div>
                     </div>
-                    <div className="stat-card">
-                        <div className="stat-value">{stats.characters}</div>
-                        <div className="stat-label">Characters</div>
+                    <div className={styles.statCard}>
+                        <div className={styles.statValue}>{stats.characters}</div>
+                        <div className={styles.statLabel}>Characters</div>
                     </div>
-                    <div className="stat-card">
-                        <div className="stat-value">{stats.sentences}</div>
-                        <div className="stat-label">Sentences</div>
+                    <div className={styles.statCard}>
+                        <div className={styles.statValue}>{stats.sentences}</div>
+                        <div className={styles.statLabel}>Sentences</div>
                     </div>
-                    <div className="stat-card">
-                        <div className="stat-value">{stats.paragraphs}</div>
-                        <div className="stat-label">Paragraphs</div>
+                    <div className={styles.statCard}>
+                        <div className={styles.statValue}>{stats.paragraphs}</div>
+                        <div className={styles.statLabel}>Paragraphs</div>
                     </div>
-                    <div className="stat-card">
-                        <div className="stat-value">{stats.readingTime}</div>
-                        <div className="stat-label">Minutes to Read</div>
+                    <div className={styles.statCard}>
+                        <div className={styles.statValue}>{stats.readingTime}</div>
+                        <div className={styles.statLabel}>Minutes to Read</div>
                     </div>
                 </div>
-                <textarea
+
+                <Textarea 
                     value={text}
                     onChange={handleTextChange}
                     placeholder="Enter or paste your text here..."
                     rows={10}
                 />
-                <div className="action-buttons">
-                    <button onClick={handleCopy}>Copy to Clipboard</button>
-                    <button onClick={handleClear}>Clear Text</button>
+                
+                <div className={styles.actionButtons}>
+                    <ButtonSecond onClick={handleCopy}>Copy to Clipboard</ButtonSecond>
+                    <ButtonSecond onClick={handleClear}>Clear Text</ButtonSecond>
                 </div>
             </div>
         </ToolLayout>
