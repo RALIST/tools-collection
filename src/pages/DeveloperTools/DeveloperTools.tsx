@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { dataToolsByCategory } from '../../assets/data/dataToolsByCategory';
 import { dataPagesDescription } from '../../assets/data/dataPagesDescription';
+import { dataCategoryInfo } from '../../assets/data/dataCategoryInfo';
+import { changeFavicon } from '../../utils/changeFavicon';
 import MetaTags from '../../components/common/MetaTags/MetaTags';
 import CategoryBlock from '../../components/common/CategoryBlock/CategoryBlock';
 import DescriptionBlock from '../../components/common/DescriptionBlock/DescriptionBlock';
@@ -9,13 +11,17 @@ import DescriptionHeader from '../../components/common/DescriptionBlock/componen
 import DescriptionTools from '../../components/common/DescriptionBlock/components/DescriptionAvailableTools/DescriptionTools';
 import DescriptionWhyChoose from '../../components/common/DescriptionBlock/components/DescriptionWhyChoose/DescriptionWhyChoose';
 
-
 const currentPage = 'developer';
 const PageDescription = dataPagesDescription[currentPage];
 const category = 'developer';
 const toolsByCategory = dataToolsByCategory;
+const pageIcon  = dataCategoryInfo[category].icon;
 
 const DeveloperTools: React.FC = () => {
+    useEffect(() => {
+        changeFavicon(pageIcon);
+    }, []);
+
     return (
         <div className="tools">
             <MetaTags
