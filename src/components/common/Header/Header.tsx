@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"; // Add useState
 
 import { NavLink, useLocation } from "react-router-dom"; // Import NavLink instead of Link
+import { FaExternalLinkAlt } from "react-icons/fa"; // Import icon from Font Awesome instead
 import { changeFavicon } from "../../../utils/changeFavicon";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import "./Header.css";
@@ -105,6 +106,25 @@ const Header: React.FC = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Generators
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="https://scrumtools.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.3em",
+                }}
+              >
+                {/* Wrap for alignment */}
+                Scrum tools
+                <FaExternalLinkAlt /> {/* Use the Font Awesome icon */}
+              </span>
             </NavLink>
           </li>
         </ul>

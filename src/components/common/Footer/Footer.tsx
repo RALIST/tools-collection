@@ -46,6 +46,15 @@ const Footer: React.FC = () => {
       {/* Use footer-bottom class and dynamic year */}
       <div className="footer-bottom">
         © {new Date().getFullYear()} Useful Online Tools. All rights reserved.
+        <div>
+          <a
+            href="https://scrumtools.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Free Scrum tools for developers and designers
+          </a>
+        </div>
       </div>
     </footer>
   );
