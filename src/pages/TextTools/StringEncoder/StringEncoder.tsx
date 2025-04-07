@@ -1,202 +1,243 @@
-import React, { useState, useCallback } from 'react';
-import { toast } from 'react-toastify';
+import React, { useState, useCallback } from "react";
+import { toast } from "react-toastify";
 
-import ToolLayout from '../../../components/layout/ToolLayout/ToolLayout';
-import ButtonSecond from '../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond';
+import ToolLayout from "../../../components/layout/ToolLayout/ToolLayout";
+import ButtonSecond from "../../../components/common/UI/Buttons/ButtonSecond/ButtonSecond";
+import ButtonMain from "../../../components/common/UI/Buttons/ButtonMain/ButtonMain";
+import Textarea from "../../../components/common/UI/Textarea/Textarea";
+import Select from "../../../components/common/UI/Select/Select"; // Import Select
 
 import styles from "./StringEncoder.module.css";
-import ButtonMain from '../../../components/common/UI/Buttons/ButtonMain/ButtonMain';
-import Textarea from '../../../components/common/UI/Textarea/Textarea';
 
-type EncodingMethod = 'base64' | 'url' | 'html';
+type EncodingMethod = "base64" | "url" | "html";
+type ActionType = "encode" | "decode";
 
 interface EncodingMethodInfo {
-    id: EncodingMethod;
-    label: string;
-    description: string;
+  value: EncodingMethod; // Use 'value' for Select component
+  name: string; // Use 'name' for Select component
+  description?: string; // Optional description
 }
 
 const encodingMethods: EncodingMethodInfo[] = [
-    {
-        id: 'base64',
-        label: 'Base64',
-        description: 'Convert text to Base64 format'
-    },
-    {
-        id: 'url',
-        label: 'URL Encode',
-        description: 'Encode text for use in URLs'
-    },
-    {
-        id: 'html',
-        label: 'HTML Entities',
-        description: 'Convert special characters to HTML entities'
-    }
+  {
+    value: "base64",
+    name: "Base64",
+    description: "Convert text to Base64 format",
+  },
+  {
+    value: "url",
+    name: "URL Encode / Decode",
+    description: "Encode/decode text for use in URLs",
+  },
+  {
+    value: "html",
+    name: "HTML Entities",
+    description: "Encode/decode special characters as HTML entities",
+  },
 ];
 
 const StringEncoder: React.FC = () => {
-    const [text, setText] = useState('');
-    const [encodedText, setEncodedText] = useState('');
-    const [selectedMethod, setSelectedMethod] = useState<EncodingMethod>('base64');
+  const [inputText, setInputText] = useState(""); // Rename for clarity
+  const [outputText, setOutputText] = useState(""); // Rename for clarity
+  const [selectedMethod, setSelectedMethod] =
+    useState<EncodingMethod>("base64");
+  const [action, setAction] = useState<ActionType>("encode"); // State for encode/decode
 
-    const encodeText = useCallback(() => {
-        if (!text) {
-            toast.error('Please enter some text to encode');
-            return;
+  // Combined processing function
+  const processText = useCallback(() => {
+    // Input text is always the source for encode/decode in this UI setup
+    const textToProcess = inputText;
+    if (!textToProcess.trim()) {
+      toast.error(`Please enter text to ${action}`);
+      return;
+    }
+
+    try {
+      let result = "";
+      if (action === "encode") {
+        switch (selectedMethod) {
+          case "base64":
+            // Ensure correct handling of UTF-8 characters before btoa
+            result = btoa(unescape(encodeURIComponent(textToProcess)));
+            break;
+          case "url":
+            result = encodeURIComponent(textToProcess);
+            break;
+          case "html":
+            result = textToProcess
+              .replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;")
+              .replace(/'/g, "&#039;")
+              .replace(/\//g, "&#x2F;"); // Basic HTML entity encoding
+            break;
+          default:
+            result = textToProcess;
         }
-
-        try {
-            let result = '';
-            switch (selectedMethod) {
-                case 'base64':
-                    result = btoa(unescape(encodeURIComponent(text)));
-                    break;
-                case 'url':
-                    result = encodeURIComponent(text);
-                    break;
-                case 'html':
-                    result = text
-                        .replace(/&/g, '&amp;')
-                        .replace(/</g, '&lt;')
-                        .replace(/>/g, '&gt;')
-                        .replace(/"/g, '&quot;')
-                        .replace(/'/g, '&#039;')
-                        .replace(/\//g, '&#x2F;');
-                    break;
-                default:
-                    result = text;
+        setOutputText(result);
+        toast.success("Text encoded successfully!");
+      } else {
+        // Decode action
+        switch (selectedMethod) {
+          case "base64":
+            try {
+              const binaryString = atob(textToProcess);
+              const bytes = new Uint8Array(binaryString.length);
+              for (let i = 0; i < binaryString.length; i++) {
+                bytes[i] = binaryString.charCodeAt(i);
+              }
+              result = new TextDecoder().decode(bytes);
+            } catch (e) {
+              // Handle potential errors if input is not valid Base64
+              console.error("Base64 decode error:", e);
+              throw new Error("Invalid Base64 input string");
             }
-            setEncodedText(result);
-            toast.success('Text encoded successfully!');
-        } catch (error) {
-            toast.error('Failed to encode text. Please check your input.');
-            console.error('Encoding error:', error);
+            break;
+          case "url":
+            result = decodeURIComponent(textToProcess);
+            break;
+          case "html":
+            // Use DOMParser for robust HTML entity decoding
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(
+              `<!doctype html><body>${textToProcess}`,
+              "text/html"
+            );
+            result = doc.body.textContent || "";
+            break;
+          default:
+            result = textToProcess;
         }
-    }, [text, selectedMethod]);
+        // When decoding, result goes to output; when encoding, result also goes to output
+        setOutputText(result);
+        toast.success("Text decoded successfully!");
+      }
+    } catch (error) {
+      toast.error(`Failed to ${action} text. Please check input/format.`);
+      console.error(`${action} error:`, error);
+    }
+    // outputText is not needed as dependency because it's only ever *set*, not read from, in processText
+  }, [action, inputText, selectedMethod]);
 
-    const decodeText = useCallback(() => {
-        if (!encodedText) {
-            toast.error('Please encode some text first');
-            return;
-        }
+  const handleCopy = async (textToCopy: string, label: string) => {
+    if (!textToCopy) {
+      toast.error(`No ${label} text to copy!`);
+      return;
+    }
 
-        try {
-            let result = '';
-            switch (selectedMethod) {
-                case 'base64':
-                    result = decodeURIComponent(escape(atob(encodedText)));
-                    break;
-                case 'url':
-                    result = decodeURIComponent(encodedText);
-                    break;
-                case 'html':
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(
-                        `<!doctype html><body>${encodedText}`,
-                        'text/html'
-                    );
-                    result = doc.body.textContent || '';
-                    break;
-                default:
-                    result = encodedText;
-            }
-            setText(result);
-            toast.success('Text decoded successfully!');
-        } catch (error) {
-            toast.error('Failed to decode text. Please check your input.');
-            console.error('Decoding error:', error);
-        }
-    }, [encodedText, selectedMethod]);
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+      toast.success(`${label} text copied to clipboard!`);
+    } catch (err) {
+      toast.error(`Failed to copy ${label} text.`);
+      console.error(`Copy ${label} error:`, err);
+    }
+  };
 
-    const handleCopy = async (textToCopy: string) => {
-        if (!textToCopy) {
-            toast.error('No text to copy!');
-            return;
-        }
-
-        try {
-            await navigator.clipboard.writeText(textToCopy);
-            toast.success('Text copied to clipboard!');
-        } catch (err) {
-            toast.error('Failed to copy text. Please try again.');
-            console.error('Copy error:', err);
-        }
-    };
-
-    const handleClear = () => {
-        if (!text && !encodedText) {
-            toast.error('Text areas are already empty!');
-            return;
-        }
-        setText('');
-        setEncodedText('');
-        toast.success('Text cleared!');
-    };
-
-    const handleMethodChange = (method: EncodingMethod) => {
-        setSelectedMethod(method);
-        // Clear the encoded text when changing methods
-        setEncodedText('');
-        toast.info(`Switched to ${encodingMethods.find(m => m.id === method)?.label} encoding`);
-    };
-
-    return (
-        <ToolLayout
-            toolName='stringEncoder'
-        >
-            <div className={styles.stringEncoder}>
-                <div className={styles.encodingMethods}>
-                    {encodingMethods.map((method) => (
-                        <ButtonMain 
-                            key={method.id}
-                            onClick={() => handleMethodChange(method.id)}
-                            active={selectedMethod === method.id}
-                            title={method.description}
-                        >
-                            {method.label}
-                        </ButtonMain>
-                    ))}
-                </div>
-
-                <div className={styles.textAreas}>
-                    <div className={styles.textAreaContainer}>
-                        <label>Original Text</label>
-
-                        <Textarea 
-                            value={text}
-                            onChange={(e) => setText(e.target.value)}
-                            placeholder="Enter text to encode..."
-                            rows={12}
-                        />
-
-                        <ButtonSecond onClick={() => handleCopy(text)} size='small'>Copy</ButtonSecond>
-                    </div>
-
-                    <div className={styles.encodeDecodeButtons}>
-                        <ButtonMain onClick={encodeText} active>Encode →</ButtonMain>
-                        <ButtonMain onClick={decodeText} active>← Decode</ButtonMain>
-                    </div>
-
-                    <div className={styles.textAreaContainer}>
-                        <label>Encoded Text</label>
-
-                        <Textarea 
-                            value={encodedText}
-                            onChange={(e) => setEncodedText(e.target.value)}
-                            placeholder="Encoded text will appear here..."
-                            rows={12}
-                        />
-
-                        <ButtonSecond onClick={() => handleCopy(encodedText)} size='small'>Copy</ButtonSecond>
-                    </div>
-                </div>
-
-                <div className={styles.actionButtons}>
-                    <ButtonSecond onClick={handleClear}>Clear All</ButtonSecond>
-                </div>
+  const handleClear = () => {
+    if (!inputText && !outputText) {
+      toast.error("Text areas are already empty!");
+      return;
+    }
+    setInputText("");
+    setOutputText("");
+    toast.success("Text cleared!");
+  };
+  return (
+    <ToolLayout toolName="stringEncoder">
+      <div className={styles.stringEncoder}>
+        {/* Controls Section */}
+        <div className={styles.controls}>
+          <div className={styles.controlGroup}>
+            <label htmlFor="encoding-select">Method:</label>
+            <Select
+              id="encoding-select"
+              value={selectedMethod}
+              onChange={(e) =>
+                setSelectedMethod(e.target.value as EncodingMethod)
+              }
+              optionsList={encodingMethods}
+              ariaLabel="Select encoding/decoding method"
+            />
+          </div>
+          <div className={styles.controlGroup}>
+            <label>Action:</label>
+            <div className={styles.actionToggle}>
+              <ButtonMain
+                active={action === "encode"}
+                onClick={() => setAction("encode")}
+              >
+                Encode
+              </ButtonMain>
+              <ButtonMain
+                active={action === "decode"}
+                onClick={() => setAction("decode")}
+              >
+                Decode
+              </ButtonMain>
             </div>
-        </ToolLayout>
-    );
-};
+          </div>
+        </div>
 
+        {/* Text Areas */}
+        <div className={styles.textAreas}>
+          <div className={styles.textAreaContainer}>
+            <label>Input Text</label>
+            <Textarea
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              placeholder={
+                action === "encode"
+                  ? "Enter text to encode..."
+                  : "Enter text to decode..."
+              }
+              rows={12}
+            />
+            <div className={styles.buttonGroup}>
+              <ButtonSecond
+                onClick={() => handleCopy(inputText, "Input")}
+                size="small"
+              >
+                Copy Input
+              </ButtonSecond>
+            </div>
+          </div>
+
+          {/* Removed middle buttons */}
+
+          <div className={styles.textAreaContainer}>
+            <label>Output Text</label>
+            <Textarea
+              value={outputText}
+              readOnly // Output is always read-only
+              placeholder={
+                action === "encode"
+                  ? "Encoded text will appear here..."
+                  : "Decoded text will appear here..."
+              }
+              rows={12}
+            />
+            <div className={styles.buttonGroup}>
+              <ButtonSecond
+                onClick={() => handleCopy(outputText, "Output")}
+                size="small"
+              >
+                Copy Output
+              </ButtonSecond>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.actionButtons}>
+          <ButtonMain onClick={processText} active>
+            Process
+          </ButtonMain>
+          <ButtonSecond onClick={handleClear}>Clear All</ButtonSecond>
+        </div>
+      </div>
+    </ToolLayout>
+  );
+};
+// Export the component
 export default StringEncoder;

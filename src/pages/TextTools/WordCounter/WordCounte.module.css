@@ -48,7 +48,7 @@
 
 @media (max-width: 768px) {
     .statsGrid {
-        grid-template-columns: repeat(2, 1fr);
+        /* grid-template-columns: repeat(2, 1fr); */ /* Let auto-fit handle columns */
     }
 
     .statCard {
@@ -77,7 +77,7 @@
 
 @media (max-width: 480px) {
     .statsGrid {
-        grid-template-columns: 1fr;
+        /* grid-template-columns: 1fr; */ /* Let auto-fit handle columns */
     }
 
     .statCard {
