@@ -1,7 +1,7 @@
 .toolDescription {
-    max-width: 800px;
+    /* max-width: 800px; */ /* Removed to allow full width within parent */
     padding: 2.5rem;
-    margin: 0 auto;
+    /* margin: 0 auto; */ /* Removed as centering is handled by parent */
     margin-bottom: 1rem;
 
     background-color: var(--card-background);

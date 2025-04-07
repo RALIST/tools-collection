@@ -1,7 +1,1 @@
-.tools {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+/* .tools class removed as layout is handled by .main-content in App.css */

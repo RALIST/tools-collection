@@ -1,0 +1,93 @@
+.hmacGenerator {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 1.5rem;
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.controlGroup {
+    display: flex;
+    flex-direction: column; /* Stack label and input/select */
+    gap: 0.5rem;
+}
+
+.controlGroup label {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* Ensure Input and Select take full width within the grid column */
+.controlGroup > :global(input),
+.controlGroup > :global(select) {
+    width: 100%;
+}
+
+
+.textAreas {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Side-by-side layout */
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 1rem; /* Add margin */
+}
+
+.textAreaContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--card-background);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.textAreaContainer label {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 0.5rem;
+    align-self: flex-end;
+    margin-top: 0.5rem;
+}
+
+.actionButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 0.5rem; /* Reduce top margin slightly */
+}
+
+[data-theme='dark'] .textAreaContainer,
+[data-theme='dark'] .controls {
+    background-color: var(--input-background);
+}
+
+@media (max-width: 768px) {
+    .textAreas {
+        grid-template-columns: 1fr; /* Stack text areas */
+        gap: 1rem;
+    }
+
+    .actionButtons {
+        flex-direction: column;
+    }
+
+    .actionButtons button {
+        width: 100%;
+    }
+}

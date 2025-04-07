@@ -1,68 +1,123 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from "react"; // Add useState
 
-import { Link, useLocation } from 'react-router-dom';
-import { changeFavicon } from '../../../utils/changeFavicon';
-import ThemeToggle from '../ThemeToggle/ThemeToggle';
-import './Header.css';
-
+import { NavLink, useLocation } from "react-router-dom"; // Import NavLink instead of Link
+import { changeFavicon } from "../../../utils/changeFavicon";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import "./Header.css";
 
 const Header: React.FC = () => {
-    const location = useLocation();
+  const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const isActive = (path: string) => {
-        return location.pathname === path || location.pathname.startsWith(`${path}/`);
-    };
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
-    useEffect(() => {
-        changeFavicon();
-    }, [location]);
+  // Close mobile menu on location change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
 
-    return (
-        <header className="header">
-            <Link to="/" className="logo">
-                <h1>Useful Online Tools</h1>
-            </Link>
-            <p>Text Tools, Developer Tools, Math Tools, Converters, and Generators</p>
+  // Helper function to determine the className for NavLink
+  const getNavLinkClass = ({ isActive }: { isActive: boolean }): string => {
+    return isActive ? "active" : "";
+  };
 
-            <nav className="nav">
-                <ul>
-                    <li>
-                        <Link to="/" className={isActive('/') && !isActive('/text-tools') && !isActive('/developer-tools') && !isActive('/converters') && !isActive('/generators') && !isActive('/math-tools') ? 'active' : ''}>
-                            Home
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/text-tools" className={isActive('/text-tools') ? 'active' : ''}>
-                            Text Tools
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/developer-tools" className={isActive('/developer-tools') ? 'active' : ''}>
-                            Developer Tools
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/math-tools" className={isActive('/math-tools') ? 'active' : ''}>
-                            Math Tools
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/converters" className={isActive('/converters') ? 'active' : ''}>
-                            Converters
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/generators" className={isActive('/generators') ? 'active' : ''}>
-                            Generators
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
-            <div className="theme-toggle-wrapper">
-                <ThemeToggle />
-            </div>
-        </header>
-    );
+  useEffect(() => {
+    changeFavicon();
+  }, [location]);
+
+  return (
+    <header className="header">
+      <NavLink to="/" className="logo">
+        {" "}
+        {/* Use NavLink for logo too if needed, or keep Link */}
+        <h1>Useful Online Tools</h1>
+      </NavLink>
+      <p>Text Tools, Developer Tools, Math Tools, Converters, and Generators</p>
+
+      {/* Hamburger Button - visible only on mobile via CSS */}
+      <button
+        className="hamburger-button"
+        onClick={toggleMobileMenu}
+        aria-label="Toggle menu"
+        aria-expanded={isMobileMenuOpen}
+      >
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+        <span className="hamburger-line"></span>
+      </button>
+
+      {/* Add class based on state */}
+      <nav className={`nav ${isMobileMenuOpen ? "mobile-menu-open" : ""}`}>
+        <ul>
+          <li>
+            {/* Use NavLink with end prop for exact match and className function */}
+            <NavLink
+              to="/"
+              className={getNavLinkClass}
+              end
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/text-tools"
+              className={getNavLinkClass}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Text Tools
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/developer-tools"
+              className={getNavLinkClass}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Developer Tools
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/math-tools"
+              className={getNavLinkClass}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Math Tools
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/converters"
+              className={getNavLinkClass}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Converters
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/generators"
+              className={getNavLinkClass}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Generators
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+      {/* Overlay - visible only when mobile menu is open via CSS */}
+      {isMobileMenuOpen && (
+        <div className="mobile-menu-overlay" onClick={toggleMobileMenu}></div>
+      )}
+      <div className="theme-toggle-wrapper">
+        <ThemeToggle />
+      </div>
+    </header>
+  );
 };
 
 export default Header;

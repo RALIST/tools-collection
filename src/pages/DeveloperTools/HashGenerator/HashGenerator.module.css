@@ -4,18 +4,82 @@
     gap: 1.5rem;
 }
 
+/* Combine controls */
+.controls {
+    display: flex;
+    flex-direction: column; /* Stack selectors and file input */
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
 .codeTypeSelector {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Allow wrapping */
     gap: 1rem;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */ /* Removed, handled by .controls gap */
+}
+
+
+/* File Input Styles */
+.fileInputContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem; /* Space before text areas */
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color); /* Added border like .controls */
+}
+
+.fileInputLabel {
+    font-weight: 500;
+    color: var(--text-dark);
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.fileInput {
+    /* Basic styling, can be enhanced */
+    color: var(--text-color);
+}
+
+/* Hide default file input appearance (optional, requires more styling for custom look) */
+/* .fileInput {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+} */
+
+.fileName {
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px; /* Adjust as needed */
+}
+
+[data-theme='dark'] .fileInputContainer {
+    background-color: var(--input-background);
+    border-color: var(--border-color); /* Added border color */
 }
 
 .textAreas {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    /* grid-template-columns: 1fr auto 1fr; */ /* Change to 1fr 1fr */
+    grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
     align-items: start;
+    margin-top: 1rem; /* Add margin like other tools */
 }
 
 .textAreaContainer {
@@ -26,6 +90,7 @@
     padding: 1rem;
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color); /* Added border */
 }
 
 .textAreaContainer label {
@@ -41,30 +106,29 @@
     align-self: flex-end;
 }
 
-.hashButtons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-    align-self: center;
-}
+/* Remove .hashButtons as the button moves to .actionButtons */
+/* .hashButtons { ... } */
 
 .actionButtons {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem; /* Reduced margin */
 }
 
 [data-theme='dark'] .textAreaContainer {
     background-color: var(--input-background);
-    color: var(--text-color);
+    /* color: var(--text-color); */ /* Color inherited */
+    border-color: var(--border-color); /* Added border color */
 }
 
 
 @media (max-width: 768px) {
+    .controls {
+        /* No change needed for controls container */
+    }
     .codeTypeSelector {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Keep auto-fit */
     }
 
     .textAreas {
@@ -76,11 +140,7 @@
         min-height: 150px;
     }
 
-    .hashButtons {
-        flex-direction: row;
-        justify-content: center;
-        padding: 0.5rem;
-    }
+    /* Remove .hashButtons styles */
     
     .actionButtons {
         flex-direction: column;
@@ -91,202 +151,6 @@
     }
 }
 
+/* Removed potentially unused styles */
 
-
-
-
-
-.hash-generator {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.hash-options {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    padding: 1rem;
-    background-color: var(--card-background);
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-}
-
-.hash-type {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.hash-type label {
-    color: var(--text-color);
-    font-weight: 500;
-}
-
-.hash-type select {
-    padding: 0.5rem;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    background-color: var(--input-background);
-    color: var(--text-color);
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.hash-type select:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
-}
-
-.input-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.input-section h3 {
-    margin: 0;
-    color: var(--text-color);
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-/* .input-section textarea {
-    width: 100%;
-    min-height: 150px;
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    background-color: var(--input-background);
-    color: var(--text-color);
-    font-family: 'Fira Code', monospace;
-    font-size: 0.95rem;
-    resize: vertical;
-    transition: all 0.3s ease;
-}
-
-.input-section textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
-} */
-
-.hash-results {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.hash-result {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem;
-    background-color: var(--card-background);
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-}
-
-.hash-result h4 {
-    margin: 0;
-    color: var(--text-color);
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-.hash-output {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.hash-value {
-    flex: 1;
-    padding: 0.75rem;
-    background-color: var(--code-background);
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-    word-break: break-all;
-}
-
-.copy-button {
-    padding: 0.5rem 1rem;
-    background-color: var(--primary-color);
-    color: var(--button-text);
-    border: none;
-    border-radius: var(--border-radius);
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.copy-button:hover {
-    background-color: var(--primary-light);
-    transform: translateY(-2px);
-}
-
-.copy-button:active {
-    transform: translateY(0);
-}
-
-.generate-button {
-    padding: 0.75rem 1.5rem;
-    background-color: var(--primary-color);
-    color: var(--button-text);
-    border: none;
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    align-self: center;
-}
-
-.generate-button:hover {
-    background-color: var(--primary-light);
-    transform: translateY(-2px);
-}
-
-.generate-button:active {
-    transform: translateY(0);
-}
-
-[data-theme='dark'] .hash-value {
-    background-color: var(--code-background);
-    color: var(--text-color);
-}
-
-[data-theme='dark'] .copy-button:hover,
-[data-theme='dark'] .generate-button:hover {
-    background-color: var(--primary-dark);
-}
-
-@media (max-width: 768px) {
-    .hash-options {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-
-    .hash-type {
-        width: 100%;
-    }
-
-    .hash-type select {
-        flex: 1;
-    }
-
-    .hash-output {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .copy-button {
-        align-self: flex-end;
-    }
-}
+/* Removed stray styles left over from deletion */

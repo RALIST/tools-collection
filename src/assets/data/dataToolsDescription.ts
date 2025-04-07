@@ -265,8 +265,8 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
         ]
     },
     hashGenerator: {
-        title: 'Hash Generator',
-        description: 'Generate various types of hash values from text input.',
+        title: 'Hash Generator (MD5, SHA-1, SHA-256, SHA-512)',
+        description: 'Generate MD5, SHA-1, SHA-256, and SHA-512 hash values from text or file input.',
         keywords: '',
         favicon: '#',
         about: {
@@ -295,6 +295,86 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
             }
         ]
     },
+
+    keccakSha3Generator: {
+        title: 'Keccak / SHA3 Hash Generator',
+        description: 'Generate Keccak and SHA3 hash values (SHA3-224, SHA3-256, SHA3-384, SHA3-512, Keccak-256, etc.).',
+        keywords: 'keccak, sha3, hash generator, sha3-256, keccak-256, cryptography, hashing algorithm',
+        favicon: '🔑',
+        about: {
+            title: 'About Keccak / SHA3 Hash Generator',
+            description: 'This tool generates hash values using the SHA-3 (Secure Hash Algorithm 3) family and the related Keccak algorithm.',
+            info: [
+                {title: 'SHA-3:', description: 'The latest Secure Hash Algorithm standard, offering variants like SHA3-224, SHA3-256, SHA3-384, and SHA3-512.'},
+                {title: 'Keccak:', description: 'The algorithm SHA-3 is based on. Often used in blockchain contexts (e.g., Ethereum). Variants include Keccak-256, Keccak-384, Keccak-512.'},
+                {title: 'Security:', description: 'SHA-3 and Keccak are considered secure hashing algorithms suitable for various cryptographic applications.'}
+            ]
+        },
+        useCases: {
+            title: 'Use Cases',
+            cases: [
+                'Verifying data integrity',
+                'Generating unique identifiers',
+                'Cryptographic applications',
+                'Blockchain development (Keccak)'
+            ]
+        },
+        FAQ: [
+            {
+                question: 'What is the difference between SHA-3 and Keccak?',
+                answer: 'SHA-3 is a specific standard derived from the broader Keccak algorithm family. While very similar, they have minor differences in padding, meaning SHA3-256 and Keccak-256 will produce different hashes for the same input.'
+            },
+            {
+                question: 'Which variant should I use?',
+                answer: 'For general security, SHA3-256 or SHA3-512 are good choices. Keccak variants are often used specifically where compatibility with systems like Ethereum is needed.'
+            },
+            {
+                question: 'Is my data uploaded?',
+                answer: 'No, all calculations are performed locally in your browser using JavaScript. Your input data is never sent to our servers.'
+            }
+        ]
+    },
+
+    hmacGenerator: {
+        title: 'HMAC Generator',
+        description: 'Generate HMAC (Hash-based Message Authentication Code) using SHA-256, SHA-384, or SHA-512 and a secret key.',
+        keywords: 'hmac, hash, message authentication code, sha-256, sha-512, cryptography, security, integrity',
+        favicon: '🛡️',
+        about: {
+            title: 'About HMAC Generator',
+            description: 'This tool generates Hash-based Message Authentication Codes (HMAC) using a cryptographic hash function (SHA-256, SHA-384, SHA-512) combined with a secret key.',
+            info: [
+                {title: 'Purpose:', description: 'HMAC is used to simultaneously verify both the data integrity and the authenticity of a message.'},
+                {title: 'Security:', description: 'Requires a secret key known only to the sender and receiver. Provides stronger security guarantees than a simple hash.'},
+                {title: 'Algorithms:', description: 'Supports common secure hash algorithms like SHA-256 and SHA-512 for the underlying hash function.'}
+            ]
+        },
+        useCases: {
+            title: 'Use Cases',
+            cases: [
+                'Authenticating API requests',
+                'Verifying message integrity in communication protocols',
+                'Securing webhooks',
+                'Creating signed URLs'
+            ]
+        },
+        FAQ: [
+            {
+                question: 'What is HMAC?',
+                answer: 'HMAC stands for Hash-based Message Authentication Code. It uses a cryptographic hash function along with a secret key to generate a tag or signature for a message, verifying both its integrity and authenticity.'
+            },
+            {
+                question: 'How is HMAC different from a regular hash?',
+                answer: 'While a regular hash verifies data integrity (that the data hasn`t changed), HMAC uses a secret key to also verify authenticity (that the message came from someone who knows the key).'
+            },
+            {
+                question: 'Is my secret key uploaded?',
+                answer: 'No, all HMAC calculations are performed locally in your browser using the Web Crypto API. Your secret key and data are never sent to our servers.'
+            }
+        ]
+    },
+
+
 
     // Converter Tools
 
@@ -450,8 +530,8 @@ export const dataToolsDescription: Record<ToolName, ToolsDescriptionTool> = {
     },
     scientificCalculator: {
         title: 'Scientific Calculator',
-        description: '',
-        keywords: '',
+        description: 'Free online scientific calculator with advanced mathematical functions, memory operations, and calculation history. Perfect for students, engineers, and professionals.',
+        keywords: 'scientific calculator, online calculator, math calculator, trigonometry calculator, logarithm calculator, engineering calculator',
         favicon: '🧮',
         about: null,
         useCases: null,

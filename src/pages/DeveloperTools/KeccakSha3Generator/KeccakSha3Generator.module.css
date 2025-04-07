@@ -1,0 +1,121 @@
+.keccakSha3Generator {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.hashTypeSelectorContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.hashTypeLabel {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* Inherit Select styles, add margin if needed */
+/* .hashTypeSelector {} */
+
+.fileInputContainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem; /* Add margin */
+    padding: 1rem;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.fileInputLabel {
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.fileInput {
+    color: var(--text-color);
+}
+
+.fileName {
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+.textAreas {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Side-by-side layout */
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 1rem; /* Add margin */
+}
+
+.textAreaContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--card-background);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.textAreaContainer label {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 0.25rem;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 0.5rem;
+    align-self: flex-end;
+    margin-top: 0.5rem;
+}
+
+.actionButtons {
+    margin-top: 0.5rem; /* Reduce top margin slightly as it's below textAreas */
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+[data-theme='dark'] .textAreaContainer,
+[data-theme='dark'] .hashTypeSelectorContainer,
+[data-theme='dark'] .fileInputContainer {
+    background-color: var(--input-background);
+}
+
+@media (max-width: 768px) {
+    .textAreas {
+        grid-template-columns: 1fr; /* Stack text areas */
+        gap: 1rem;
+    }
+
+     .hashTypeSelectorContainer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .actionButtons {
+        flex-direction: column;
+    }
+
+    .actionButtons button {
+        width: 100%;
+    }
+}

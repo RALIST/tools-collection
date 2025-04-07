@@ -15,7 +15,7 @@
     border-color: var(--primary-color);
 }
 
-.input:focus {
+.input:focus-visible { /* Change to focus-visible */
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
@@ -32,6 +32,6 @@
     color: var(--text-color);
 }
 
-[data-theme='dark'] .input:focus {
+[data-theme='dark'] .input:focus-visible { /* Change to focus-visible */
     border-color: var(--primary-color);
 }

@@ -5,7 +5,7 @@
     text-align: center;
     box-shadow: var(--card-shadow);
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */ /* Removed this as it might clip the absolute positioned mobile menu */
 }
 
 .header::before {
@@ -100,57 +100,167 @@
     z-index: 10;
 }
 
+
+/* Hamburger Menu Button */
+.hamburger-button {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    z-index: 11; /* Above theme toggle */
+    position: absolute; /* Position relative to header */
+    top: 1rem; /* Adjust as needed */
+    right: 1rem; /* Adjust as needed */
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color); /* Use text color for visibility */
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Styles for when the menu is open (optional animation) */
+.nav.mobile-menu-open + .hamburger-button .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.nav.mobile-menu-open + .hamburger-button .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.nav.mobile-menu-open + .hamburger-button .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0; /* Start from top */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 8; /* Below nav menu, above page content */
+    cursor: pointer;
+}
+
+/* Show overlay only within the mobile breakpoint when menu is open */
 @media (max-width: 768px) {
-    .header {
-        padding: 1.5rem 1rem;
-    }
-
-    .logo h1 {
-        font-size: 2rem;
-    }
-
-    .header p {
-        font-size: 1rem;
-        margin: 0.5rem 0 1rem;
-    }
-
-    .nav {
-        margin-top: 1rem;
-    }
-
-    .nav ul {
-        gap: 1rem;
-    }
-
-    .nav a {
-        padding: 0.5rem 1rem;
-    }
-
-    .theme-toggle-wrapper {
-        top: 0.75rem;
-        right: 0.75rem;
+    .nav.mobile-menu-open ~ .mobile-menu-overlay {
+        display: block;
+        /* Adjust top offset to be below the header height */
+        /* Assuming header height is around 60-70px on mobile */
+        /* We might need to calculate or estimate this better */
+        top: 60px; /* Example value, adjust as needed */
     }
 }
 
-@media (max-width: 480px) {
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem; /* Reduce padding */
+        text-align: left; /* Align logo left */
+    }
+
+    .logo {
+        margin-right: auto; /* Push nav/button to the right */
+    }
+
     .logo h1 {
-        font-size: 1.75rem;
+        font-size: 1.5rem; /* Smaller logo */
+        margin-bottom: 0;
+    }
+
+    .header p {
+       display: none; /* Hide tagline on mobile */
+    }
+
+    .hamburger-button {
+        display: block; /* Show hamburger */
+        top: 0.5rem; /* Adjust position */
+        right: 0.5rem;
+    }
+
+    .nav {
+        margin-top: 0;
+        padding: 0;
+        background-color: transparent; /* Remove nav background */
+        backdrop-filter: none;
     }
 
     .nav ul {
+        display: none; /* Hide nav list by default */
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        right: 0;
+        background-color: var(--card-background);
         flex-direction: column;
-        align-items: center;
+        padding: 1rem 0;
+        margin: 0;
+        gap: 0;
+        box-shadow: var(--card-shadow);
+        border-bottom-left-radius: var(--border-radius);
+        border-bottom-right-radius: var(--border-radius);
+        z-index: 9;
+    }
+    /* Ensure the rule to show the menu comes immediately after the rule hiding it */
+    .nav.mobile-menu-open ul {
+        width: 100%; /* Full width */
+        display: flex; /* Show nav list when menu is open */
+        gap: 0.8rem; /* Add small gap between items */
     }
 
     .nav a {
+        padding: 0.75rem 1.5rem; /* Adjust padding */
         width: 100%;
-        text-align: center;
+        text-align: left;
+        border-radius: 0; /* Remove individual link radius */
+        display: flex; /* Flex for alignment */
     }
+     .nav a:hover,
+     .nav a.active {
+        display: flex;;
+         background-color: rgba(0, 0, 0, 0.05); /* Simple hover/active background */
+         transform: none; /* Disable hover transform */
+         color: var(--primary-color); /* Use primary color for active */
+         width: 100%; /* Full width for active */
+     }
+     .nav a::before {
+         display: none; /* Hide underline effect on mobile */
+     }
+     .nav a.active {
+         font-weight: 600;
+         color: var(--primary-dark); /* Darker color for active text */
+         background-color: rgba(33, 150, 243, 0.1); /* Slightly stronger background */
+         border-left: 3px solid var(--primary-color); /* Add left border indicator */
+         padding-left: calc(1.5rem - 3px); /* Adjust padding to account for border */
+     }
+
 
     .theme-toggle-wrapper {
-        position: relative;
-        top: auto;
-        right: auto;
-        margin-top: 1rem;
+        top: 0.5rem; /* Align with hamburger */
+        right: 3.5rem; /* Position left of hamburger */
+    }
+}
+
+/* Remove the 480px breakpoint styles for nav and theme toggle as they are handled by 768px now */
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.25rem; /* Further reduce logo size */
+    }
+     .hamburger-button {
+        top: 0.4rem;
+        right: 0.4rem;
+    }
+     .theme-toggle-wrapper {
+        top: 0.4rem;
+        right: 3rem;
     }
 }

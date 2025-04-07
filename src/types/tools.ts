@@ -80,6 +80,8 @@ export type ToolName =
     'regexTester' |
     'codeBeautifier' |
     'hashGenerator' |
+    'keccakSha3Generator' |
+    'hmacGenerator' | // Added HMAC tool
 
     // Converter Tools
     'unitConverter' |

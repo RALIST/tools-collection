@@ -83,7 +83,27 @@ export const dataToolsByCategory: Record<ToolCategory, Tool[]> = {
             category: 'developer',
             status: 'active',
             path: '/developer-tools/hash-generator'
-        }
+        }, // Removed extra closing brace here
+        {
+            id: 'keccak-sha3-generator',
+            name: 'Keccak/SHA3 Generator',
+            description: 'Generate Keccak and SHA3 hashes',
+            detailedDescription: 'Generate various Keccak and SHA3 hash values (SHA3-224, SHA3-256, SHA3-384, SHA3-512, Keccak-256, etc.) for security and integrity checks.',
+            icon: '🔑',
+            category: 'developer',
+            status: 'active',
+            path: '/developer-tools/keccak-sha3-generator'
+        }, // Comma goes here, after the object
+        {
+            id: 'hmac-generator',
+            name: 'HMAC Generator',
+            description: 'Generate HMAC with SHA-256/512',
+            detailedDescription: 'Generate Hash-based Message Authentication Codes (HMAC) using SHA-256, SHA-384, or SHA-512 algorithms and a secret key. Essential for verifying data integrity and authenticity.',
+            icon: '🛡️',
+            category: 'developer',
+            status: 'active',
+            path: '/developer-tools/hmac-generator'
+        },
     ],
     converter: [
         {
