@@ -26,6 +26,7 @@
     padding: 2rem;
     box-shadow: var(--card-shadow);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    min-height: 100px; /* Reserve space to mitigate CLS from potential Auto Ad injection */
 }
 
 
